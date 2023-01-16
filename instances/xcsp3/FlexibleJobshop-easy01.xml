@@ -1,0 +1,133 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="x" note="x[t] is the starting time of the task t" size="[9]">
+      <domain for="x[0]"> 0..1027 </domain>
+      <domain for="x[1]"> 17..1044 </domain>
+      <domain for="x[2]"> 47..1074 </domain>
+      <domain for="x[3]"> 0..1074 </domain>
+      <domain for="x[4]"> 30..1104 </domain>
+      <domain for="x[5]"> 85..1159 </domain>
+      <domain for="x[6]"> 0..1008 </domain>
+      <domain for="x[7]"> 56..1064 </domain>
+      <domain for="x[8]"> 126..1134 </domain>
+    </array>
+    <array id="d" note="d[t] is the duration of the task t" size="[9]">
+      <domain for="d[0]"> 17..25 </domain>
+      <domain for="d[1]"> 30..40 </domain>
+      <domain for="d[2]"> 150..160 </domain>
+      <domain for="d[3]"> 30..50 </domain>
+      <domain for="d[4]"> 55..66 </domain>
+      <domain for="d[5]"> 65..78 </domain>
+      <domain for="d[6]"> 56..62 </domain>
+      <domain for="d[7]"> 70..80 </domain>
+      <domain for="d[8]"> 90..100 </domain>
+    </array>
+    <array id="b" note="b[o] is 1 iff the optional operation (for some task) is executed" size="[18]"> 0 1 </array>
+  </variables>
+  <constraints>
+    <group note="precedence relations">
+      <intension> le(add(%0,%1),%2) </intension>
+      <args> x[0] d[0] x[1] </args>
+      <args> x[1] d[1] x[2] </args>
+      <args> x[3] d[3] x[4] </args>
+      <args> x[4] d[4] x[5] </args>
+      <args> x[6] d[6] x[7] </args>
+      <args> x[7] d[7] x[8] </args>
+    </group>
+    <group note="duration constraints">
+      <intension> or(eq(%0,0),eq(%1,%2)) </intension>
+      <args> b[0] d[0] 17 </args>
+      <args> b[1] d[0] 25 </args>
+      <args> b[2] d[1] 30 </args>
+      <args> b[3] d[1] 40 </args>
+      <args> b[4] d[2] 160 </args>
+      <args> b[5] d[2] 150 </args>
+      <args> b[6] d[3] 30 </args>
+      <args> b[7] d[3] 50 </args>
+      <args> b[8] d[4] 66 </args>
+      <args> b[9] d[4] 55 </args>
+      <args> b[10] d[5] 65 </args>
+      <args> b[11] d[5] 78 </args>
+      <args> b[12] d[6] 56 </args>
+      <args> b[13] d[6] 62 </args>
+      <args> b[14] d[7] 70 </args>
+      <args> b[15] d[7] 80 </args>
+      <args> b[16] d[8] 100 </args>
+      <args> b[17] d[8] 90 </args>
+    </group>
+    <block note="optional tasks constraints">
+      <group>
+        <sum>
+          <list> %0 %1 </list>
+          <condition> (le,1) </condition>
+        </sum>
+        <args> b[0] b[1] </args>
+        <args> b[2] b[3] </args>
+        <args> b[4] b[5] </args>
+        <args> b[6] b[7] </args>
+        <args> b[8] b[9] </args>
+        <args> b[10] b[11] </args>
+        <args> b[12] b[13] </args>
+        <args> b[14] b[15] </args>
+        <args> b[16] b[17] </args>
+      </group>
+      <group>
+        <count>
+          <list> %0 %1 </list>
+          <values> 1 </values>
+          <condition> (ge,1) </condition>
+        </count>
+        <args> b[0] b[1] </args>
+        <args> b[2] b[3] </args>
+        <args> b[4] b[5] </args>
+        <args> b[6] b[7] </args>
+        <args> b[8] b[9] </args>
+        <args> b[10] b[11] </args>
+        <args> b[12] b[13] </args>
+        <args> b[14] b[15] </args>
+        <args> b[16] b[17] </args>
+      </group>
+      <group>
+        <intension> eq(%0,not(%1)) </intension>
+        <args> b[0] b[1] </args>
+        <args> b[2] b[3] </args>
+        <args> b[4] b[5] </args>
+        <args> b[6] b[7] </args>
+        <args> b[8] b[9] </args>
+        <args> b[10] b[11] </args>
+        <args> b[12] b[13] </args>
+        <args> b[14] b[15] </args>
+        <args> b[16] b[17] </args>
+      </group>
+    </block>
+    <block note="resource constraints">
+      <cumulative>
+        <origins> x[0] x[3] x[6] </origins>
+        <lengths> 17 30 56 </lengths>
+        <heights> b[0] b[6] b[12] </heights>
+        <condition> (le,1) </condition>
+      </cumulative>
+      <cumulative>
+        <origins> x[0..1] x[4] x[6..7] </origins>
+        <lengths> 25 30 66 62 70 </lengths>
+        <heights> b[1..2] b[8] b[13..14] </heights>
+        <condition> (le,1) </condition>
+      </cumulative>
+      <cumulative>
+        <origins> x[2..3] x[5] x[7..8] </origins>
+        <lengths> 160 50 65 80 100 </lengths>
+        <heights> b[4] b[7] b[10] b[15..16] </heights>
+        <condition> (le,1) </condition>
+      </cumulative>
+      <cumulative>
+        <origins> x[1..2] x[4..5] x[8] </origins>
+        <lengths> 40 150 55 78 90 </lengths>
+        <heights> b[3] b[5] b[9] b[11] b[17] </heights>
+        <condition> (le,1) </condition>
+      </cumulative>
+    </block>
+  </constraints>
+  <objectives>
+    <minimize type="maximum"> add(x[2],d[2]) add(x[5],d[5]) add(x[8],d[8]) </minimize>
+  </objectives>
+</instance>

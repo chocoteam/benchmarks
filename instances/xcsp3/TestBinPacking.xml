@@ -1,0 +1,26 @@
+<instance format="XCSP3" type="CSP">
+  <variables>
+    <array id="x" size="[6]"> 0..3 </array>
+  </variables>
+  <constraints>
+    <binPacking>
+      <list> x[] </list>
+      <sizes> 2 3 4 2 7 5 </sizes>
+      <condition> (le,8) </condition>
+    </binPacking>
+    <binPacking>
+      <list> x[] </list>
+      <sizes> 7 1 4 2 7 5 </sizes>
+      <condition> (le,8) </condition>
+    </binPacking>
+    <cardinality>
+      <list> x[] </list>
+      <values> 0 1 2 </values>
+      <occurs> 0..2 0..2 0..2 </occurs>
+    </cardinality>
+    <ordered>
+      <list> x[] </list>
+      <operator> le </operator>
+    </ordered>
+  </constraints>
+</instance>

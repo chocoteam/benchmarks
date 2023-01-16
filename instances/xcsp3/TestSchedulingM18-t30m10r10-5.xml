@@ -1,0 +1,433 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="x" note="x[i] is the machine used for the ith test" size="[30]"> 0..9 </array>
+    <array id="s" note="s[i] is the starting time of the ith test" size="[30]"> 0..11274 </array>
+    <array id="aux_gb" note="aux_gb[i] is the ith auxiliary variable having been automatically introduced" size="[300]"> 0 1 </array>
+  </variables>
+  <constraints>
+    <block note="tests can only run on valid machines">
+      <group>
+        <extension>
+          <list> %0 </list>
+          <supports> 0..9 </supports>
+        </extension>
+        <args> x[0] </args>
+        <args> x[1] </args>
+        <args> x[2] </args>
+        <args> x[3] </args>
+        <args> x[5] </args>
+        <args> x[6] </args>
+        <args> x[7] </args>
+        <args> x[8] </args>
+        <args> x[9] </args>
+        <args> x[10] </args>
+        <args> x[11] </args>
+        <args> x[12] </args>
+        <args> x[13] </args>
+        <args> x[14] </args>
+        <args> x[15] </args>
+        <args> x[17] </args>
+        <args> x[18] </args>
+        <args> x[20] </args>
+        <args> x[21] </args>
+        <args> x[22] </args>
+        <args> x[23] </args>
+        <args> x[24] </args>
+        <args> x[25] </args>
+        <args> x[26] </args>
+        <args> x[27] </args>
+        <args> x[29] </args>
+      </group>
+      <extension>
+        <list> x[4] </list>
+        <supports> 0 </supports>
+      </extension>
+      <extension>
+        <list> x[16] </list>
+        <supports> 0..2 8 </supports>
+      </extension>
+      <extension>
+        <list> x[19] </list>
+        <supports> 0 3 5 </supports>
+      </extension>
+      <extension>
+        <list> x[28] </list>
+        <supports> 2 6 7 </supports>
+      </extension>
+    </block>
+    <group note="tests do not overlap when running on the same machine">
+      <cumulative>
+        <origins> s[] </origins>
+        <lengths> 348 609 132 799 90 530 385 686 239 58 546 577 360 530 60 419 731 423 714 223 292 656 2 300 544 338 490 655 194 337 </lengths>
+        <heights> %... </heights>
+        <condition> (le,1) </condition>
+      </cumulative>
+      <args> aux_gb[0..29] </args>
+      <args> aux_gb[30..59] </args>
+      <args> aux_gb[60..89] </args>
+      <args> aux_gb[90..119] </args>
+      <args> aux_gb[120..149] </args>
+      <args> aux_gb[150..179] </args>
+      <args> aux_gb[180..209] </args>
+      <args> aux_gb[210..239] </args>
+      <args> aux_gb[240..269] </args>
+      <args> aux_gb[270..299] </args>
+    </group>
+    <block note="tests using the same resource do not overlap in time">
+      <noOverlap>
+        <origins> s[9] s[23] s[24] s[27] </origins>
+        <lengths> 58 300 544 655 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[7] s[12] s[13] s[23] s[27] </origins>
+        <lengths> 686 360 530 300 655 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[9] s[13] s[23] s[27] </origins>
+        <lengths> 58 530 300 655 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[7] s[9] s[12] s[13] s[22] s[23] s[27] s[28] </origins>
+        <lengths> 686 58 360 530 2 300 655 194 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[7] s[13] s[22] s[23] s[27] </origins>
+        <lengths> 686 530 2 300 655 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[7] s[9] s[12] s[13] s[23] s[27] </origins>
+        <lengths> 686 58 360 530 300 655 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[7] s[9] s[22] s[23] </origins>
+        <lengths> 686 58 2 300 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[7] s[9] s[12] s[13] s[22] s[23] s[27] s[28] </origins>
+        <lengths> 686 58 360 530 2 300 655 194 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[9] s[13] s[22] s[23] s[27] s[28] </origins>
+        <lengths> 58 530 2 300 655 194 </lengths>
+      </noOverlap>
+      <noOverlap>
+        <origins> s[7] s[9] s[13] s[22] s[23] s[27] </origins>
+        <lengths> 686 58 530 2 300 655 </lengths>
+      </noOverlap>
+    </block>
+    <precedence class="symmetry-breaking">
+      <list> x[] </list>
+      <values> 4 9 </values>
+    </precedence>
+    <minimum class="redundant-constraint">
+      <list> s[] </list>
+      <condition> (eq,0) </condition>
+    </minimum>
+    <group>
+      <intension> eq(eq(%0,%1),%2) </intension>
+      <args> x[0] 0 aux_gb[0] </args>
+      <args> x[1] 0 aux_gb[1] </args>
+      <args> x[2] 0 aux_gb[2] </args>
+      <args> x[3] 0 aux_gb[3] </args>
+      <args> x[4] 0 aux_gb[4] </args>
+      <args> x[5] 0 aux_gb[5] </args>
+      <args> x[6] 0 aux_gb[6] </args>
+      <args> x[7] 0 aux_gb[7] </args>
+      <args> x[8] 0 aux_gb[8] </args>
+      <args> x[9] 0 aux_gb[9] </args>
+      <args> x[10] 0 aux_gb[10] </args>
+      <args> x[11] 0 aux_gb[11] </args>
+      <args> x[12] 0 aux_gb[12] </args>
+      <args> x[13] 0 aux_gb[13] </args>
+      <args> x[14] 0 aux_gb[14] </args>
+      <args> x[15] 0 aux_gb[15] </args>
+      <args> x[16] 0 aux_gb[16] </args>
+      <args> x[17] 0 aux_gb[17] </args>
+      <args> x[18] 0 aux_gb[18] </args>
+      <args> x[19] 0 aux_gb[19] </args>
+      <args> x[20] 0 aux_gb[20] </args>
+      <args> x[21] 0 aux_gb[21] </args>
+      <args> x[22] 0 aux_gb[22] </args>
+      <args> x[23] 0 aux_gb[23] </args>
+      <args> x[24] 0 aux_gb[24] </args>
+      <args> x[25] 0 aux_gb[25] </args>
+      <args> x[26] 0 aux_gb[26] </args>
+      <args> x[27] 0 aux_gb[27] </args>
+      <args> x[28] 0 aux_gb[28] </args>
+      <args> x[29] 0 aux_gb[29] </args>
+      <args> x[0] 1 aux_gb[30] </args>
+      <args> x[1] 1 aux_gb[31] </args>
+      <args> x[2] 1 aux_gb[32] </args>
+      <args> x[3] 1 aux_gb[33] </args>
+      <args> x[4] 1 aux_gb[34] </args>
+      <args> x[5] 1 aux_gb[35] </args>
+      <args> x[6] 1 aux_gb[36] </args>
+      <args> x[7] 1 aux_gb[37] </args>
+      <args> x[8] 1 aux_gb[38] </args>
+      <args> x[9] 1 aux_gb[39] </args>
+      <args> x[10] 1 aux_gb[40] </args>
+      <args> x[11] 1 aux_gb[41] </args>
+      <args> x[12] 1 aux_gb[42] </args>
+      <args> x[13] 1 aux_gb[43] </args>
+      <args> x[14] 1 aux_gb[44] </args>
+      <args> x[15] 1 aux_gb[45] </args>
+      <args> x[16] 1 aux_gb[46] </args>
+      <args> x[17] 1 aux_gb[47] </args>
+      <args> x[18] 1 aux_gb[48] </args>
+      <args> x[19] 1 aux_gb[49] </args>
+      <args> x[20] 1 aux_gb[50] </args>
+      <args> x[21] 1 aux_gb[51] </args>
+      <args> x[22] 1 aux_gb[52] </args>
+      <args> x[23] 1 aux_gb[53] </args>
+      <args> x[24] 1 aux_gb[54] </args>
+      <args> x[25] 1 aux_gb[55] </args>
+      <args> x[26] 1 aux_gb[56] </args>
+      <args> x[27] 1 aux_gb[57] </args>
+      <args> x[28] 1 aux_gb[58] </args>
+      <args> x[29] 1 aux_gb[59] </args>
+      <args> x[0] 2 aux_gb[60] </args>
+      <args> x[1] 2 aux_gb[61] </args>
+      <args> x[2] 2 aux_gb[62] </args>
+      <args> x[3] 2 aux_gb[63] </args>
+      <args> x[4] 2 aux_gb[64] </args>
+      <args> x[5] 2 aux_gb[65] </args>
+      <args> x[6] 2 aux_gb[66] </args>
+      <args> x[7] 2 aux_gb[67] </args>
+      <args> x[8] 2 aux_gb[68] </args>
+      <args> x[9] 2 aux_gb[69] </args>
+      <args> x[10] 2 aux_gb[70] </args>
+      <args> x[11] 2 aux_gb[71] </args>
+      <args> x[12] 2 aux_gb[72] </args>
+      <args> x[13] 2 aux_gb[73] </args>
+      <args> x[14] 2 aux_gb[74] </args>
+      <args> x[15] 2 aux_gb[75] </args>
+      <args> x[16] 2 aux_gb[76] </args>
+      <args> x[17] 2 aux_gb[77] </args>
+      <args> x[18] 2 aux_gb[78] </args>
+      <args> x[19] 2 aux_gb[79] </args>
+      <args> x[20] 2 aux_gb[80] </args>
+      <args> x[21] 2 aux_gb[81] </args>
+      <args> x[22] 2 aux_gb[82] </args>
+      <args> x[23] 2 aux_gb[83] </args>
+      <args> x[24] 2 aux_gb[84] </args>
+      <args> x[25] 2 aux_gb[85] </args>
+      <args> x[26] 2 aux_gb[86] </args>
+      <args> x[27] 2 aux_gb[87] </args>
+      <args> x[28] 2 aux_gb[88] </args>
+      <args> x[29] 2 aux_gb[89] </args>
+      <args> x[0] 3 aux_gb[90] </args>
+      <args> x[1] 3 aux_gb[91] </args>
+      <args> x[2] 3 aux_gb[92] </args>
+      <args> x[3] 3 aux_gb[93] </args>
+      <args> x[4] 3 aux_gb[94] </args>
+      <args> x[5] 3 aux_gb[95] </args>
+      <args> x[6] 3 aux_gb[96] </args>
+      <args> x[7] 3 aux_gb[97] </args>
+      <args> x[8] 3 aux_gb[98] </args>
+      <args> x[9] 3 aux_gb[99] </args>
+      <args> x[10] 3 aux_gb[100] </args>
+      <args> x[11] 3 aux_gb[101] </args>
+      <args> x[12] 3 aux_gb[102] </args>
+      <args> x[13] 3 aux_gb[103] </args>
+      <args> x[14] 3 aux_gb[104] </args>
+      <args> x[15] 3 aux_gb[105] </args>
+      <args> x[16] 3 aux_gb[106] </args>
+      <args> x[17] 3 aux_gb[107] </args>
+      <args> x[18] 3 aux_gb[108] </args>
+      <args> x[19] 3 aux_gb[109] </args>
+      <args> x[20] 3 aux_gb[110] </args>
+      <args> x[21] 3 aux_gb[111] </args>
+      <args> x[22] 3 aux_gb[112] </args>
+      <args> x[23] 3 aux_gb[113] </args>
+      <args> x[24] 3 aux_gb[114] </args>
+      <args> x[25] 3 aux_gb[115] </args>
+      <args> x[26] 3 aux_gb[116] </args>
+      <args> x[27] 3 aux_gb[117] </args>
+      <args> x[28] 3 aux_gb[118] </args>
+      <args> x[29] 3 aux_gb[119] </args>
+      <args> x[0] 4 aux_gb[120] </args>
+      <args> x[1] 4 aux_gb[121] </args>
+      <args> x[2] 4 aux_gb[122] </args>
+      <args> x[3] 4 aux_gb[123] </args>
+      <args> x[4] 4 aux_gb[124] </args>
+      <args> x[5] 4 aux_gb[125] </args>
+      <args> x[6] 4 aux_gb[126] </args>
+      <args> x[7] 4 aux_gb[127] </args>
+      <args> x[8] 4 aux_gb[128] </args>
+      <args> x[9] 4 aux_gb[129] </args>
+      <args> x[10] 4 aux_gb[130] </args>
+      <args> x[11] 4 aux_gb[131] </args>
+      <args> x[12] 4 aux_gb[132] </args>
+      <args> x[13] 4 aux_gb[133] </args>
+      <args> x[14] 4 aux_gb[134] </args>
+      <args> x[15] 4 aux_gb[135] </args>
+      <args> x[16] 4 aux_gb[136] </args>
+      <args> x[17] 4 aux_gb[137] </args>
+      <args> x[18] 4 aux_gb[138] </args>
+      <args> x[19] 4 aux_gb[139] </args>
+      <args> x[20] 4 aux_gb[140] </args>
+      <args> x[21] 4 aux_gb[141] </args>
+      <args> x[22] 4 aux_gb[142] </args>
+      <args> x[23] 4 aux_gb[143] </args>
+      <args> x[24] 4 aux_gb[144] </args>
+      <args> x[25] 4 aux_gb[145] </args>
+      <args> x[26] 4 aux_gb[146] </args>
+      <args> x[27] 4 aux_gb[147] </args>
+      <args> x[28] 4 aux_gb[148] </args>
+      <args> x[29] 4 aux_gb[149] </args>
+      <args> x[0] 5 aux_gb[150] </args>
+      <args> x[1] 5 aux_gb[151] </args>
+      <args> x[2] 5 aux_gb[152] </args>
+      <args> x[3] 5 aux_gb[153] </args>
+      <args> x[4] 5 aux_gb[154] </args>
+      <args> x[5] 5 aux_gb[155] </args>
+      <args> x[6] 5 aux_gb[156] </args>
+      <args> x[7] 5 aux_gb[157] </args>
+      <args> x[8] 5 aux_gb[158] </args>
+      <args> x[9] 5 aux_gb[159] </args>
+      <args> x[10] 5 aux_gb[160] </args>
+      <args> x[11] 5 aux_gb[161] </args>
+      <args> x[12] 5 aux_gb[162] </args>
+      <args> x[13] 5 aux_gb[163] </args>
+      <args> x[14] 5 aux_gb[164] </args>
+      <args> x[15] 5 aux_gb[165] </args>
+      <args> x[16] 5 aux_gb[166] </args>
+      <args> x[17] 5 aux_gb[167] </args>
+      <args> x[18] 5 aux_gb[168] </args>
+      <args> x[19] 5 aux_gb[169] </args>
+      <args> x[20] 5 aux_gb[170] </args>
+      <args> x[21] 5 aux_gb[171] </args>
+      <args> x[22] 5 aux_gb[172] </args>
+      <args> x[23] 5 aux_gb[173] </args>
+      <args> x[24] 5 aux_gb[174] </args>
+      <args> x[25] 5 aux_gb[175] </args>
+      <args> x[26] 5 aux_gb[176] </args>
+      <args> x[27] 5 aux_gb[177] </args>
+      <args> x[28] 5 aux_gb[178] </args>
+      <args> x[29] 5 aux_gb[179] </args>
+      <args> x[0] 6 aux_gb[180] </args>
+      <args> x[1] 6 aux_gb[181] </args>
+      <args> x[2] 6 aux_gb[182] </args>
+      <args> x[3] 6 aux_gb[183] </args>
+      <args> x[4] 6 aux_gb[184] </args>
+      <args> x[5] 6 aux_gb[185] </args>
+      <args> x[6] 6 aux_gb[186] </args>
+      <args> x[7] 6 aux_gb[187] </args>
+      <args> x[8] 6 aux_gb[188] </args>
+      <args> x[9] 6 aux_gb[189] </args>
+      <args> x[10] 6 aux_gb[190] </args>
+      <args> x[11] 6 aux_gb[191] </args>
+      <args> x[12] 6 aux_gb[192] </args>
+      <args> x[13] 6 aux_gb[193] </args>
+      <args> x[14] 6 aux_gb[194] </args>
+      <args> x[15] 6 aux_gb[195] </args>
+      <args> x[16] 6 aux_gb[196] </args>
+      <args> x[17] 6 aux_gb[197] </args>
+      <args> x[18] 6 aux_gb[198] </args>
+      <args> x[19] 6 aux_gb[199] </args>
+      <args> x[20] 6 aux_gb[200] </args>
+      <args> x[21] 6 aux_gb[201] </args>
+      <args> x[22] 6 aux_gb[202] </args>
+      <args> x[23] 6 aux_gb[203] </args>
+      <args> x[24] 6 aux_gb[204] </args>
+      <args> x[25] 6 aux_gb[205] </args>
+      <args> x[26] 6 aux_gb[206] </args>
+      <args> x[27] 6 aux_gb[207] </args>
+      <args> x[28] 6 aux_gb[208] </args>
+      <args> x[29] 6 aux_gb[209] </args>
+      <args> x[0] 7 aux_gb[210] </args>
+      <args> x[1] 7 aux_gb[211] </args>
+      <args> x[2] 7 aux_gb[212] </args>
+      <args> x[3] 7 aux_gb[213] </args>
+      <args> x[4] 7 aux_gb[214] </args>
+      <args> x[5] 7 aux_gb[215] </args>
+      <args> x[6] 7 aux_gb[216] </args>
+      <args> x[7] 7 aux_gb[217] </args>
+      <args> x[8] 7 aux_gb[218] </args>
+      <args> x[9] 7 aux_gb[219] </args>
+      <args> x[10] 7 aux_gb[220] </args>
+      <args> x[11] 7 aux_gb[221] </args>
+      <args> x[12] 7 aux_gb[222] </args>
+      <args> x[13] 7 aux_gb[223] </args>
+      <args> x[14] 7 aux_gb[224] </args>
+      <args> x[15] 7 aux_gb[225] </args>
+      <args> x[16] 7 aux_gb[226] </args>
+      <args> x[17] 7 aux_gb[227] </args>
+      <args> x[18] 7 aux_gb[228] </args>
+      <args> x[19] 7 aux_gb[229] </args>
+      <args> x[20] 7 aux_gb[230] </args>
+      <args> x[21] 7 aux_gb[231] </args>
+      <args> x[22] 7 aux_gb[232] </args>
+      <args> x[23] 7 aux_gb[233] </args>
+      <args> x[24] 7 aux_gb[234] </args>
+      <args> x[25] 7 aux_gb[235] </args>
+      <args> x[26] 7 aux_gb[236] </args>
+      <args> x[27] 7 aux_gb[237] </args>
+      <args> x[28] 7 aux_gb[238] </args>
+      <args> x[29] 7 aux_gb[239] </args>
+      <args> x[0] 8 aux_gb[240] </args>
+      <args> x[1] 8 aux_gb[241] </args>
+      <args> x[2] 8 aux_gb[242] </args>
+      <args> x[3] 8 aux_gb[243] </args>
+      <args> x[4] 8 aux_gb[244] </args>
+      <args> x[5] 8 aux_gb[245] </args>
+      <args> x[6] 8 aux_gb[246] </args>
+      <args> x[7] 8 aux_gb[247] </args>
+      <args> x[8] 8 aux_gb[248] </args>
+      <args> x[9] 8 aux_gb[249] </args>
+      <args> x[10] 8 aux_gb[250] </args>
+      <args> x[11] 8 aux_gb[251] </args>
+      <args> x[12] 8 aux_gb[252] </args>
+      <args> x[13] 8 aux_gb[253] </args>
+      <args> x[14] 8 aux_gb[254] </args>
+      <args> x[15] 8 aux_gb[255] </args>
+      <args> x[16] 8 aux_gb[256] </args>
+      <args> x[17] 8 aux_gb[257] </args>
+      <args> x[18] 8 aux_gb[258] </args>
+      <args> x[19] 8 aux_gb[259] </args>
+      <args> x[20] 8 aux_gb[260] </args>
+      <args> x[21] 8 aux_gb[261] </args>
+      <args> x[22] 8 aux_gb[262] </args>
+      <args> x[23] 8 aux_gb[263] </args>
+      <args> x[24] 8 aux_gb[264] </args>
+      <args> x[25] 8 aux_gb[265] </args>
+      <args> x[26] 8 aux_gb[266] </args>
+      <args> x[27] 8 aux_gb[267] </args>
+      <args> x[28] 8 aux_gb[268] </args>
+      <args> x[29] 8 aux_gb[269] </args>
+      <args> x[0] 9 aux_gb[270] </args>
+      <args> x[1] 9 aux_gb[271] </args>
+      <args> x[2] 9 aux_gb[272] </args>
+      <args> x[3] 9 aux_gb[273] </args>
+      <args> x[4] 9 aux_gb[274] </args>
+      <args> x[5] 9 aux_gb[275] </args>
+      <args> x[6] 9 aux_gb[276] </args>
+      <args> x[7] 9 aux_gb[277] </args>
+      <args> x[8] 9 aux_gb[278] </args>
+      <args> x[9] 9 aux_gb[279] </args>
+      <args> x[10] 9 aux_gb[280] </args>
+      <args> x[11] 9 aux_gb[281] </args>
+      <args> x[12] 9 aux_gb[282] </args>
+      <args> x[13] 9 aux_gb[283] </args>
+      <args> x[14] 9 aux_gb[284] </args>
+      <args> x[15] 9 aux_gb[285] </args>
+      <args> x[16] 9 aux_gb[286] </args>
+      <args> x[17] 9 aux_gb[287] </args>
+      <args> x[18] 9 aux_gb[288] </args>
+      <args> x[19] 9 aux_gb[289] </args>
+      <args> x[20] 9 aux_gb[290] </args>
+      <args> x[21] 9 aux_gb[291] </args>
+      <args> x[22] 9 aux_gb[292] </args>
+      <args> x[23] 9 aux_gb[293] </args>
+      <args> x[24] 9 aux_gb[294] </args>
+      <args> x[25] 9 aux_gb[295] </args>
+      <args> x[26] 9 aux_gb[296] </args>
+      <args> x[27] 9 aux_gb[297] </args>
+      <args> x[28] 9 aux_gb[298] </args>
+      <args> x[29] 9 aux_gb[299] </args>
+    </group>
+  </constraints>
+  <objectives>
+    <minimize type="maximum"> add(s[0],348) add(s[1],609) add(s[2],132) add(s[3],799) add(s[4],90) add(s[5],530) add(s[6],385) add(s[7],686) add(s[8],239) add(s[9],58) add(s[10],546) add(s[11],577) add(s[12],360) add(s[13],530) add(s[14],60) add(s[15],419) add(s[16],731) add(s[17],423) add(s[18],714) add(s[19],223) add(s[20],292) add(s[21],656) add(s[22],2) add(s[23],300) add(s[24],544) add(s[25],338) add(s[26],490) add(s[27],655) add(s[28],194) add(s[29],337) </minimize>
+  </objectives>
+</instance>

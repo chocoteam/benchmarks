@@ -1,0 +1,25 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="x" note="x[i] is the team (0 or 1) of the ith player" size="[100]"> 0 1 </array>
+    <var id="z" note="z is the difference of strengths between the two teams"> 0..2376 </var>
+    <array id="aux_gb" note="aux_gb[i] is the ith auxiliary variable having been automatically introduced" size="[1]"> -4753..4753 </array>
+  </variables>
+  <constraints>
+    <intension note="computing the difference of strengths"> eq(z,abs(aux_gb[0])) </intension>
+    <cardinality note="ensuring two teams of same size">
+      <list> x[] </list>
+      <values> 0 1 </values>
+      <occurs> 50 50 </occurs>
+    </cardinality>
+    <intension class="symmetry-breaking"> eq(x[0],0) </intension>
+    <intension class="redundant-constraint" note="divisibility of the sum"> eq(mod(z,2),1) </intension>
+    <sum>
+      <list> eq(x[0],0) eq(x[1],0) eq(x[2],0) eq(x[3],0) eq(x[4],0) eq(x[5],0) eq(x[6],0) eq(x[7],0) eq(x[8],0) eq(x[9],0) eq(x[10],0) eq(x[11],0) eq(x[12],0) eq(x[13],0) eq(x[14],0) eq(x[15],0) eq(x[16],0) eq(x[17],0) eq(x[18],0) eq(x[19],0) eq(x[20],0) eq(x[21],0) eq(x[22],0) eq(x[23],0) eq(x[24],0) eq(x[25],0) eq(x[26],0) eq(x[27],0) eq(x[28],0) eq(x[29],0) eq(x[30],0) eq(x[31],0) eq(x[32],0) eq(x[33],0) eq(x[34],0) eq(x[35],0) eq(x[36],0) eq(x[37],0) eq(x[38],0) eq(x[39],0) eq(x[40],0) eq(x[41],0) eq(x[42],0) eq(x[43],0) eq(x[44],0) eq(x[45],0) eq(x[46],0) eq(x[47],0) eq(x[48],0) eq(x[49],0) eq(x[50],0) eq(x[51],0) eq(x[52],0) eq(x[53],0) eq(x[54],0) eq(x[55],0) eq(x[56],0) eq(x[57],0) eq(x[58],0) eq(x[59],0) eq(x[60],0) eq(x[61],0) eq(x[62],0) eq(x[63],0) eq(x[64],0) eq(x[65],0) eq(x[66],0) eq(x[67],0) eq(x[68],0) eq(x[69],0) eq(x[70],0) eq(x[71],0) eq(x[72],0) eq(x[73],0) eq(x[74],0) eq(x[75],0) eq(x[76],0) eq(x[77],0) eq(x[78],0) eq(x[79],0) eq(x[80],0) eq(x[81],0) eq(x[82],0) eq(x[83],0) eq(x[84],0) eq(x[85],0) eq(x[86],0) eq(x[87],0) eq(x[88],0) eq(x[89],0) eq(x[90],0) eq(x[91],0) eq(x[92],0) eq(x[93],0) eq(x[94],0) eq(x[95],0) eq(x[96],0) eq(x[97],0) eq(x[98],0) eq(x[99],0) eq(x[0],1) eq(x[1],1) eq(x[2],1) eq(x[3],1) eq(x[4],1) eq(x[5],1) eq(x[6],1) eq(x[7],1) eq(x[8],1) eq(x[9],1) eq(x[10],1) eq(x[11],1) eq(x[12],1) eq(x[13],1) eq(x[14],1) eq(x[15],1) eq(x[16],1) eq(x[17],1) eq(x[18],1) eq(x[19],1) eq(x[20],1) eq(x[21],1) eq(x[22],1) eq(x[23],1) eq(x[24],1) eq(x[25],1) eq(x[26],1) eq(x[27],1) eq(x[28],1) eq(x[29],1) eq(x[30],1) eq(x[31],1) eq(x[32],1) eq(x[33],1) eq(x[34],1) eq(x[35],1) eq(x[36],1) eq(x[37],1) eq(x[38],1) eq(x[39],1) eq(x[40],1) eq(x[41],1) eq(x[42],1) eq(x[43],1) eq(x[44],1) eq(x[45],1) eq(x[46],1) eq(x[47],1) eq(x[48],1) eq(x[49],1) eq(x[50],1) eq(x[51],1) eq(x[52],1) eq(x[53],1) eq(x[54],1) eq(x[55],1) eq(x[56],1) eq(x[57],1) eq(x[58],1) eq(x[59],1) eq(x[60],1) eq(x[61],1) eq(x[62],1) eq(x[63],1) eq(x[64],1) eq(x[65],1) eq(x[66],1) eq(x[67],1) eq(x[68],1) eq(x[69],1) eq(x[70],1) eq(x[71],1) eq(x[72],1) eq(x[73],1) eq(x[74],1) eq(x[75],1) eq(x[76],1) eq(x[77],1) eq(x[78],1) eq(x[79],1) eq(x[80],1) eq(x[81],1) eq(x[82],1) eq(x[83],1) eq(x[84],1) eq(x[85],1) eq(x[86],1) eq(x[87],1) eq(x[88],1) eq(x[89],1) eq(x[90],1) eq(x[91],1) eq(x[92],1) eq(x[93],1) eq(x[94],1) eq(x[95],1) eq(x[96],1) eq(x[97],1) eq(x[98],1) eq(x[99],1) </list>
+      <coeffs> 35 52 17 26 90 55 57 54 41 9 75 24 17 23 62 74 100 67 40 48 7 6 44 19 16 14 2 66 70 2 43 45 76 53 90 12 88 96 30 30 36 93 74 1 52 45 38 7 24 96 17 21 12 12 23 90 77 64 37 79 67 62 24 11 74 82 51 17 72 18 37 94 43 44 32 86 94 33 97 27 38 38 29 92 35 82 22 66 80 8 62 72 25 13 94 42 51 31 69 66 -35 -52 -17 -26 -90 -55 -57 -54 -41 -9 -75 -24 -17 -23 -62 -74 -100 -67 -40 -48 -7 -6 -44 -19 -16 -14 -2 -66 -70 -2 -43 -45 -76 -53 -90 -12 -88 -96 -30 -30 -36 -93 -74 -1 -52 -45 -38 -7 -24 -96 -17 -21 -12 -12 -23 -90 -77 -64 -37 -79 -67 -62 -24 -11 -74 -82 -51 -17 -72 -18 -37 -94 -43 -44 -32 -86 -94 -33 -97 -27 -38 -38 -29 -92 -35 -82 -22 -66 -80 -8 -62 -72 -25 -13 -94 -42 -51 -31 -69 -66 </coeffs>
+      <condition> (eq,aux_gb[0]) </condition>
+    </sum>
+  </constraints>
+  <objectives>
+    <minimize note="minimizing the difference of strengths between the two teams"> z </minimize>
+  </objectives>
+</instance>

@@ -1,0 +1,174 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="os" note="os[i] is the start time of the ith order" size="[20]"> 0..1000 </array>
+    <array id="ol" note="ol[i] is the line used for the ith order" size="[20]"> 1..3 </array>
+    <array id="rs" note="rs[i] is the start time of the ith recipe" size="[10]"> 0..1000 </array>
+    <array id="re" note="re[i] is the end time of the ith recipe" size="[10]"> 0..1000 </array>
+    <array id="rl" note="rl[i] is the line used for the ith recipe" size="[10]"> 1..3 </array>
+    <array id="f" note="f[i] is 1 iff there is no violation of the ith rule" size="[13]"> 0 1 </array>
+    <var id="m" note="m is the makespan wrt recipes"> 0..1000 </var>
+    <array id="aux_gb" note="aux_gb[i] is the ith auxiliary variable having been automatically introduced" size="[30]"> 0 1 </array>
+  </variables>
+  <constraints>
+    <group>
+      <intension> eq(%0,add(%1,%2)) </intension>
+      <args> os[0] rs[1] 0 </args>
+      <args> os[1] rs[2] 0 </args>
+      <args> os[2] rs[3] 0 </args>
+      <args> os[3] rs[4] 0 </args>
+      <args> os[4] rs[5] 0 </args>
+      <args> os[5] rs[6] 0 </args>
+      <args> os[6] rs[7] 0 </args>
+      <args> os[7] rs[8] 0 </args>
+      <args> os[8] rs[9] 0 </args>
+      <args> os[9] rs[0] 0 </args>
+      <args> os[10] rs[1] 1 </args>
+      <args> os[11] rs[2] 1 </args>
+      <args> os[12] rs[3] 1 </args>
+      <args> os[13] rs[4] 1 </args>
+      <args> os[14] rs[5] 1 </args>
+      <args> os[15] rs[6] 1 </args>
+      <args> os[16] rs[7] 1 </args>
+      <args> os[17] rs[8] 1 </args>
+      <args> os[18] rs[9] 1 </args>
+      <args> os[19] rs[0] 1 </args>
+    </group>
+    <group>
+      <intension> eq(%0,%1) </intension>
+      <args> ol[0] rl[1] </args>
+      <args> ol[1] rl[2] </args>
+      <args> ol[2] rl[3] </args>
+      <args> ol[3] rl[4] </args>
+      <args> ol[4] rl[5] </args>
+      <args> ol[5] rl[6] </args>
+      <args> ol[6] rl[7] </args>
+      <args> ol[7] rl[8] </args>
+      <args> ol[8] rl[9] </args>
+      <args> ol[9] rl[0] </args>
+      <args> ol[10] rl[1] </args>
+      <args> ol[11] rl[2] </args>
+      <args> ol[12] rl[3] </args>
+      <args> ol[13] rl[4] </args>
+      <args> ol[14] rl[5] </args>
+      <args> ol[15] rl[6] </args>
+      <args> ol[16] rl[7] </args>
+      <args> ol[17] rl[8] </args>
+      <args> ol[18] rl[9] </args>
+      <args> ol[19] rl[0] </args>
+    </group>
+    <group note="computing the end time of recipes">
+      <intension> eq(%0,add(%1,%2)) </intension>
+      <args> re[0] rs[0] 9 </args>
+      <args> re[1] rs[1] 6 </args>
+      <args> re[2] rs[2] 3 </args>
+      <args> re[3] rs[3] 4 </args>
+      <args> re[4] rs[4] 7 </args>
+      <args> re[5] rs[5] 10 </args>
+      <args> re[6] rs[6] 8 </args>
+      <args> re[7] rs[7] 9 </args>
+      <args> re[8] rs[8] 10 </args>
+      <args> re[9] rs[9] 10 </args>
+    </group>
+    <cumulative>
+      <origins> rs[] </origins>
+      <lengths> 9 6 3 4 7 10 8 9 10 10 </lengths>
+      <heights> 1x10 </heights>
+      <condition> (le,3) </condition>
+    </cumulative>
+    <group note="each line has only one product at a time">
+      <cumulative>
+        <origins> rs[] </origins>
+        <lengths> 9 6 3 4 7 10 8 9 10 10 </lengths>
+        <heights> %... </heights>
+        <condition> (le,1) </condition>
+      </cumulative>
+      <args> aux_gb[0..9] </args>
+      <args> aux_gb[10..19] </args>
+      <args> aux_gb[20..29] </args>
+    </group>
+    <group note="respecting flows">
+      <cumulative>
+        <origins> rs[] </origins>
+        <lengths> 9 6 3 4 7 10 8 9 10 10 </lengths>
+        <heights> %... </heights>
+        <condition> (le,5) </condition>
+      </cumulative>
+      <args> 0 5 3 3 0 4 3 4 3 5 </args>
+      <args> 4 3 1 5 0 2 0 1 1 5 </args>
+      <args> 1 1 1 1 3 3 0 4 0 0 </args>
+      <args> 4 4 5 5 3 5 0 4 3 5 </args>
+      <args> 0 2 4 4 0 3 0 1 0 2 </args>
+    </group>
+    <group note="managing production rules of type 0">
+      <intension> or(eq(%0,0),le(add(%1,%2),%3)) </intension>
+      <args> f[0] re[0] 6 rs[6] </args>
+      <args> f[2] re[1] 0 rs[5] </args>
+      <args> f[4] re[1] 1 rs[8] </args>
+      <args> f[6] re[2] 2 rs[5] </args>
+      <args> f[8] re[3] 1 rs[8] </args>
+      <args> f[10] re[4] 14 rs[5] </args>
+    </group>
+    <group note="managing production rules of type 1">
+      <intension> or(eq(%0,0),ge(add(%1,%2),%3)) </intension>
+      <args> f[3] re[1] 10 rs[7] </args>
+      <args> f[5] re[1] 11 rs[9] </args>
+      <args> f[7] re[2] 1 rs[6] </args>
+      <args> f[9] re[3] 9 rs[9] </args>
+      <args> f[11] re[4] 12 rs[7] </args>
+      <args> f[12] re[9] 9 rs[3] </args>
+    </group>
+    <intension note="managing production rules of type 2"> or(eq(f[1],0),le(sub(rs[0],3),rs[8])) </intension>
+    <group note="computing the makespan">
+      <intension> le(%0,m) </intension>
+      <args> re[0] </args>
+      <args> re[1] </args>
+      <args> re[2] </args>
+      <args> re[3] </args>
+      <args> re[4] </args>
+      <args> re[5] </args>
+      <args> re[6] </args>
+      <args> re[7] </args>
+      <args> re[8] </args>
+      <args> re[9] </args>
+    </group>
+    <group>
+      <intension> eq(eq(%0,%1),%2) </intension>
+      <args> rl[0] 0 aux_gb[0] </args>
+      <args> rl[1] 0 aux_gb[1] </args>
+      <args> rl[2] 0 aux_gb[2] </args>
+      <args> rl[3] 0 aux_gb[3] </args>
+      <args> rl[4] 0 aux_gb[4] </args>
+      <args> rl[5] 0 aux_gb[5] </args>
+      <args> rl[6] 0 aux_gb[6] </args>
+      <args> rl[7] 0 aux_gb[7] </args>
+      <args> rl[8] 0 aux_gb[8] </args>
+      <args> rl[9] 0 aux_gb[9] </args>
+      <args> rl[0] 1 aux_gb[10] </args>
+      <args> rl[1] 1 aux_gb[11] </args>
+      <args> rl[2] 1 aux_gb[12] </args>
+      <args> rl[3] 1 aux_gb[13] </args>
+      <args> rl[4] 1 aux_gb[14] </args>
+      <args> rl[5] 1 aux_gb[15] </args>
+      <args> rl[6] 1 aux_gb[16] </args>
+      <args> rl[7] 1 aux_gb[17] </args>
+      <args> rl[8] 1 aux_gb[18] </args>
+      <args> rl[9] 1 aux_gb[19] </args>
+      <args> rl[0] 2 aux_gb[20] </args>
+      <args> rl[1] 2 aux_gb[21] </args>
+      <args> rl[2] 2 aux_gb[22] </args>
+      <args> rl[3] 2 aux_gb[23] </args>
+      <args> rl[4] 2 aux_gb[24] </args>
+      <args> rl[5] 2 aux_gb[25] </args>
+      <args> rl[6] 2 aux_gb[26] </args>
+      <args> rl[7] 2 aux_gb[27] </args>
+      <args> rl[8] 2 aux_gb[28] </args>
+      <args> rl[9] 2 aux_gb[29] </args>
+    </group>
+  </constraints>
+  <objectives>
+    <minimize type="sum">
+      <list> eq(f[0],0) eq(f[1],0) eq(f[2],0) eq(f[3],0) eq(f[4],0) eq(f[5],0) eq(f[6],0) eq(f[7],0) eq(f[8],0) eq(f[9],0) eq(f[10],0) eq(f[11],0) eq(f[12],0) m </list>
+      <coeffs> 1000x13 1 </coeffs>
+    </minimize>
+  </objectives>
+</instance>

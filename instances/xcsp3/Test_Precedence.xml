@@ -1,0 +1,15 @@
+<instance format="XCSP3" type="CSP">
+  <variables>
+    <array id="x" size="[5]"> 0..3 </array>
+  </variables>
+  <constraints>
+    <nValues>
+      <list> x[] </list>
+      <condition> (ge,2) </condition>
+    </nValues>
+    <precedence>
+      <list> x[] </list>
+      <values covered="true"> 1 2 3 </values>
+    </precedence>
+  </constraints>
+</instance>

@@ -1,0 +1,87 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="x" note="x[i] is the hall used for the ith offer (event), or -1" size="[26]"> -1..9 </array>
+  </variables>
+  <constraints>
+    <group>
+      <extension>
+        <list> %0 </list>
+        <supports> -1 2..5 7..9 </supports>
+      </extension>
+      <args> x[0] </args>
+      <args> x[1] </args>
+      <args> x[2] </args>
+      <args> x[3] </args>
+      <args> x[4] </args>
+      <args> x[25] </args>
+    </group>
+    <group>
+      <extension>
+        <list> %0 </list>
+        <supports> -1 </supports>
+      </extension>
+      <args> x[5] </args>
+      <args> x[6] </args>
+    </group>
+    <group>
+      <extension>
+        <list> %0 </list>
+        <supports> -1..5 7..9 </supports>
+      </extension>
+      <args> x[7] </args>
+      <args> x[8] </args>
+      <args> x[9] </args>
+      <args> x[10] </args>
+      <args> x[11] </args>
+      <args> x[12] </args>
+      <args> x[13] </args>
+      <args> x[14] </args>
+    </group>
+    <group>
+      <extension>
+        <list> %0 </list>
+        <supports> -1 2..5 </supports>
+      </extension>
+      <args> x[15] </args>
+      <args> x[16] </args>
+      <args> x[17] </args>
+      <args> x[18] </args>
+      <args> x[19] </args>
+      <args> x[20] </args>
+    </group>
+    <group>
+      <extension>
+        <list> %0 </list>
+        <supports> -1..9 </supports>
+      </extension>
+      <args> x[21] </args>
+      <args> x[22] </args>
+      <args> x[23] </args>
+      <args> x[24] </args>
+    </group>
+    <group note="overlapping events cannot share a hall">
+      <allDifferent>
+        <list> %... </list>
+        <except> -1 </except>
+      </allDifferent>
+      <args> x[7..20] x[22..25] </args>
+      <args> x[7..13] x[21..24] </args>
+      <args> x[0..13] x[25] </args>
+    </group>
+    <group class="symmetry-breaking">
+      <precedence>
+        <list> x[] </list>
+        <values> %... </values>
+      </precedence>
+      <args> 0 1 </args>
+      <args> 2 3 4 5 </args>
+      <args> 7 8 9 </args>
+    </group>
+  </constraints>
+  <objectives>
+    <maximize type="sum">
+      <list> ge(x[0],0) ge(x[1],0) ge(x[2],0) ge(x[3],0) ge(x[4],0) ge(x[5],0) ge(x[6],0) ge(x[7],0) ge(x[8],0) ge(x[9],0) ge(x[10],0) ge(x[11],0) ge(x[12],0) ge(x[13],0) ge(x[14],0) ge(x[15],0) ge(x[16],0) ge(x[17],0) ge(x[18],0) ge(x[19],0) ge(x[20],0) ge(x[21],0) ge(x[22],0) ge(x[23],0) ge(x[24],0) ge(x[25],0) </list>
+      <coeffs> 1748x7 5880x7 1056x7 910 600x3 2072 </coeffs>
+    </maximize>
+  </objectives>
+</instance>

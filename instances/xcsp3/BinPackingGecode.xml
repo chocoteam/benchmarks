@@ -1,0 +1,36 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="x" size="[50]"> 0..29 </array>
+  </variables>
+  <constraints>
+    <binPacking>
+      <list> x[] </list>
+      <sizes> 99 98 95x3 94 94 91 88 87 86 85 76 74 73 71 68 60 55 54 51 45 42 40 39 39 36 34 33 32 32 31 31 30 29 26 26 23 21x3 19 18 18 16 15 5 5 4 1 </sizes>
+      <condition> (le,100) </condition>
+    </binPacking>
+    <block class="symmetry-breaking">
+      <precedence> x[] </precedence>
+      <group>
+        <intension> lt(%0,%1) </intension>
+        <args> x[2] x[3] </args>
+        <args> x[3] x[4] </args>
+        <args> x[5] x[6] </args>
+        <args> x[24] x[25] </args>
+        <args> x[29] x[30] </args>
+        <args> x[31] x[32] </args>
+        <args> x[35] x[36] </args>
+        <args> x[38] x[39] </args>
+        <args> x[39] x[40] </args>
+        <args> x[42] x[43] </args>
+        <args> x[46] x[47] </args>
+      </group>
+      <instantiation>
+        <list> x[0..20] </list>
+        <values> 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 </values>
+      </instantiation>
+    </block>
+  </constraints>
+  <objectives>
+    <minimize type="maximum"> x[] </minimize>
+  </objectives>
+</instance>

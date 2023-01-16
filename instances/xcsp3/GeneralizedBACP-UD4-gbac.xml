@@ -1,0 +1,413 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="x" note="x[i] is the period for the ith course" size="[139]"> 0..5 </array>
+    <array id="l" note="l[c][p] is the load in period p of curriculum c" size="[16][6]"> 0..930 </array>
+    <array id="d" note="d[c][p] is the difference (delta) between the ideal load and the effective load in period p of curriculum c" size="[16][6]"> 0..930 </array>
+  </variables>
+  <constraints>
+    <group note="course load of all periods for each curriculum">
+      <cardinality>
+        <list> %... </list>
+        <values> 0 1 2 3 4 5 </values>
+        <occurs> 2..6 2..6 2..6 2..6 2..6 2..6 </occurs>
+      </cardinality>
+      <args> x[0..9] x[11..13] x[15] x[28..33] x[35] x[104] x[106] x[111..112] x[114..118] x[130..132] x[134..136] </args>
+      <args> x[0..6] x[9..10] x[14] x[16..20] x[28] x[31] x[34..35] x[104] x[106] x[111..118] x[130..136] </args>
+      <args> x[0..6] x[12] x[15] x[21..24] x[28] x[33] x[35] x[104..106] x[111..112] x[114..118] x[130..132] x[134..136] </args>
+      <args> x[0..6] x[18] x[21] x[23..28] x[34..35] x[104..106] x[111..112] x[114..118] x[130..132] x[134..136] </args>
+      <args> x[36..46] x[52..54] x[57] x[59..61] x[110] x[127] x[129] </args>
+      <args> x[36..42] x[46..50] x[52..54] x[56..58] x[61] x[127..129] </args>
+      <args> x[36..43] x[45] x[49..58] x[60..61] x[127] </args>
+      <args> x[62..71] x[75] x[83] x[85..87] x[89] x[93] x[107..108] x[119..121] x[125..126] x[137] </args>
+      <args> x[62..69] x[72] x[76..78] x[81] x[83] x[85..87] x[89] x[93] x[107..108] x[110] x[119..121] x[125..126] x[137] </args>
+      <args> x[18] x[34] x[62..69] x[79] x[83] x[85..87] x[89] x[93] x[97] x[103] x[107..108] x[110] x[119..121] x[125..126] x[137] </args>
+      <args> x[62..69] x[80] x[83] x[85..89] x[93] x[107..108] x[110] x[119..121] x[125..126] x[137] </args>
+      <args> x[46] x[62..69] x[73..74] x[82..87] x[93] x[107..108] x[110] x[119..121] x[125..126] x[137] </args>
+      <args> x[63] x[88..96] x[98] x[101..102] x[110] x[119] x[122..124] x[138] </args>
+      <args> x[63] x[72] x[88..95] x[99..101] x[109] x[119] x[122..124] x[138] </args>
+      <args> x[18] x[34] x[63] x[80] x[88..95] x[97] x[101] x[103] x[119] x[122..124] x[138] </args>
+      <args> x[63] x[72] x[76..77] x[88..95] x[101] x[119] x[122..124] x[138] </args>
+    </group>
+    <group note="respecting prerequisites">
+      <intension> lt(%0,%1) </intension>
+      <args> x[0] x[4] </args>
+      <args> x[0] x[17] </args>
+      <args> x[0] x[19] </args>
+      <args> x[0] x[26] </args>
+      <args> x[0] x[27] </args>
+      <args> x[0] x[35] </args>
+      <args> x[0] x[113] </args>
+      <args> x[0] x[116] </args>
+      <args> x[0] x[117] </args>
+      <args> x[0] x[133] </args>
+      <args> x[1] x[4] </args>
+      <args> x[1] x[17] </args>
+      <args> x[1] x[19] </args>
+      <args> x[1] x[26] </args>
+      <args> x[1] x[27] </args>
+      <args> x[1] x[35] </args>
+      <args> x[1] x[113] </args>
+      <args> x[1] x[116] </args>
+      <args> x[1] x[117] </args>
+      <args> x[1] x[133] </args>
+      <args> x[7] x[4] </args>
+      <args> x[7] x[17] </args>
+      <args> x[7] x[19] </args>
+      <args> x[7] x[26] </args>
+      <args> x[7] x[27] </args>
+      <args> x[7] x[35] </args>
+      <args> x[7] x[113] </args>
+      <args> x[7] x[116] </args>
+      <args> x[7] x[117] </args>
+      <args> x[7] x[133] </args>
+      <args> x[8] x[4] </args>
+      <args> x[8] x[17] </args>
+      <args> x[8] x[19] </args>
+      <args> x[8] x[26] </args>
+      <args> x[8] x[27] </args>
+      <args> x[8] x[35] </args>
+      <args> x[8] x[113] </args>
+      <args> x[8] x[116] </args>
+      <args> x[8] x[117] </args>
+      <args> x[8] x[133] </args>
+      <args> x[10] x[4] </args>
+      <args> x[10] x[17] </args>
+      <args> x[10] x[19] </args>
+      <args> x[10] x[26] </args>
+      <args> x[10] x[27] </args>
+      <args> x[10] x[35] </args>
+      <args> x[10] x[113] </args>
+      <args> x[10] x[116] </args>
+      <args> x[10] x[117] </args>
+      <args> x[10] x[133] </args>
+      <args> x[36] x[110] </args>
+      <args> x[36] x[48] </args>
+      <args> x[36] x[59] </args>
+      <args> x[36] x[60] </args>
+      <args> x[36] x[61] </args>
+      <args> x[37] x[110] </args>
+      <args> x[37] x[48] </args>
+      <args> x[37] x[59] </args>
+      <args> x[37] x[60] </args>
+      <args> x[37] x[61] </args>
+      <args> x[38] x[110] </args>
+      <args> x[38] x[48] </args>
+      <args> x[38] x[59] </args>
+      <args> x[38] x[60] </args>
+      <args> x[38] x[61] </args>
+      <args> x[62] x[65] </args>
+      <args> x[62] x[68] </args>
+      <args> x[62] x[69] </args>
+      <args> x[62] x[75] </args>
+      <args> x[62] x[76] </args>
+      <args> x[62] x[77] </args>
+      <args> x[62] x[80] </args>
+      <args> x[62] x[86] </args>
+      <args> x[62] x[126] </args>
+      <args> x[62] x[137] </args>
+      <args> x[64] x[65] </args>
+      <args> x[64] x[68] </args>
+      <args> x[64] x[69] </args>
+      <args> x[64] x[75] </args>
+      <args> x[64] x[76] </args>
+      <args> x[64] x[77] </args>
+      <args> x[64] x[80] </args>
+      <args> x[64] x[86] </args>
+      <args> x[64] x[126] </args>
+      <args> x[64] x[137] </args>
+      <args> x[89] x[65] </args>
+      <args> x[89] x[68] </args>
+      <args> x[89] x[69] </args>
+      <args> x[89] x[75] </args>
+      <args> x[89] x[76] </args>
+      <args> x[89] x[77] </args>
+      <args> x[89] x[80] </args>
+      <args> x[89] x[86] </args>
+      <args> x[89] x[126] </args>
+      <args> x[89] x[137] </args>
+      <args> x[70] x[65] </args>
+      <args> x[70] x[68] </args>
+      <args> x[70] x[69] </args>
+      <args> x[70] x[75] </args>
+      <args> x[70] x[76] </args>
+      <args> x[70] x[77] </args>
+      <args> x[70] x[80] </args>
+      <args> x[70] x[86] </args>
+      <args> x[70] x[126] </args>
+      <args> x[70] x[137] </args>
+      <args> x[73] x[65] </args>
+      <args> x[73] x[68] </args>
+      <args> x[73] x[69] </args>
+      <args> x[73] x[75] </args>
+      <args> x[73] x[76] </args>
+      <args> x[73] x[77] </args>
+      <args> x[73] x[80] </args>
+      <args> x[73] x[86] </args>
+      <args> x[73] x[126] </args>
+      <args> x[73] x[137] </args>
+      <args> x[89] x[110] </args>
+      <args> x[89] x[98] </args>
+      <args> x[89] x[99] </args>
+      <args> x[89] x[100] </args>
+      <args> x[89] x[109] </args>
+      <args> x[89] x[138] </args>
+      <args> x[90] x[110] </args>
+      <args> x[90] x[98] </args>
+      <args> x[90] x[99] </args>
+      <args> x[90] x[100] </args>
+      <args> x[90] x[80] </args>
+      <args> x[90] x[76] </args>
+      <args> x[90] x[77] </args>
+      <args> x[90] x[109] </args>
+      <args> x[90] x[138] </args>
+      <args> x[91] x[110] </args>
+      <args> x[91] x[98] </args>
+      <args> x[91] x[99] </args>
+      <args> x[91] x[100] </args>
+      <args> x[91] x[80] </args>
+      <args> x[91] x[76] </args>
+      <args> x[91] x[77] </args>
+      <args> x[91] x[109] </args>
+      <args> x[91] x[138] </args>
+      <args> x[104] x[4] </args>
+      <args> x[104] x[17] </args>
+      <args> x[104] x[19] </args>
+      <args> x[104] x[26] </args>
+      <args> x[104] x[27] </args>
+      <args> x[104] x[35] </args>
+      <args> x[104] x[113] </args>
+      <args> x[104] x[116] </args>
+      <args> x[104] x[117] </args>
+      <args> x[104] x[133] </args>
+      <args> x[107] x[65] </args>
+      <args> x[107] x[68] </args>
+      <args> x[107] x[69] </args>
+      <args> x[107] x[75] </args>
+      <args> x[107] x[76] </args>
+      <args> x[107] x[77] </args>
+      <args> x[107] x[80] </args>
+      <args> x[107] x[86] </args>
+      <args> x[107] x[126] </args>
+      <args> x[107] x[137] </args>
+      <args> x[123] x[110] </args>
+      <args> x[123] x[98] </args>
+      <args> x[123] x[99] </args>
+      <args> x[123] x[100] </args>
+      <args> x[123] x[80] </args>
+      <args> x[123] x[76] </args>
+      <args> x[123] x[77] </args>
+      <args> x[123] x[109] </args>
+      <args> x[123] x[138] </args>
+      <args> x[125] x[65] </args>
+      <args> x[125] x[68] </args>
+      <args> x[125] x[69] </args>
+      <args> x[125] x[75] </args>
+      <args> x[125] x[76] </args>
+      <args> x[125] x[77] </args>
+      <args> x[125] x[80] </args>
+      <args> x[125] x[86] </args>
+      <args> x[125] x[126] </args>
+      <args> x[125] x[137] </args>
+      <args> x[130] x[4] </args>
+      <args> x[130] x[17] </args>
+      <args> x[130] x[19] </args>
+      <args> x[130] x[26] </args>
+      <args> x[130] x[27] </args>
+      <args> x[130] x[35] </args>
+      <args> x[130] x[113] </args>
+      <args> x[130] x[116] </args>
+      <args> x[130] x[117] </args>
+      <args> x[130] x[133] </args>
+    </group>
+    <block note="computing loads">
+      <binPacking>
+        <list> x[0..9] x[11..13] x[15] x[28..33] x[35] x[104] x[106] x[111..112] x[114..118] x[130..132] x[134..136] </list>
+        <sizes> 6x13 12 6x22 </sizes>
+        <conditions> (eq,l[0][0])(eq,l[0][1])(eq,l[0][2])(eq,l[0][3])(eq,l[0][4])(eq,l[0][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[0..6] x[9..10] x[14] x[16..20] x[28] x[31] x[34..35] x[104] x[106] x[111..118] x[130..136] </list>
+        <sizes> 6x36 </sizes>
+        <conditions> (eq,l[1][0])(eq,l[1][1])(eq,l[1][2])(eq,l[1][3])(eq,l[1][4])(eq,l[1][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[0..6] x[12] x[15] x[21..24] x[28] x[33] x[35] x[104..106] x[111..112] x[114..118] x[130..132] x[134..136] </list>
+        <sizes> 6x8 12 6 6 12 6x20 </sizes>
+        <conditions> (eq,l[2][0])(eq,l[2][1])(eq,l[2][2])(eq,l[2][3])(eq,l[2][4])(eq,l[2][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[0..6] x[18] x[21] x[23..28] x[34..35] x[104..106] x[111..112] x[114..118] x[130..132] x[134..136] </list>
+        <sizes> 6x9 12 6x23 </sizes>
+        <conditions> (eq,l[3][0])(eq,l[3][1])(eq,l[3][2])(eq,l[3][3])(eq,l[3][4])(eq,l[3][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[36..46] x[52..54] x[57] x[59..61] x[110] x[127] x[129] </list>
+        <sizes> 6x4 12 6 6 12 6x10 12 6 6 </sizes>
+        <conditions> (eq,l[4][0])(eq,l[4][1])(eq,l[4][2])(eq,l[4][3])(eq,l[4][4])(eq,l[4][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[36..42] x[46..50] x[52..54] x[56..58] x[61] x[127..129] </list>
+        <sizes> 6x4 12 6x4 12 6x12 </sizes>
+        <conditions> (eq,l[5][0])(eq,l[5][1])(eq,l[5][2])(eq,l[5][3])(eq,l[5][4])(eq,l[5][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[36..43] x[45] x[49..58] x[60..61] x[127] </list>
+        <sizes> 6x4 12 6 6 12 6x14 </sizes>
+        <conditions> (eq,l[6][0])(eq,l[6][1])(eq,l[6][2])(eq,l[6][3])(eq,l[6][4])(eq,l[6][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[62..71] x[75] x[83] x[85..87] x[89] x[93] x[107..108] x[119..121] x[125..126] x[137] </list>
+        <sizes> 6x9 12 6x5 12 6x9 </sizes>
+        <conditions> (eq,l[7][0])(eq,l[7][1])(eq,l[7][2])(eq,l[7][3])(eq,l[7][4])(eq,l[7][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[62..69] x[72] x[76..78] x[81] x[83] x[85..87] x[89] x[93] x[107..108] x[110] x[119..121] x[125..126] x[137] </list>
+        <sizes> 6x8 12x3 6x6 12 6x3 12 6x6 </sizes>
+        <conditions> (eq,l[8][0])(eq,l[8][1])(eq,l[8][2])(eq,l[8][3])(eq,l[8][4])(eq,l[8][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[18] x[34] x[62..69] x[79] x[83] x[85..87] x[89] x[93] x[97] x[103] x[107..108] x[110] x[119..121] x[125..126] x[137] </list>
+        <sizes> 6x15 12 6x5 12 6x6 </sizes>
+        <conditions> (eq,l[9][0])(eq,l[9][1])(eq,l[9][2])(eq,l[9][3])(eq,l[9][4])(eq,l[9][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[62..69] x[80] x[83] x[85..89] x[93] x[107..108] x[110] x[119..121] x[125..126] x[137] </list>
+        <sizes> 6x8 12 6x4 12 12 6x3 12 6x6 </sizes>
+        <conditions> (eq,l[10][0])(eq,l[10][1])(eq,l[10][2])(eq,l[10][3])(eq,l[10][4])(eq,l[10][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[46] x[62..69] x[73..74] x[82..87] x[93] x[107..108] x[110] x[119..121] x[125..126] x[137] </list>
+        <sizes> 6x10 12 6x9 12 6x6 </sizes>
+        <conditions> (eq,l[11][0])(eq,l[11][1])(eq,l[11][2])(eq,l[11][3])(eq,l[11][4])(eq,l[11][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[63] x[88..96] x[98] x[101..102] x[110] x[119] x[122..124] x[138] </list>
+        <sizes> 6 12 12 6x4 12 6 6 12 6 6 12 6x5 </sizes>
+        <conditions> (eq,l[12][0])(eq,l[12][1])(eq,l[12][2])(eq,l[12][3])(eq,l[12][4])(eq,l[12][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[63] x[72] x[88..95] x[99..101] x[109] x[119] x[122..124] x[138] </list>
+        <sizes> 6 12x3 6x4 12 6x10 </sizes>
+        <conditions> (eq,l[13][0])(eq,l[13][1])(eq,l[13][2])(eq,l[13][3])(eq,l[13][4])(eq,l[13][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[18] x[34] x[63] x[80] x[88..95] x[97] x[101] x[103] x[119] x[122..124] x[138] </list>
+        <sizes> 6x3 12x3 6x4 12 6x9 </sizes>
+        <conditions> (eq,l[14][0])(eq,l[14][1])(eq,l[14][2])(eq,l[14][3])(eq,l[14][4])(eq,l[14][5]) </conditions>
+      </binPacking>
+      <binPacking>
+        <list> x[63] x[72] x[76..77] x[88..95] x[101] x[119] x[122..124] x[138] </list>
+        <sizes> 6 12x5 6x4 12 6x7 </sizes>
+        <conditions> (eq,l[15][0])(eq,l[15][1])(eq,l[15][2])(eq,l[15][3])(eq,l[15][4])(eq,l[15][5]) </conditions>
+      </binPacking>
+    </block>
+    <group note="computing deltas">
+      <maximum>
+        <list> %0 %1 </list>
+        <condition> (eq,%2) </condition>
+      </maximum>
+      <args> sub(l[0][0],37) sub(37,l[0][0]) d[0][0] </args>
+      <args> sub(l[0][1],37) sub(37,l[0][1]) d[0][1] </args>
+      <args> sub(l[0][2],37) sub(37,l[0][2]) d[0][2] </args>
+      <args> sub(l[0][3],37) sub(37,l[0][3]) d[0][3] </args>
+      <args> sub(l[0][4],37) sub(37,l[0][4]) d[0][4] </args>
+      <args> sub(l[0][5],37) sub(37,l[0][5]) d[0][5] </args>
+      <args> sub(l[1][0],36) sub(36,l[1][0]) d[1][0] </args>
+      <args> sub(l[1][1],36) sub(36,l[1][1]) d[1][1] </args>
+      <args> sub(l[1][2],36) sub(36,l[1][2]) d[1][2] </args>
+      <args> sub(l[1][3],36) sub(36,l[1][3]) d[1][3] </args>
+      <args> sub(l[1][4],36) sub(36,l[1][4]) d[1][4] </args>
+      <args> sub(l[1][5],36) sub(36,l[1][5]) d[1][5] </args>
+      <args> sub(l[2][0],34) sub(34,l[2][0]) d[2][0] </args>
+      <args> sub(l[2][1],34) sub(34,l[2][1]) d[2][1] </args>
+      <args> sub(l[2][2],34) sub(34,l[2][2]) d[2][2] </args>
+      <args> sub(l[2][3],34) sub(34,l[2][3]) d[2][3] </args>
+      <args> sub(l[2][4],34) sub(34,l[2][4]) d[2][4] </args>
+      <args> sub(l[2][5],34) sub(34,l[2][5]) d[2][5] </args>
+      <args> sub(l[3][0],34) sub(34,l[3][0]) d[3][0] </args>
+      <args> sub(l[3][1],34) sub(34,l[3][1]) d[3][1] </args>
+      <args> sub(l[3][2],34) sub(34,l[3][2]) d[3][2] </args>
+      <args> sub(l[3][3],34) sub(34,l[3][3]) d[3][3] </args>
+      <args> sub(l[3][4],34) sub(34,l[3][4]) d[3][4] </args>
+      <args> sub(l[3][5],34) sub(34,l[3][5]) d[3][5] </args>
+      <args> sub(l[4][0],24) sub(24,l[4][0]) d[4][0] </args>
+      <args> sub(l[4][1],24) sub(24,l[4][1]) d[4][1] </args>
+      <args> sub(l[4][2],24) sub(24,l[4][2]) d[4][2] </args>
+      <args> sub(l[4][3],24) sub(24,l[4][3]) d[4][3] </args>
+      <args> sub(l[4][4],24) sub(24,l[4][4]) d[4][4] </args>
+      <args> sub(l[4][5],24) sub(24,l[4][5]) d[4][5] </args>
+      <args> sub(l[5][0],24) sub(24,l[5][0]) d[5][0] </args>
+      <args> sub(l[5][1],24) sub(24,l[5][1]) d[5][1] </args>
+      <args> sub(l[5][2],24) sub(24,l[5][2]) d[5][2] </args>
+      <args> sub(l[5][3],24) sub(24,l[5][3]) d[5][3] </args>
+      <args> sub(l[5][4],24) sub(24,l[5][4]) d[5][4] </args>
+      <args> sub(l[5][5],24) sub(24,l[5][5]) d[5][5] </args>
+      <args> sub(l[6][0],24) sub(24,l[6][0]) d[6][0] </args>
+      <args> sub(l[6][1],24) sub(24,l[6][1]) d[6][1] </args>
+      <args> sub(l[6][2],24) sub(24,l[6][2]) d[6][2] </args>
+      <args> sub(l[6][3],24) sub(24,l[6][3]) d[6][3] </args>
+      <args> sub(l[6][4],24) sub(24,l[6][4]) d[6][4] </args>
+      <args> sub(l[6][5],24) sub(24,l[6][5]) d[6][5] </args>
+      <args> sub(l[7][0],27) sub(27,l[7][0]) d[7][0] </args>
+      <args> sub(l[7][1],27) sub(27,l[7][1]) d[7][1] </args>
+      <args> sub(l[7][2],27) sub(27,l[7][2]) d[7][2] </args>
+      <args> sub(l[7][3],27) sub(27,l[7][3]) d[7][3] </args>
+      <args> sub(l[7][4],27) sub(27,l[7][4]) d[7][4] </args>
+      <args> sub(l[7][5],27) sub(27,l[7][5]) d[7][5] </args>
+      <args> sub(l[8][0],33) sub(33,l[8][0]) d[8][0] </args>
+      <args> sub(l[8][1],33) sub(33,l[8][1]) d[8][1] </args>
+      <args> sub(l[8][2],33) sub(33,l[8][2]) d[8][2] </args>
+      <args> sub(l[8][3],33) sub(33,l[8][3]) d[8][3] </args>
+      <args> sub(l[8][4],33) sub(33,l[8][4]) d[8][4] </args>
+      <args> sub(l[8][5],33) sub(33,l[8][5]) d[8][5] </args>
+      <args> sub(l[9][0],30) sub(30,l[9][0]) d[9][0] </args>
+      <args> sub(l[9][1],30) sub(30,l[9][1]) d[9][1] </args>
+      <args> sub(l[9][2],30) sub(30,l[9][2]) d[9][2] </args>
+      <args> sub(l[9][3],30) sub(30,l[9][3]) d[9][3] </args>
+      <args> sub(l[9][4],30) sub(30,l[9][4]) d[9][4] </args>
+      <args> sub(l[9][5],30) sub(30,l[9][5]) d[9][5] </args>
+      <args> sub(l[10][0],29) sub(29,l[10][0]) d[10][0] </args>
+      <args> sub(l[10][1],29) sub(29,l[10][1]) d[10][1] </args>
+      <args> sub(l[10][2],29) sub(29,l[10][2]) d[10][2] </args>
+      <args> sub(l[10][3],29) sub(29,l[10][3]) d[10][3] </args>
+      <args> sub(l[10][4],29) sub(29,l[10][4]) d[10][4] </args>
+      <args> sub(l[10][5],29) sub(29,l[10][5]) d[10][5] </args>
+      <args> sub(l[11][0],29) sub(29,l[11][0]) d[11][0] </args>
+      <args> sub(l[11][1],29) sub(29,l[11][1]) d[11][1] </args>
+      <args> sub(l[11][2],29) sub(29,l[11][2]) d[11][2] </args>
+      <args> sub(l[11][3],29) sub(29,l[11][3]) d[11][3] </args>
+      <args> sub(l[11][4],29) sub(29,l[11][4]) d[11][4] </args>
+      <args> sub(l[11][5],29) sub(29,l[11][5]) d[11][5] </args>
+      <args> sub(l[12][0],24) sub(24,l[12][0]) d[12][0] </args>
+      <args> sub(l[12][1],24) sub(24,l[12][1]) d[12][1] </args>
+      <args> sub(l[12][2],24) sub(24,l[12][2]) d[12][2] </args>
+      <args> sub(l[12][3],24) sub(24,l[12][3]) d[12][3] </args>
+      <args> sub(l[12][4],24) sub(24,l[12][4]) d[12][4] </args>
+      <args> sub(l[12][5],24) sub(24,l[12][5]) d[12][5] </args>
+      <args> sub(l[13][0],23) sub(23,l[13][0]) d[13][0] </args>
+      <args> sub(l[13][1],23) sub(23,l[13][1]) d[13][1] </args>
+      <args> sub(l[13][2],23) sub(23,l[13][2]) d[13][2] </args>
+      <args> sub(l[13][3],23) sub(23,l[13][3]) d[13][3] </args>
+      <args> sub(l[13][4],23) sub(23,l[13][4]) d[13][4] </args>
+      <args> sub(l[13][5],23) sub(23,l[13][5]) d[13][5] </args>
+      <args> sub(l[14][0],24) sub(24,l[14][0]) d[14][0] </args>
+      <args> sub(l[14][1],24) sub(24,l[14][1]) d[14][1] </args>
+      <args> sub(l[14][2],24) sub(24,l[14][2]) d[14][2] </args>
+      <args> sub(l[14][3],24) sub(24,l[14][3]) d[14][3] </args>
+      <args> sub(l[14][4],24) sub(24,l[14][4]) d[14][4] </args>
+      <args> sub(l[14][5],24) sub(24,l[14][5]) d[14][5] </args>
+      <args> sub(l[15][0],24) sub(24,l[15][0]) d[15][0] </args>
+      <args> sub(l[15][1],24) sub(24,l[15][1]) d[15][1] </args>
+      <args> sub(l[15][2],24) sub(24,l[15][2]) d[15][2] </args>
+      <args> sub(l[15][3],24) sub(24,l[15][3]) d[15][3] </args>
+      <args> sub(l[15][4],24) sub(24,l[15][4]) d[15][4] </args>
+      <args> sub(l[15][5],24) sub(24,l[15][5]) d[15][5] </args>
+    </group>
+  </constraints>
+  <objectives>
+    <minimize type="sum">
+      <list> mul(d[0][0],d[0][0]) mul(d[0][1],d[0][1]) mul(d[0][2],d[0][2]) mul(d[0][3],d[0][3]) mul(d[0][4],d[0][4]) mul(d[0][5],d[0][5]) mul(d[1][0],d[1][0]) mul(d[1][1],d[1][1]) mul(d[1][2],d[1][2]) mul(d[1][3],d[1][3]) mul(d[1][4],d[1][4]) mul(d[1][5],d[1][5]) mul(d[2][0],d[2][0]) mul(d[2][1],d[2][1]) mul(d[2][2],d[2][2]) mul(d[2][3],d[2][3]) mul(d[2][4],d[2][4]) mul(d[2][5],d[2][5]) mul(d[3][0],d[3][0]) mul(d[3][1],d[3][1]) mul(d[3][2],d[3][2]) mul(d[3][3],d[3][3]) mul(d[3][4],d[3][4]) mul(d[3][5],d[3][5]) mul(d[4][0],d[4][0]) mul(d[4][1],d[4][1]) mul(d[4][2],d[4][2]) mul(d[4][3],d[4][3]) mul(d[4][4],d[4][4]) mul(d[4][5],d[4][5]) mul(d[5][0],d[5][0]) mul(d[5][1],d[5][1]) mul(d[5][2],d[5][2]) mul(d[5][3],d[5][3]) mul(d[5][4],d[5][4]) mul(d[5][5],d[5][5]) mul(d[6][0],d[6][0]) mul(d[6][1],d[6][1]) mul(d[6][2],d[6][2]) mul(d[6][3],d[6][3]) mul(d[6][4],d[6][4]) mul(d[6][5],d[6][5]) mul(d[7][0],d[7][0]) mul(d[7][1],d[7][1]) mul(d[7][2],d[7][2]) mul(d[7][3],d[7][3]) mul(d[7][4],d[7][4]) mul(d[7][5],d[7][5]) mul(d[8][0],d[8][0]) mul(d[8][1],d[8][1]) mul(d[8][2],d[8][2]) mul(d[8][3],d[8][3]) mul(d[8][4],d[8][4]) mul(d[8][5],d[8][5]) mul(d[9][0],d[9][0]) mul(d[9][1],d[9][1]) mul(d[9][2],d[9][2]) mul(d[9][3],d[9][3]) mul(d[9][4],d[9][4]) mul(d[9][5],d[9][5]) mul(d[10][0],d[10][0]) mul(d[10][1],d[10][1]) mul(d[10][2],d[10][2]) mul(d[10][3],d[10][3]) mul(d[10][4],d[10][4]) mul(d[10][5],d[10][5]) mul(d[11][0],d[11][0]) mul(d[11][1],d[11][1]) mul(d[11][2],d[11][2]) mul(d[11][3],d[11][3]) mul(d[11][4],d[11][4]) mul(d[11][5],d[11][5]) mul(d[12][0],d[12][0]) mul(d[12][1],d[12][1]) mul(d[12][2],d[12][2]) mul(d[12][3],d[12][3]) mul(d[12][4],d[12][4]) mul(d[12][5],d[12][5]) mul(d[13][0],d[13][0]) mul(d[13][1],d[13][1]) mul(d[13][2],d[13][2]) mul(d[13][3],d[13][3]) mul(d[13][4],d[13][4]) mul(d[13][5],d[13][5]) mul(d[14][0],d[14][0]) mul(d[14][1],d[14][1]) mul(d[14][2],d[14][2]) mul(d[14][3],d[14][3]) mul(d[14][4],d[14][4]) mul(d[14][5],d[14][5]) mul(d[15][0],d[15][0]) mul(d[15][1],d[15][1]) mul(d[15][2],d[15][2]) mul(d[15][3],d[15][3]) mul(d[15][4],d[15][4]) mul(d[15][5],d[15][5]) eq(x[116],1) eq(x[116],4) eq(x[108],2) eq(x[108],5) eq(x[126],0) eq(x[126],3) eq(x[46],2) eq(x[46],5) eq(x[38],1) eq(x[38],4) eq(x[66],1) eq(x[66],4) eq(x[50],1) eq(x[50],4) eq(x[132],2) eq(x[132],5) eq(x[88],2) eq(x[88],5) eq(x[19],1) eq(x[19],4) eq(x[2],0) eq(x[2],3) eq(x[19],2) eq(x[19],5) eq(x[21],1) eq(x[21],4) eq(x[18],0) eq(x[18],3) eq(x[138],0) eq(x[138],3) eq(x[71],2) eq(x[71],5) eq(x[85],0) eq(x[85],3) eq(x[88],1) eq(x[88],4) eq(x[68],2) eq(x[68],5) eq(x[40],2) eq(x[40],5) eq(x[73],2) eq(x[73],5) eq(x[55],2) eq(x[55],5) eq(x[39],1) eq(x[39],4) eq(x[112],2) eq(x[112],5) eq(x[9],2) eq(x[9],5) eq(x[73],0) eq(x[73],3) eq(x[26],1) eq(x[26],4) eq(x[123],1) eq(x[123],4) eq(x[8],0) eq(x[8],3) eq(x[63],0) eq(x[63],3) eq(x[33],2) eq(x[33],5) eq(x[125],2) eq(x[125],5) eq(x[37],1) eq(x[37],4) eq(x[52],2) eq(x[52],5) eq(x[60],2) eq(x[60],5) eq(x[129],2) eq(x[129],5) eq(x[39],2) eq(x[39],5) eq(x[95],0) eq(x[95],3) eq(x[61],2) eq(x[61],5) eq(x[115],0) eq(x[115],3) </list>
+      <coeffs> 1x96 2x80 </coeffs>
+    </minimize>
+  </objectives>
+</instance>

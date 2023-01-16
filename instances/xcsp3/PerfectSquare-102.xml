@@ -1,0 +1,68 @@
+<instance format="XCSP3" type="CSP">
+  <variables>
+    <array id="x" note="x[i] is the x-coordinate where is put the ith square" size="[25]"> 0..359 </array>
+    <array id="y" note="y[i] is the y-coordinate where is put the ith square" size="[25]"> 0..359 </array>
+  </variables>
+  <constraints>
+    <group note="unary constraints on x">
+      <intension> le(add(%0,%1),359) </intension>
+      <args> x[0] 7 </args>
+      <args> x[1] 8 </args>
+      <args> x[2] 9 </args>
+      <args> x[3] 10 </args>
+      <args> x[4] 14 </args>
+      <args> x[5] 17 </args>
+      <args> x[6] 18 </args>
+      <args> x[7] 23 </args>
+      <args> x[8] 25 </args>
+      <args> x[9] 27 </args>
+      <args> x[10] 29 </args>
+      <args> x[11] 31 </args>
+      <args> x[12] 40 </args>
+      <args> x[13] 41 </args>
+      <args> x[14] 43 </args>
+      <args> x[15] 46 </args>
+      <args> x[16] 69 </args>
+      <args> x[17] 74 </args>
+      <args> x[18] 82 </args>
+      <args> x[19] 85 </args>
+      <args> x[20] 90 </args>
+      <args> x[21] 98 </args>
+      <args> x[22] 102 </args>
+      <args> x[23] 172 </args>
+      <args> x[24] 187 </args>
+    </group>
+    <group note="unary constraints on y">
+      <intension> le(add(%0,%1),359) </intension>
+      <args> y[0] 7 </args>
+      <args> y[1] 8 </args>
+      <args> y[2] 9 </args>
+      <args> y[3] 10 </args>
+      <args> y[4] 14 </args>
+      <args> y[5] 17 </args>
+      <args> y[6] 18 </args>
+      <args> y[7] 23 </args>
+      <args> y[8] 25 </args>
+      <args> y[9] 27 </args>
+      <args> y[10] 29 </args>
+      <args> y[11] 31 </args>
+      <args> y[12] 40 </args>
+      <args> y[13] 41 </args>
+      <args> y[14] 43 </args>
+      <args> y[15] 46 </args>
+      <args> y[16] 69 </args>
+      <args> y[17] 74 </args>
+      <args> y[18] 82 </args>
+      <args> y[19] 85 </args>
+      <args> y[20] 90 </args>
+      <args> y[21] 98 </args>
+      <args> y[22] 102 </args>
+      <args> y[23] 172 </args>
+      <args> y[24] 187 </args>
+    </group>
+    <noOverlap note="no overlap on boxes">
+      <origins> (x[0],y[0])(x[1],y[1])(x[2],y[2])(x[3],y[3])(x[4],y[4])(x[5],y[5])(x[6],y[6])(x[7],y[7])(x[8],y[8])(x[9],y[9])(x[10],y[10])(x[11],y[11])(x[12],y[12])(x[13],y[13])(x[14],y[14])(x[15],y[15])(x[16],y[16])(x[17],y[17])(x[18],y[18])(x[19],y[19])(x[20],y[20])(x[21],y[21])(x[22],y[22])(x[23],y[23])(x[24],y[24]) </origins>
+      <lengths> (7,7)(8,8)(9,9)(10,10)(14,14)(17,17)(18,18)(23,23)(25,25)(27,27)(29,29)(31,31)(40,40)(41,41)(43,43)(46,46)(69,69)(74,74)(82,82)(85,85)(90,90)(98,98)(102,102)(172,172)(187,187) </lengths>
+    </noOverlap>
+  </constraints>
+</instance>

@@ -1,0 +1,134 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="s" note="s[i] is the starting time of the ith task" size="[19]"> 0..67 </array>
+    <var id="z" note="the total end time (makespan)"> 0..67 </var>
+  </variables>
+  <constraints>
+    <group note="precedence constraints">
+      <intension> le(add(%0,%1),%2) </intension>
+      <args> s[0] 4 s[8] </args>
+      <args> s[1] 2 s[5] </args>
+      <args> s[4] 3 s[14] </args>
+      <args> s[5] 1 s[12] </args>
+      <args> s[8] 6 s[14] </args>
+      <args> s[11] 5 s[15] </args>
+    </group>
+    <group note="redundant non-overlapping constraints">
+      <intension> or(le(add(%0,%1),%2),le(add(%2,%3),%0)) </intension>
+      <args> s[0] 4 s[1] 2 </args>
+      <args> s[0] 4 s[2] 2 </args>
+      <args> s[0] 4 s[3] 4 </args>
+      <args> s[0] 4 s[4] 3 </args>
+      <args> s[0] 4 s[5] 1 </args>
+      <args> s[0] 4 s[6] 3 </args>
+      <args> s[0] 4 s[7] 3 </args>
+      <args> s[0] 4 s[8] 6 </args>
+      <args> s[0] 4 s[9] 3 </args>
+      <args> s[0] 4 s[10] 4 </args>
+      <args> s[0] 4 s[11] 5 </args>
+      <args> s[0] 4 s[12] 3 </args>
+      <args> s[0] 4 s[13] 3 </args>
+      <args> s[0] 4 s[14] 6 </args>
+      <args> s[0] 4 s[15] 5 </args>
+      <args> s[0] 4 s[16] 2 </args>
+      <args> s[0] 4 s[17] 6 </args>
+      <args> s[0] 4 s[18] 2 </args>
+      <args> s[1] 2 s[9] 3 </args>
+      <args> s[2] 2 s[7] 3 </args>
+      <args> s[2] 2 s[8] 6 </args>
+      <args> s[2] 2 s[9] 3 </args>
+      <args> s[2] 2 s[13] 3 </args>
+      <args> s[2] 2 s[14] 6 </args>
+      <args> s[2] 2 s[15] 5 </args>
+      <args> s[2] 2 s[16] 2 </args>
+      <args> s[2] 2 s[18] 2 </args>
+      <args> s[3] 4 s[9] 3 </args>
+      <args> s[3] 4 s[13] 3 </args>
+      <args> s[3] 4 s[14] 6 </args>
+      <args> s[3] 4 s[15] 5 </args>
+      <args> s[4] 3 s[9] 3 </args>
+      <args> s[5] 1 s[9] 3 </args>
+      <args> s[5] 1 s[13] 3 </args>
+      <args> s[5] 1 s[14] 6 </args>
+      <args> s[5] 1 s[15] 5 </args>
+      <args> s[6] 3 s[9] 3 </args>
+      <args> s[6] 3 s[13] 3 </args>
+      <args> s[6] 3 s[14] 6 </args>
+      <args> s[6] 3 s[15] 5 </args>
+      <args> s[7] 3 s[8] 6 </args>
+      <args> s[7] 3 s[9] 3 </args>
+      <args> s[7] 3 s[13] 3 </args>
+      <args> s[7] 3 s[14] 6 </args>
+      <args> s[7] 3 s[15] 5 </args>
+      <args> s[7] 3 s[16] 2 </args>
+      <args> s[7] 3 s[18] 2 </args>
+      <args> s[8] 6 s[9] 3 </args>
+      <args> s[8] 6 s[13] 3 </args>
+      <args> s[8] 6 s[14] 6 </args>
+      <args> s[8] 6 s[15] 5 </args>
+      <args> s[8] 6 s[16] 2 </args>
+      <args> s[8] 6 s[18] 2 </args>
+      <args> s[9] 3 s[10] 4 </args>
+      <args> s[9] 3 s[11] 5 </args>
+      <args> s[9] 3 s[12] 3 </args>
+      <args> s[9] 3 s[13] 3 </args>
+      <args> s[9] 3 s[14] 6 </args>
+      <args> s[9] 3 s[15] 5 </args>
+      <args> s[9] 3 s[16] 2 </args>
+      <args> s[9] 3 s[17] 6 </args>
+      <args> s[9] 3 s[18] 2 </args>
+      <args> s[11] 5 s[13] 3 </args>
+      <args> s[11] 5 s[14] 6 </args>
+      <args> s[11] 5 s[15] 5 </args>
+      <args> s[13] 3 s[14] 6 </args>
+      <args> s[13] 3 s[15] 5 </args>
+      <args> s[13] 3 s[16] 2 </args>
+      <args> s[13] 3 s[17] 6 </args>
+      <args> s[13] 3 s[18] 2 </args>
+      <args> s[14] 6 s[15] 5 </args>
+      <args> s[14] 6 s[16] 2 </args>
+      <args> s[14] 6 s[17] 6 </args>
+      <args> s[14] 6 s[18] 2 </args>
+      <args> s[15] 5 s[16] 2 </args>
+      <args> s[15] 5 s[17] 6 </args>
+      <args> s[15] 5 s[18] 2 </args>
+      <args> s[16] 2 s[18] 2 </args>
+    </group>
+    <group>
+      <cumulative>
+        <origins> s[] </origins>
+        <lengths> 4 2 2 4 3 1 3 3 6 3 4 5 3 3 6 5 2 6 2 </lengths>
+        <heights> %... </heights>
+        <condition> (le,%0) </condition>
+      </cumulative>
+      <args> 5 5 1 3 2 1 2 2 3 3 5 1 2 1 4 4 4 3 2 3 </args>
+      <args> 9 1 2 3 3 2 1 1 3 2 2 1 2 1 3 2 3 1 3 1 </args>
+      <args> 7 1 2 1 1 1 1 1 1 1 1 2 1 1 2 2 1 2 2 2 </args>
+    </group>
+    <group>
+      <intension> le(add(%0,%1),z) </intension>
+      <args> s[0] 4 </args>
+      <args> s[1] 2 </args>
+      <args> s[2] 2 </args>
+      <args> s[3] 4 </args>
+      <args> s[4] 3 </args>
+      <args> s[5] 1 </args>
+      <args> s[6] 3 </args>
+      <args> s[7] 3 </args>
+      <args> s[8] 6 </args>
+      <args> s[9] 3 </args>
+      <args> s[10] 4 </args>
+      <args> s[11] 5 </args>
+      <args> s[12] 3 </args>
+      <args> s[13] 3 </args>
+      <args> s[14] 6 </args>
+      <args> s[15] 5 </args>
+      <args> s[16] 2 </args>
+      <args> s[17] 6 </args>
+      <args> s[18] 2 </args>
+    </group>
+  </constraints>
+  <objectives>
+    <minimize> z </minimize>
+  </objectives>
+</instance>

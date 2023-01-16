@@ -1,0 +1,214 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="x" note="x[t] is the order produced at time t (possibly, none with special value nOrders)" size="[15]"> 0..14 </array>
+    <array id="y" note="y[i] is the time at which the order is is produced" size="[14]"> 0..14 </array>
+    <array id="ip" note="ip[i] is the inventory period required for order i (i.e. the number of periods the order is completed before its due date)" size="[14]"> 0..14 </array>
+    <array id="cc" note="cc[t] is the cost for changing the machine setup from time t to t+1" size="[14]"> 0 100 101 103 105 111 112 113 117 124 130 135 139 146 154 161 167 179 183 188 193 </array>
+    <array id="po" note="po[i] is the ith produced order" size="[15]"> 0..14 </array>
+  </variables>
+  <constraints>
+    <cardinality note="each order must be produced (only once)">
+      <list> x[] </list>
+      <values> 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 </values>
+      <occurs> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </occurs>
+    </cardinality>
+    <group note="any order must be produced before its due date">
+      <intension> ne(%0,%1) </intension>
+      <args> x[8] 0 </args>
+      <args> x[9] 0 </args>
+      <args> x[10] 0 </args>
+      <args> x[11] 0 </args>
+      <args> x[12] 0 </args>
+      <args> x[13] 0 </args>
+      <args> x[14] 0 </args>
+      <args> x[14] 1 </args>
+      <args> x[5] 2 </args>
+      <args> x[6] 2 </args>
+      <args> x[7] 2 </args>
+      <args> x[8] 2 </args>
+      <args> x[9] 2 </args>
+      <args> x[10] 2 </args>
+      <args> x[11] 2 </args>
+      <args> x[12] 2 </args>
+      <args> x[13] 2 </args>
+      <args> x[14] 2 </args>
+      <args> x[12] 3 </args>
+      <args> x[13] 3 </args>
+      <args> x[14] 3 </args>
+      <args> x[7] 5 </args>
+      <args> x[8] 5 </args>
+      <args> x[9] 5 </args>
+      <args> x[10] 5 </args>
+      <args> x[11] 5 </args>
+      <args> x[12] 5 </args>
+      <args> x[13] 5 </args>
+      <args> x[14] 5 </args>
+      <args> x[12] 6 </args>
+      <args> x[13] 6 </args>
+      <args> x[14] 6 </args>
+      <args> x[14] 7 </args>
+      <args> x[8] 8 </args>
+      <args> x[9] 8 </args>
+      <args> x[10] 8 </args>
+      <args> x[11] 8 </args>
+      <args> x[12] 8 </args>
+      <args> x[13] 8 </args>
+      <args> x[14] 8 </args>
+      <args> x[11] 9 </args>
+      <args> x[12] 9 </args>
+      <args> x[13] 9 </args>
+      <args> x[14] 9 </args>
+      <args> x[9] 11 </args>
+      <args> x[10] 11 </args>
+      <args> x[11] 11 </args>
+      <args> x[12] 11 </args>
+      <args> x[13] 11 </args>
+      <args> x[14] 11 </args>
+      <args> x[12] 12 </args>
+      <args> x[13] 12 </args>
+      <args> x[14] 12 </args>
+    </group>
+    <group note="linking variables of arrays x and y">
+      <element>
+        <list> x[] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> y[0] 0 </args>
+      <args> y[1] 1 </args>
+      <args> y[2] 2 </args>
+      <args> y[3] 3 </args>
+      <args> y[4] 4 </args>
+      <args> y[5] 5 </args>
+      <args> y[6] 6 </args>
+      <args> y[7] 7 </args>
+      <args> y[8] 8 </args>
+      <args> y[9] 9 </args>
+      <args> y[10] 10 </args>
+      <args> y[11] 11 </args>
+      <args> y[12] 12 </args>
+      <args> y[13] 13 </args>
+    </group>
+    <allDifferent class="redundant-constraints"> y[] </allDifferent>
+    <group note="sets the number of periods that inventory is necessary for each order">
+      <intension> eq(%0,sub(%1,%2)) </intension>
+      <args> ip[0] 7 y[0] </args>
+      <args> ip[1] 13 y[1] </args>
+      <args> ip[2] 4 y[2] </args>
+      <args> ip[3] 11 y[3] </args>
+      <args> ip[4] 14 y[4] </args>
+      <args> ip[5] 6 y[5] </args>
+      <args> ip[6] 11 y[6] </args>
+      <args> ip[7] 13 y[7] </args>
+      <args> ip[8] 7 y[8] </args>
+      <args> ip[9] 10 y[9] </args>
+      <args> ip[10] 14 y[10] </args>
+      <args> ip[11] 8 y[11] </args>
+      <args> ip[12] 11 y[12] </args>
+      <args> ip[13] 14 y[13] </args>
+    </group>
+    <block note="computing production order (without holes that may be present in x); useful to impose the change_cost constraints">
+      <intension> eq(po[0],x[0]) </intension>
+      <group>
+        <intension> if(eq(%0,14),eq(%1,%2),eq(%1,%0)) </intension>
+        <args> x[1] po[1] po[0] </args>
+        <args> x[2] po[2] po[1] </args>
+        <args> x[3] po[3] po[2] </args>
+        <args> x[4] po[4] po[3] </args>
+        <args> x[5] po[5] po[4] </args>
+        <args> x[6] po[6] po[5] </args>
+        <args> x[7] po[7] po[6] </args>
+        <args> x[8] po[8] po[7] </args>
+        <args> x[9] po[9] po[8] </args>
+        <args> x[10] po[10] po[9] </args>
+        <args> x[11] po[11] po[10] </args>
+        <args> x[12] po[12] po[11] </args>
+        <args> x[13] po[13] po[12] </args>
+        <args> x[14] po[14] po[13] </args>
+      </group>
+    </block>
+    <block class="redundant-constraints">
+      <group>
+        <count>
+          <list> po[] </list>
+          <values> %0 </values>
+          <condition> (ge,1) </condition>
+        </count>
+        <args> 0 </args>
+        <args> 1 </args>
+        <args> 2 </args>
+        <args> 3 </args>
+        <args> 4 </args>
+        <args> 5 </args>
+        <args> 6 </args>
+        <args> 7 </args>
+        <args> 8 </args>
+        <args> 9 </args>
+        <args> 10 </args>
+        <args> 11 </args>
+        <args> 12 </args>
+        <args> 13 </args>
+      </group>
+      <group>
+        <count>
+          <list> po[] </list>
+          <values> %0 </values>
+          <condition> (le,2) </condition>
+        </count>
+        <args> 0 </args>
+        <args> 1 </args>
+        <args> 2 </args>
+        <args> 3 </args>
+        <args> 4 </args>
+        <args> 5 </args>
+        <args> 6 </args>
+        <args> 7 </args>
+        <args> 8 </args>
+        <args> 9 </args>
+        <args> 10 </args>
+        <args> 11 </args>
+        <args> 12 </args>
+        <args> 13 </args>
+      </group>
+    </block>
+    <group note="computing change costs (the change cost is applied when changing from one item type to another)">
+      <element>
+        <matrix> (0,0,105,105,105,154,154,154,130,130,130,100,100,100,0)(0,0,105,105,105,154,154,154,130,130,130,100,100,100,0)(146,146,0,0,0,135,135,135,139,139,139,167,167,167,0)(146,146,0,0,0,135,135,135,139,139,139,167,167,167,0)(146,146,0,0,0,135,135,135,139,139,139,167,167,167,0)(101,101,183,183,183,0,0,0,193,193,193,113,113,113,0)(101,101,183,183,183,0,0,0,193,193,193,113,113,113,0)(101,101,183,183,183,0,0,0,193,193,193,113,113,113,0)(188,188,112,112,112,111,111,111,0,0,0,103,103,103,0)(188,188,112,112,112,111,111,111,0,0,0,103,103,103,0)(188,188,112,112,112,111,111,111,0,0,0,103,103,103,0)(179,179,117,117,117,161,161,161,124,124,124,0,0,0,0)(179,179,117,117,117,161,161,161,124,124,124,0,0,0,0)(179,179,117,117,117,161,161,161,124,124,124,0,0,0,0)(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0) </matrix>
+        <index> %0 %1 </index>
+        <value> %2 </value>
+      </element>
+      <args> po[0] po[1] cc[0] </args>
+      <args> po[1] po[2] cc[1] </args>
+      <args> po[2] po[3] cc[2] </args>
+      <args> po[3] po[4] cc[3] </args>
+      <args> po[4] po[5] cc[4] </args>
+      <args> po[5] po[6] cc[5] </args>
+      <args> po[6] po[7] cc[6] </args>
+      <args> po[7] po[8] cc[7] </args>
+      <args> po[8] po[9] cc[8] </args>
+      <args> po[9] po[10] cc[9] </args>
+      <args> po[10] po[11] cc[10] </args>
+      <args> po[11] po[12] cc[11] </args>
+      <args> po[12] po[13] cc[12] </args>
+      <args> po[13] po[14] cc[13] </args>
+    </group>
+    <group class="symmetry-breaking" note="completing orders of same type in a fixed order">
+      <intension> lt(%0,%1) </intension>
+      <args> y[0] y[1] </args>
+      <args> y[2] y[3] </args>
+      <args> y[3] y[4] </args>
+      <args> y[5] y[6] </args>
+      <args> y[6] y[7] </args>
+      <args> y[8] y[9] </args>
+      <args> y[9] y[10] </args>
+      <args> y[11] y[12] </args>
+      <args> y[12] y[13] </args>
+    </group>
+  </constraints>
+  <objectives>
+    <minimize type="sum">
+      <list> cc[] ip[] </list>
+      <coeffs> 1x14 10x14 </coeffs>
+    </minimize>
+  </objectives>
+</instance>

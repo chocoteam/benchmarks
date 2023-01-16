@@ -1,0 +1,12 @@
+<instance format="XCSP3" type="CSP">
+  <variables>
+    <array id="x" size="[6]"> 0..15 </array>
+    <array id="w" size="[6]"> 3..9 </array>
+  </variables>
+  <constraints>
+    <noOverlap>
+      <origins> x[] </origins>
+      <lengths> w[] </lengths>
+    </noOverlap>
+  </constraints>
+</instance>

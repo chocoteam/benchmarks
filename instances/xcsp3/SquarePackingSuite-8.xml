@@ -1,0 +1,58 @@
+<instance format="XCSP3" type="CSP">
+  <variables>
+    <array id="x" note="x[i] is the x-coordinate where is put the ith rectangle" size="[8]">
+      <domain for="x[0]"> 0..13 </domain>
+      <domain for="x[1]"> 0..12 </domain>
+      <domain for="x[2]"> 0..11 </domain>
+      <domain for="x[3]"> 0..10 </domain>
+      <domain for="x[4]"> 0..9 </domain>
+      <domain for="x[5]"> 0..8 </domain>
+      <domain for="x[6]"> 0..7 </domain>
+      <domain for="x[7]"> 0..6 </domain>
+    </array>
+    <array id="y" note="y[i] is the y-coordinate where is put the ith rectangle" size="[8]">
+      <domain for="y[0]"> 0..14 </domain>
+      <domain for="y[1]"> 0..13 </domain>
+      <domain for="y[2]"> 0..12 </domain>
+      <domain for="y[3]"> 0..11 </domain>
+      <domain for="y[4]"> 0..10 </domain>
+      <domain for="y[5]"> 0..9 </domain>
+      <domain for="y[6]"> 0..8 </domain>
+      <domain for="y[7]"> 0..7 </domain>
+    </array>
+  </variables>
+  <constraints>
+    <noOverlap note="no overlap on boxes">
+      <origins> (x[0],y[0])(x[1],y[1])(x[2],y[2])(x[3],y[3])(x[4],y[4])(x[5],y[5])(x[6],y[6])(x[7],y[7]) </origins>
+      <lengths> (1,1)(2,2)(3,3)(4,4)(5,5)(6,6)(7,7)(8,8) </lengths>
+    </noOverlap>
+    <block class="symmetry-breaking">
+      <group>
+        <intension> le(%0,3) </intension>
+        <args> x[7] </args>
+        <args> y[7] </args>
+      </group>
+      <group>
+        <intension> ne(%0,%1) </intension>
+        <args> x[1] 1 </args>
+        <args> x[1] 2 </args>
+        <args> x[2] 2 </args>
+        <args> x[2] 3 </args>
+        <args> x[3] 2 </args>
+        <args> x[4] 3 </args>
+        <args> x[5] 3 </args>
+        <args> x[6] 3 </args>
+        <args> x[7] 3 </args>
+        <args> y[1] 1 </args>
+        <args> y[1] 2 </args>
+        <args> y[2] 2 </args>
+        <args> y[2] 3 </args>
+        <args> y[3] 2 </args>
+        <args> y[4] 3 </args>
+        <args> y[5] 3 </args>
+        <args> y[6] 3 </args>
+        <args> y[7] 3 </args>
+      </group>
+    </block>
+  </constraints>
+</instance>

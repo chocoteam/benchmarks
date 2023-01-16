@@ -1,0 +1,51 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="w" size="[12]"> 0..115 </array>
+    <array id="f" size="[12]"> 0..115 </array>
+    <var id="z"> 0..1380 </var>
+  </variables>
+  <constraints>
+    <group>
+      <intension> ge(%0,%1) </intension>
+      <args> w[0] 69 </args>
+      <args> w[1] 51 </args>
+      <args> w[2] 69 </args>
+      <args> w[3] 24 </args>
+      <args> w[4] 98 </args>
+      <args> w[5] 99 </args>
+      <args> w[6] 79 </args>
+      <args> w[7] 19 </args>
+      <args> w[8] 63 </args>
+      <args> w[9] 39 </args>
+      <args> w[10] 30 </args>
+      <args> w[11] 115 </args>
+    </group>
+    <flow>
+      <list> w[] f[] </list>
+      <balance> 0 0 0 0 0 0 0 0 0 0 0 0 </balance>
+      <arcs> (1,2)(2,3)(3,4)(4,5)(5,6)(6,7)(7,8)(8,9)(9,10)(10,11)(11,12)(12,1)(1,11)(2,12)(3,1)(4,2)(5,3)(6,4)(7,5)(8,6)(9,7)(10,8)(11,9)(12,10) </arcs>
+      <weights> 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 </weights>
+      <condition> (eq,z) </condition>
+    </flow>
+    <group>
+      <sum>
+        <list> %0 %1 </list>
+        <condition> (eq,%2) </condition>
+      </sum>
+      <args> f[1] f[2] w[0] </args>
+      <args> f[2] f[3] w[1] </args>
+      <args> f[3] f[4] w[2] </args>
+      <args> f[4] f[5] w[3] </args>
+      <args> f[5] f[6] w[4] </args>
+      <args> f[6] f[7] w[5] </args>
+      <args> f[7] f[8] w[6] </args>
+      <args> f[8] f[9] w[7] </args>
+      <args> f[9] f[10] w[8] </args>
+      <args> f[10] f[11] w[9] </args>
+      <args> f[11] f[0] w[10] </args>
+    </group>
+  </constraints>
+  <objectives>
+    <minimize> z </minimize>
+  </objectives>
+</instance>

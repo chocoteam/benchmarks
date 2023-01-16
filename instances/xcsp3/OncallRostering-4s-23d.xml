@@ -1,0 +1,98 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="x" note="x[i] is the worker set for the ith day" size="[23]"> 0..3 </array>
+    <array id="do" note="do[j] is the number of times the jth worker is set for a regular day of the week" size="[4]"> 0..18 </array>
+    <array id="wo" note="wo[j] is the number of times the jth worker is set for a weekend" size="[4]"> 0..5 </array>
+    <var id="db" note="db is the balance violation wrt working days"> 0..23 </var>
+    <var id="wb" note="db is the balance violation wrt working weekends"> 0..23 </var>
+  </variables>
+  <constraints>
+    <intension note="respecting fixed working days"> eq(x[0],2) </intension>
+    <group note="respecting unavailability of workers">
+      <intension> ne(%0,%1) </intension>
+      <args> x[0] 0 </args>
+      <args> x[9] 0 </args>
+      <args> x[10] 0 </args>
+      <args> x[19] 0 </args>
+      <args> x[20] 0 </args>
+      <args> x[0] 1 </args>
+      <args> x[2] 1 </args>
+      <args> x[9] 1 </args>
+      <args> x[10] 1 </args>
+      <args> x[19] 1 </args>
+      <args> x[20] 1 </args>
+      <args> x[2] 2 </args>
+      <args> x[1] 3 </args>
+    </group>
+    <cardinality note="counting working (regular) days by each worker">
+      <list> x[0..1] x[3..6] x[8..11] x[13..16] x[18..21] </list>
+      <values> 0 1 2 3 </values>
+      <occurs> do[] </occurs>
+    </cardinality>
+    <cardinality note="counting working weekends by each worker">
+      <list> x[2] x[7] x[12] x[17] x[22] </list>
+      <values> 0 1 2 3 </values>
+      <occurs> wo[] </occurs>
+    </cardinality>
+    <group note="computing the balance violation wrt working days">
+      <intension> le(dist(mul(100,%0),mul(100,%1)),mul(100,db)) </intension>
+      <args> do[0] do[1] </args>
+      <args> do[0] do[2] </args>
+      <args> do[0] do[3] </args>
+      <args> do[1] do[2] </args>
+      <args> do[1] do[3] </args>
+      <args> do[2] do[3] </args>
+    </group>
+    <group note="computing the balance violation wrt working weekends">
+      <intension> le(dist(mul(100,%0),mul(100,%1)),mul(100,wb)) </intension>
+      <args> wo[0] wo[1] </args>
+      <args> wo[0] wo[2] </args>
+      <args> wo[0] wo[3] </args>
+      <args> wo[1] wo[2] </args>
+      <args> wo[1] wo[3] </args>
+      <args> wo[2] wo[3] </args>
+    </group>
+    <group note="no three successive days by the same worker (except if fixed days)">
+      <intension> or(ne(%0,%1),ne(%0,%2)) </intension>
+      <args> x[0..2] </args>
+      <args> x[1..3] </args>
+      <args> x[2..4] </args>
+      <args> x[3..5] </args>
+      <args> x[4..6] </args>
+      <args> x[5..7] </args>
+      <args> x[6..8] </args>
+      <args> x[7..9] </args>
+      <args> x[8..10] </args>
+      <args> x[9..11] </args>
+      <args> x[10..12] </args>
+      <args> x[11..13] </args>
+      <args> x[12..14] </args>
+      <args> x[13..15] </args>
+      <args> x[14..16] </args>
+      <args> x[15..17] </args>
+      <args> x[16..18] </args>
+      <args> x[17..19] </args>
+      <args> x[18..20] </args>
+      <args> x[19..21] </args>
+      <args> x[20..22] </args>
+    </group>
+    <group note="no two successive weekends by the same worker (except if fixed days)">
+      <intension> ne(%0,%1) </intension>
+      <args> x[2] x[7] </args>
+      <args> x[7] x[12] </args>
+      <args> x[12] x[17] </args>
+      <args> x[17] x[22] </args>
+    </group>
+    <intension note="a worker is not set for the day before the last one in case it is a weekend (except if fixed days)"> ne(x[22],x[21]) </intension>
+    <group note="a worker is not set for the day before and after any day in case it is a weekend (except if fixed days)">
+      <intension> and(ne(%0,%1),ne(%0,%2)) </intension>
+      <args> x[2] x[1] x[3] </args>
+      <args> x[7] x[6] x[8] </args>
+      <args> x[12] x[11] x[13] </args>
+      <args> x[17] x[16] x[18] </args>
+    </group>
+  </constraints>
+  <objectives>
+    <minimize type="sum"> eq(x[0],x[1]) eq(x[1],x[2]) eq(x[2],x[3]) eq(x[3],x[4]) eq(x[4],x[5]) eq(x[5],x[6]) eq(x[6],x[7]) eq(x[7],x[8]) eq(x[8],x[9]) eq(x[9],x[10]) eq(x[10],x[11]) eq(x[11],x[12]) eq(x[12],x[13]) eq(x[13],x[14]) eq(x[14],x[15]) eq(x[15],x[16]) eq(x[16],x[17]) eq(x[17],x[18]) eq(x[18],x[19]) eq(x[19],x[20]) eq(x[20],x[21]) eq(x[2],x[0]) eq(x[7],x[5]) eq(x[12],x[10]) eq(x[17],x[15]) eq(x[22],x[20]) db wb </minimize>
+  </objectives>
+</instance>

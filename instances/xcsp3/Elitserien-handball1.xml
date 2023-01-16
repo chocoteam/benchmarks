@@ -1,0 +1,1615 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="hap" size="[14][20]"> 1 2 3 </array>
+    <array id="contestant" size="[14][20]"> 0..13 </array>
+    <array id="breakk" size="[14]"> 0..19 </array>
+    <array id="row" size="[14]"> 0..13 </array>
+    <array id="teams" size="[14]"> 0..13 </array>
+    <array id="cij" size="[13]"> 0 1 </array>
+    <array id="aux_gb" note="aux_gb[i] is the ith auxiliary variable having been automatically introduced" size="[364]">
+      <domain for="aux_gb[0..9]"> 0..13 </domain>
+      <domain for="aux_gb[10] aux_gb[11]"> 0..19 </domain>
+      <domain for="aux_gb[12..331] aux_gb[344..363]"> 1..3 </domain>
+      <domain for="aux_gb[332..343]"> 0..20 </domain>
+    </array>
+  </variables>
+  <constraints>
+    <group note="division assignment">
+      <extension>
+        <list> %0 </list>
+        <supports> 0..6 </supports>
+      </extension>
+      <args> row[2] </args>
+      <args> row[3] </args>
+      <args> row[7] </args>
+      <args> row[10] </args>
+      <args> row[11] </args>
+      <args> row[12] </args>
+      <args> row[13] </args>
+    </group>
+    <group>
+      <extension>
+        <list> %0 </list>
+        <supports> 7..13 </supports>
+      </extension>
+      <args> row[0] </args>
+      <args> row[1] </args>
+      <args> row[4] </args>
+      <args> row[5] </args>
+      <args> row[6] </args>
+      <args> row[8] </args>
+      <args> row[9] </args>
+    </group>
+    <channel>
+      <list> row[] </list>
+      <list> teams[] </list>
+    </channel>
+    <group>
+      <count>
+        <list> %0 %1 %2 </list>
+        <values> 1 </values>
+        <condition> (gt,0) </condition>
+      </count>
+      <args> and(eq(aux_gb[0],row[10]),eq(aux_gb[1],row[7])) and(eq(aux_gb[0],row[13]),eq(aux_gb[2],row[7])) and(eq(aux_gb[1],row[13]),eq(aux_gb[2],row[10])) </args>
+      <args> and(eq(aux_gb[3],row[1]),eq(aux_gb[4],row[0])) and(eq(aux_gb[3],row[3]),eq(aux_gb[5],row[0])) and(eq(aux_gb[4],row[3]),eq(aux_gb[5],row[1])) </args>
+    </group>
+    <group>
+      <count>
+        <list> %0 %1 %2 </list>
+        <values> %3 </values>
+        <condition> (gt,0) </condition>
+      </count>
+      <args> row[8..9] row[11] aux_gb[6] </args>
+      <args> row[2] row[9] row[11] aux_gb[7] </args>
+      <args> row[2] row[8] row[11] aux_gb[8] </args>
+      <args> row[2] row[8..9] aux_gb[9] </args>
+    </group>
+    <group>
+      <count>
+        <list> %0 %1 %2 </list>
+        <values> %3 </values>
+        <condition> (gt,0) </condition>
+      </count>
+      <args> aux_gb[7..9] row[2] </args>
+      <args> aux_gb[6] aux_gb[8..9] row[8] </args>
+      <args> aux_gb[6..7] aux_gb[9] row[9] </args>
+      <args> aux_gb[6..8] row[11] </args>
+    </group>
+    <group note="complementary schedules">
+      <element>
+        <list> breakk[] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> row[7] aux_gb[10] </args>
+      <args> row[0] aux_gb[11] </args>
+    </group>
+    <group>
+      <element>
+        <list> %... </list>
+        <index> row[7] </index>
+        <condition> (ne,%0) </condition>
+      </element>
+      <args> aux_gb[12] hap[][0] </args>
+      <args> aux_gb[13] hap[][1] </args>
+      <args> aux_gb[14] hap[][2] </args>
+      <args> aux_gb[15] hap[][3] </args>
+      <args> aux_gb[16] hap[][4] </args>
+      <args> aux_gb[17] hap[][5] </args>
+      <args> aux_gb[18] hap[][6] </args>
+      <args> aux_gb[19] hap[][7] </args>
+      <args> aux_gb[20] hap[][8] </args>
+      <args> aux_gb[21] hap[][9] </args>
+      <args> aux_gb[22] hap[][10] </args>
+      <args> aux_gb[23] hap[][11] </args>
+      <args> aux_gb[24] hap[][12] </args>
+      <args> aux_gb[25] hap[][13] </args>
+      <args> aux_gb[26] hap[][14] </args>
+      <args> aux_gb[27] hap[][15] </args>
+      <args> aux_gb[28] hap[][16] </args>
+      <args> aux_gb[29] hap[][17] </args>
+      <args> aux_gb[30] hap[][18] </args>
+      <args> aux_gb[31] hap[][19] </args>
+    </group>
+    <group>
+      <element>
+        <list> %... </list>
+        <index> row[0] </index>
+        <condition> (ne,%0) </condition>
+      </element>
+      <args> aux_gb[32] hap[][0] </args>
+      <args> aux_gb[33] hap[][1] </args>
+      <args> aux_gb[34] hap[][2] </args>
+      <args> aux_gb[35] hap[][3] </args>
+      <args> aux_gb[36] hap[][4] </args>
+      <args> aux_gb[37] hap[][5] </args>
+      <args> aux_gb[38] hap[][6] </args>
+      <args> aux_gb[39] hap[][7] </args>
+      <args> aux_gb[40] hap[][8] </args>
+      <args> aux_gb[41] hap[][9] </args>
+      <args> aux_gb[42] hap[][10] </args>
+      <args> aux_gb[43] hap[][11] </args>
+      <args> aux_gb[44] hap[][12] </args>
+      <args> aux_gb[45] hap[][13] </args>
+      <args> aux_gb[46] hap[][14] </args>
+      <args> aux_gb[47] hap[][15] </args>
+      <args> aux_gb[48] hap[][16] </args>
+      <args> aux_gb[49] hap[][17] </args>
+      <args> aux_gb[50] hap[][18] </args>
+      <args> aux_gb[51] hap[][19] </args>
+    </group>
+    <group note="first round robin tournament (domains)">
+      <extension>
+        <list> %0 </list>
+        <supports> 0..6 </supports>
+      </extension>
+      <args> contestant[0][0] </args>
+      <args> contestant[1][0] </args>
+      <args> contestant[2][0] </args>
+      <args> contestant[3][0] </args>
+      <args> contestant[4][0] </args>
+      <args> contestant[5][0] </args>
+      <args> contestant[6][0] </args>
+      <args> contestant[0][1] </args>
+      <args> contestant[1][1] </args>
+      <args> contestant[2][1] </args>
+      <args> contestant[3][1] </args>
+      <args> contestant[4][1] </args>
+      <args> contestant[5][1] </args>
+      <args> contestant[6][1] </args>
+      <args> contestant[0][2] </args>
+      <args> contestant[1][2] </args>
+      <args> contestant[2][2] </args>
+      <args> contestant[3][2] </args>
+      <args> contestant[4][2] </args>
+      <args> contestant[5][2] </args>
+      <args> contestant[6][2] </args>
+      <args> contestant[0][3] </args>
+      <args> contestant[1][3] </args>
+      <args> contestant[2][3] </args>
+      <args> contestant[3][3] </args>
+      <args> contestant[4][3] </args>
+      <args> contestant[5][3] </args>
+      <args> contestant[6][3] </args>
+      <args> contestant[0][4] </args>
+      <args> contestant[1][4] </args>
+      <args> contestant[2][4] </args>
+      <args> contestant[3][4] </args>
+      <args> contestant[4][4] </args>
+      <args> contestant[5][4] </args>
+      <args> contestant[6][4] </args>
+      <args> contestant[0][5] </args>
+      <args> contestant[1][5] </args>
+      <args> contestant[2][5] </args>
+      <args> contestant[3][5] </args>
+      <args> contestant[4][5] </args>
+      <args> contestant[5][5] </args>
+      <args> contestant[6][5] </args>
+      <args> contestant[0][6] </args>
+      <args> contestant[1][6] </args>
+      <args> contestant[2][6] </args>
+      <args> contestant[3][6] </args>
+      <args> contestant[4][6] </args>
+      <args> contestant[5][6] </args>
+      <args> contestant[6][6] </args>
+    </group>
+    <group>
+      <extension>
+        <list> %0 </list>
+        <supports> 7..13 </supports>
+      </extension>
+      <args> contestant[7][0] </args>
+      <args> contestant[8][0] </args>
+      <args> contestant[9][0] </args>
+      <args> contestant[10][0] </args>
+      <args> contestant[11][0] </args>
+      <args> contestant[12][0] </args>
+      <args> contestant[13][0] </args>
+      <args> contestant[7][1] </args>
+      <args> contestant[8][1] </args>
+      <args> contestant[9][1] </args>
+      <args> contestant[10][1] </args>
+      <args> contestant[11][1] </args>
+      <args> contestant[12][1] </args>
+      <args> contestant[13][1] </args>
+      <args> contestant[7][2] </args>
+      <args> contestant[8][2] </args>
+      <args> contestant[9][2] </args>
+      <args> contestant[10][2] </args>
+      <args> contestant[11][2] </args>
+      <args> contestant[12][2] </args>
+      <args> contestant[13][2] </args>
+      <args> contestant[7][3] </args>
+      <args> contestant[8][3] </args>
+      <args> contestant[9][3] </args>
+      <args> contestant[10][3] </args>
+      <args> contestant[11][3] </args>
+      <args> contestant[12][3] </args>
+      <args> contestant[13][3] </args>
+      <args> contestant[7][4] </args>
+      <args> contestant[8][4] </args>
+      <args> contestant[9][4] </args>
+      <args> contestant[10][4] </args>
+      <args> contestant[11][4] </args>
+      <args> contestant[12][4] </args>
+      <args> contestant[13][4] </args>
+      <args> contestant[7][5] </args>
+      <args> contestant[8][5] </args>
+      <args> contestant[9][5] </args>
+      <args> contestant[10][5] </args>
+      <args> contestant[11][5] </args>
+      <args> contestant[12][5] </args>
+      <args> contestant[13][5] </args>
+      <args> contestant[7][6] </args>
+      <args> contestant[8][6] </args>
+      <args> contestant[9][6] </args>
+      <args> contestant[10][6] </args>
+      <args> contestant[11][6] </args>
+      <args> contestant[12][6] </args>
+      <args> contestant[13][6] </args>
+    </group>
+    <group note="channel break &lt;---&gt; hap (2)">
+      <sum>
+        <list> %... </list>
+        <coeffs> 9 11 13 15 17 19 </coeffs>
+        <condition> (eq,%0) </condition>
+      </sum>
+      <args> breakk[0] eq(hap[0][8],hap[0][9]) eq(hap[0][10],hap[0][11]) eq(hap[0][12],hap[0][13]) eq(hap[0][14],hap[0][15]) eq(hap[0][16],hap[0][17]) eq(hap[0][18],hap[0][19]) </args>
+      <args> breakk[1] eq(hap[1][8],hap[1][9]) eq(hap[1][10],hap[1][11]) eq(hap[1][12],hap[1][13]) eq(hap[1][14],hap[1][15]) eq(hap[1][16],hap[1][17]) eq(hap[1][18],hap[1][19]) </args>
+      <args> breakk[2] eq(hap[2][8],hap[2][9]) eq(hap[2][10],hap[2][11]) eq(hap[2][12],hap[2][13]) eq(hap[2][14],hap[2][15]) eq(hap[2][16],hap[2][17]) eq(hap[2][18],hap[2][19]) </args>
+      <args> breakk[3] eq(hap[3][8],hap[3][9]) eq(hap[3][10],hap[3][11]) eq(hap[3][12],hap[3][13]) eq(hap[3][14],hap[3][15]) eq(hap[3][16],hap[3][17]) eq(hap[3][18],hap[3][19]) </args>
+      <args> breakk[4] eq(hap[4][8],hap[4][9]) eq(hap[4][10],hap[4][11]) eq(hap[4][12],hap[4][13]) eq(hap[4][14],hap[4][15]) eq(hap[4][16],hap[4][17]) eq(hap[4][18],hap[4][19]) </args>
+      <args> breakk[5] eq(hap[5][8],hap[5][9]) eq(hap[5][10],hap[5][11]) eq(hap[5][12],hap[5][13]) eq(hap[5][14],hap[5][15]) eq(hap[5][16],hap[5][17]) eq(hap[5][18],hap[5][19]) </args>
+      <args> breakk[6] eq(hap[6][8],hap[6][9]) eq(hap[6][10],hap[6][11]) eq(hap[6][12],hap[6][13]) eq(hap[6][14],hap[6][15]) eq(hap[6][16],hap[6][17]) eq(hap[6][18],hap[6][19]) </args>
+      <args> breakk[7] eq(hap[7][8],hap[7][9]) eq(hap[7][10],hap[7][11]) eq(hap[7][12],hap[7][13]) eq(hap[7][14],hap[7][15]) eq(hap[7][16],hap[7][17]) eq(hap[7][18],hap[7][19]) </args>
+      <args> breakk[8] eq(hap[8][8],hap[8][9]) eq(hap[8][10],hap[8][11]) eq(hap[8][12],hap[8][13]) eq(hap[8][14],hap[8][15]) eq(hap[8][16],hap[8][17]) eq(hap[8][18],hap[8][19]) </args>
+      <args> breakk[9] eq(hap[9][8],hap[9][9]) eq(hap[9][10],hap[9][11]) eq(hap[9][12],hap[9][13]) eq(hap[9][14],hap[9][15]) eq(hap[9][16],hap[9][17]) eq(hap[9][18],hap[9][19]) </args>
+      <args> breakk[10] eq(hap[10][8],hap[10][9]) eq(hap[10][10],hap[10][11]) eq(hap[10][12],hap[10][13]) eq(hap[10][14],hap[10][15]) eq(hap[10][16],hap[10][17]) eq(hap[10][18],hap[10][19]) </args>
+      <args> breakk[11] eq(hap[11][8],hap[11][9]) eq(hap[11][10],hap[11][11]) eq(hap[11][12],hap[11][13]) eq(hap[11][14],hap[11][15]) eq(hap[11][16],hap[11][17]) eq(hap[11][18],hap[11][19]) </args>
+      <args> breakk[12] eq(hap[12][8],hap[12][9]) eq(hap[12][10],hap[12][11]) eq(hap[12][12],hap[12][13]) eq(hap[12][14],hap[12][15]) eq(hap[12][16],hap[12][17]) eq(hap[12][18],hap[12][19]) </args>
+      <args> breakk[13] eq(hap[13][8],hap[13][9]) eq(hap[13][10],hap[13][11]) eq(hap[13][12],hap[13][13]) eq(hap[13][14],hap[13][15]) eq(hap[13][16],hap[13][17]) eq(hap[13][18],hap[13][19]) </args>
+    </group>
+    <group note="regular expression for HAP set per team">
+      <regular>
+        <list> %... </list>
+        <transitions> (q1,1,q3)(q1,2,q2)(q1,3,q4)(q2,1,q7)(q2,2,q0)(q2,3,q8)(q3,1,q0)(q3,2,q7)(q3,3,q6)(q4,1,q5)(q4,2,q8)(q4,3,q0)(q5,1,q0)(q5,2,q11)(q5,3,q10)(q6,1,q9)(q6,2,q12)(q6,3,q0)(q7,1,q0)(q7,2,q0)(q7,3,q12)(q8,1,q11)(q8,2,q0)(q8,3,q0)(q9,1,q0)(q9,2,q15)(q9,3,q14)(q10,1,q13)(q10,2,q16)(q10,3,q0)(q11,1,q0)(q11,2,q0)(q11,3,q16)(q12,1,q15)(q12,2,q0)(q12,3,q0)(q13,1,q0)(q13,2,q19)(q13,3,q18)(q14,1,q17)(q14,2,q20)(q14,3,q0)(q15,1,q0)(q15,2,q0)(q15,3,q20)(q16,1,q19)(q16,2,q0)(q16,3,q0)(q17,1,q0)(q17,2,q23)(q17,3,q22)(q18,1,q21)(q18,2,q24)(q18,3,q0)(q19,1,q0)(q19,2,q0)(q19,3,q24)(q20,1,q23)(q20,2,q0)(q20,3,q0)(q21,1,q0)(q21,2,q25)(q21,3,q0)(q22,1,q0)(q22,2,q26)(q22,3,q0)(q23,1,q0)(q23,2,q0)(q23,3,q26)(q24,1,q25)(q24,2,q0)(q24,3,q0)(q25,1,q0)(q25,2,q0)(q25,3,q28)(q26,1,q27)(q26,2,q0)(q26,3,q0)(q27,1,q0)(q27,2,q0)(q27,3,q30)(q28,1,q29)(q28,2,q0)(q28,3,q0)(q29,1,q31)(q29,2,q0)(q29,3,q28)(q30,1,q27)(q30,2,q0)(q30,3,q32)(q31,1,q0)(q31,2,q0)(q31,3,q32)(q32,1,q31)(q32,2,q0)(q32,3,q0) </transitions>
+        <start> q1 </start>
+        <final> q27 q28 q31 q32 </final>
+      </regular>
+      <args> hap[0][] </args>
+      <args> hap[1][] </args>
+      <args> hap[2][] </args>
+      <args> hap[3][] </args>
+      <args> hap[4][] </args>
+      <args> hap[5][] </args>
+      <args> hap[6][] </args>
+      <args> hap[7][] </args>
+      <args> hap[8][] </args>
+      <args> hap[9][] </args>
+      <args> hap[10][] </args>
+      <args> hap[11][] </args>
+      <args> hap[12][] </args>
+      <args> hap[13][] </args>
+    </group>
+    <block note="RRT (5)">
+      <channel> contestant[][0] </channel>
+      <channel> contestant[][1] </channel>
+      <channel> contestant[][2] </channel>
+      <channel> contestant[][3] </channel>
+      <channel> contestant[][4] </channel>
+      <channel> contestant[][5] </channel>
+      <channel> contestant[][6] </channel>
+      <channel> contestant[][7] </channel>
+      <channel> contestant[][8] </channel>
+      <channel> contestant[][9] </channel>
+      <channel> contestant[][10] </channel>
+      <channel> contestant[][11] </channel>
+      <channel> contestant[][12] </channel>
+      <channel> contestant[][13] </channel>
+      <channel> contestant[][14] </channel>
+      <channel> contestant[][15] </channel>
+      <channel> contestant[][16] </channel>
+      <channel> contestant[][17] </channel>
+      <channel> contestant[][18] </channel>
+      <channel> contestant[][19] </channel>
+    </block>
+    <group note="RRT (6)">
+      <allDifferent> %... </allDifferent>
+      <args> contestant[0][0..6] </args>
+      <args> contestant[1][0..6] </args>
+      <args> contestant[2][0..6] </args>
+      <args> contestant[3][0..6] </args>
+      <args> contestant[4][0..6] </args>
+      <args> contestant[5][0..6] </args>
+      <args> contestant[6][0..6] </args>
+      <args> contestant[7][0..6] </args>
+      <args> contestant[8][0..6] </args>
+      <args> contestant[9][0..6] </args>
+      <args> contestant[10][0..6] </args>
+      <args> contestant[11][0..6] </args>
+      <args> contestant[12][0..6] </args>
+      <args> contestant[13][0..6] </args>
+      <args> contestant[0][7..19] </args>
+      <args> contestant[1][7..19] </args>
+      <args> contestant[2][7..19] </args>
+      <args> contestant[3][7..19] </args>
+      <args> contestant[4][7..19] </args>
+      <args> contestant[5][7..19] </args>
+      <args> contestant[6][7..19] </args>
+      <args> contestant[7][7..19] </args>
+      <args> contestant[8][7..19] </args>
+      <args> contestant[9][7..19] </args>
+      <args> contestant[10][7..19] </args>
+      <args> contestant[11][7..19] </args>
+      <args> contestant[12][7..19] </args>
+      <args> contestant[13][7..19] </args>
+    </group>
+    <group note="either we at home and contestant away (7) or we away and contestant at home  or bye (we = contestant)">
+      <intension> eq(add(%0,%1),4) </intension>
+      <args> aux_gb[52] hap[0][0] </args>
+      <args> aux_gb[53] hap[1][0] </args>
+      <args> aux_gb[54] hap[2][0] </args>
+      <args> aux_gb[55] hap[3][0] </args>
+      <args> aux_gb[56] hap[4][0] </args>
+      <args> aux_gb[57] hap[5][0] </args>
+      <args> aux_gb[58] hap[6][0] </args>
+      <args> aux_gb[59] hap[7][0] </args>
+      <args> aux_gb[60] hap[8][0] </args>
+      <args> aux_gb[61] hap[9][0] </args>
+      <args> aux_gb[62] hap[10][0] </args>
+      <args> aux_gb[63] hap[11][0] </args>
+      <args> aux_gb[64] hap[12][0] </args>
+      <args> aux_gb[65] hap[13][0] </args>
+      <args> aux_gb[66] hap[0][1] </args>
+      <args> aux_gb[67] hap[1][1] </args>
+      <args> aux_gb[68] hap[2][1] </args>
+      <args> aux_gb[69] hap[3][1] </args>
+      <args> aux_gb[70] hap[4][1] </args>
+      <args> aux_gb[71] hap[5][1] </args>
+      <args> aux_gb[72] hap[6][1] </args>
+      <args> aux_gb[73] hap[7][1] </args>
+      <args> aux_gb[74] hap[8][1] </args>
+      <args> aux_gb[75] hap[9][1] </args>
+      <args> aux_gb[76] hap[10][1] </args>
+      <args> aux_gb[77] hap[11][1] </args>
+      <args> aux_gb[78] hap[12][1] </args>
+      <args> aux_gb[79] hap[13][1] </args>
+      <args> aux_gb[80] hap[0][2] </args>
+      <args> aux_gb[81] hap[1][2] </args>
+      <args> aux_gb[82] hap[2][2] </args>
+      <args> aux_gb[83] hap[3][2] </args>
+      <args> aux_gb[84] hap[4][2] </args>
+      <args> aux_gb[85] hap[5][2] </args>
+      <args> aux_gb[86] hap[6][2] </args>
+      <args> aux_gb[87] hap[7][2] </args>
+      <args> aux_gb[88] hap[8][2] </args>
+      <args> aux_gb[89] hap[9][2] </args>
+      <args> aux_gb[90] hap[10][2] </args>
+      <args> aux_gb[91] hap[11][2] </args>
+      <args> aux_gb[92] hap[12][2] </args>
+      <args> aux_gb[93] hap[13][2] </args>
+      <args> aux_gb[94] hap[0][3] </args>
+      <args> aux_gb[95] hap[1][3] </args>
+      <args> aux_gb[96] hap[2][3] </args>
+      <args> aux_gb[97] hap[3][3] </args>
+      <args> aux_gb[98] hap[4][3] </args>
+      <args> aux_gb[99] hap[5][3] </args>
+      <args> aux_gb[100] hap[6][3] </args>
+      <args> aux_gb[101] hap[7][3] </args>
+      <args> aux_gb[102] hap[8][3] </args>
+      <args> aux_gb[103] hap[9][3] </args>
+      <args> aux_gb[104] hap[10][3] </args>
+      <args> aux_gb[105] hap[11][3] </args>
+      <args> aux_gb[106] hap[12][3] </args>
+      <args> aux_gb[107] hap[13][3] </args>
+      <args> aux_gb[108] hap[0][4] </args>
+      <args> aux_gb[109] hap[1][4] </args>
+      <args> aux_gb[110] hap[2][4] </args>
+      <args> aux_gb[111] hap[3][4] </args>
+      <args> aux_gb[112] hap[4][4] </args>
+      <args> aux_gb[113] hap[5][4] </args>
+      <args> aux_gb[114] hap[6][4] </args>
+      <args> aux_gb[115] hap[7][4] </args>
+      <args> aux_gb[116] hap[8][4] </args>
+      <args> aux_gb[117] hap[9][4] </args>
+      <args> aux_gb[118] hap[10][4] </args>
+      <args> aux_gb[119] hap[11][4] </args>
+      <args> aux_gb[120] hap[12][4] </args>
+      <args> aux_gb[121] hap[13][4] </args>
+      <args> aux_gb[122] hap[0][5] </args>
+      <args> aux_gb[123] hap[1][5] </args>
+      <args> aux_gb[124] hap[2][5] </args>
+      <args> aux_gb[125] hap[3][5] </args>
+      <args> aux_gb[126] hap[4][5] </args>
+      <args> aux_gb[127] hap[5][5] </args>
+      <args> aux_gb[128] hap[6][5] </args>
+      <args> aux_gb[129] hap[7][5] </args>
+      <args> aux_gb[130] hap[8][5] </args>
+      <args> aux_gb[131] hap[9][5] </args>
+      <args> aux_gb[132] hap[10][5] </args>
+      <args> aux_gb[133] hap[11][5] </args>
+      <args> aux_gb[134] hap[12][5] </args>
+      <args> aux_gb[135] hap[13][5] </args>
+      <args> aux_gb[136] hap[0][6] </args>
+      <args> aux_gb[137] hap[1][6] </args>
+      <args> aux_gb[138] hap[2][6] </args>
+      <args> aux_gb[139] hap[3][6] </args>
+      <args> aux_gb[140] hap[4][6] </args>
+      <args> aux_gb[141] hap[5][6] </args>
+      <args> aux_gb[142] hap[6][6] </args>
+      <args> aux_gb[143] hap[7][6] </args>
+      <args> aux_gb[144] hap[8][6] </args>
+      <args> aux_gb[145] hap[9][6] </args>
+      <args> aux_gb[146] hap[10][6] </args>
+      <args> aux_gb[147] hap[11][6] </args>
+      <args> aux_gb[148] hap[12][6] </args>
+      <args> aux_gb[149] hap[13][6] </args>
+      <args> aux_gb[150] hap[0][7] </args>
+      <args> aux_gb[151] hap[1][7] </args>
+      <args> aux_gb[152] hap[2][7] </args>
+      <args> aux_gb[153] hap[3][7] </args>
+      <args> aux_gb[154] hap[4][7] </args>
+      <args> aux_gb[155] hap[5][7] </args>
+      <args> aux_gb[156] hap[6][7] </args>
+      <args> aux_gb[157] hap[7][7] </args>
+      <args> aux_gb[158] hap[8][7] </args>
+      <args> aux_gb[159] hap[9][7] </args>
+      <args> aux_gb[160] hap[10][7] </args>
+      <args> aux_gb[161] hap[11][7] </args>
+      <args> aux_gb[162] hap[12][7] </args>
+      <args> aux_gb[163] hap[13][7] </args>
+      <args> aux_gb[164] hap[0][8] </args>
+      <args> aux_gb[165] hap[1][8] </args>
+      <args> aux_gb[166] hap[2][8] </args>
+      <args> aux_gb[167] hap[3][8] </args>
+      <args> aux_gb[168] hap[4][8] </args>
+      <args> aux_gb[169] hap[5][8] </args>
+      <args> aux_gb[170] hap[6][8] </args>
+      <args> aux_gb[171] hap[7][8] </args>
+      <args> aux_gb[172] hap[8][8] </args>
+      <args> aux_gb[173] hap[9][8] </args>
+      <args> aux_gb[174] hap[10][8] </args>
+      <args> aux_gb[175] hap[11][8] </args>
+      <args> aux_gb[176] hap[12][8] </args>
+      <args> aux_gb[177] hap[13][8] </args>
+      <args> aux_gb[178] hap[0][9] </args>
+      <args> aux_gb[179] hap[1][9] </args>
+      <args> aux_gb[180] hap[2][9] </args>
+      <args> aux_gb[181] hap[3][9] </args>
+      <args> aux_gb[182] hap[4][9] </args>
+      <args> aux_gb[183] hap[5][9] </args>
+      <args> aux_gb[184] hap[6][9] </args>
+      <args> aux_gb[185] hap[7][9] </args>
+      <args> aux_gb[186] hap[8][9] </args>
+      <args> aux_gb[187] hap[9][9] </args>
+      <args> aux_gb[188] hap[10][9] </args>
+      <args> aux_gb[189] hap[11][9] </args>
+      <args> aux_gb[190] hap[12][9] </args>
+      <args> aux_gb[191] hap[13][9] </args>
+      <args> aux_gb[192] hap[0][10] </args>
+      <args> aux_gb[193] hap[1][10] </args>
+      <args> aux_gb[194] hap[2][10] </args>
+      <args> aux_gb[195] hap[3][10] </args>
+      <args> aux_gb[196] hap[4][10] </args>
+      <args> aux_gb[197] hap[5][10] </args>
+      <args> aux_gb[198] hap[6][10] </args>
+      <args> aux_gb[199] hap[7][10] </args>
+      <args> aux_gb[200] hap[8][10] </args>
+      <args> aux_gb[201] hap[9][10] </args>
+      <args> aux_gb[202] hap[10][10] </args>
+      <args> aux_gb[203] hap[11][10] </args>
+      <args> aux_gb[204] hap[12][10] </args>
+      <args> aux_gb[205] hap[13][10] </args>
+      <args> aux_gb[206] hap[0][11] </args>
+      <args> aux_gb[207] hap[1][11] </args>
+      <args> aux_gb[208] hap[2][11] </args>
+      <args> aux_gb[209] hap[3][11] </args>
+      <args> aux_gb[210] hap[4][11] </args>
+      <args> aux_gb[211] hap[5][11] </args>
+      <args> aux_gb[212] hap[6][11] </args>
+      <args> aux_gb[213] hap[7][11] </args>
+      <args> aux_gb[214] hap[8][11] </args>
+      <args> aux_gb[215] hap[9][11] </args>
+      <args> aux_gb[216] hap[10][11] </args>
+      <args> aux_gb[217] hap[11][11] </args>
+      <args> aux_gb[218] hap[12][11] </args>
+      <args> aux_gb[219] hap[13][11] </args>
+      <args> aux_gb[220] hap[0][12] </args>
+      <args> aux_gb[221] hap[1][12] </args>
+      <args> aux_gb[222] hap[2][12] </args>
+      <args> aux_gb[223] hap[3][12] </args>
+      <args> aux_gb[224] hap[4][12] </args>
+      <args> aux_gb[225] hap[5][12] </args>
+      <args> aux_gb[226] hap[6][12] </args>
+      <args> aux_gb[227] hap[7][12] </args>
+      <args> aux_gb[228] hap[8][12] </args>
+      <args> aux_gb[229] hap[9][12] </args>
+      <args> aux_gb[230] hap[10][12] </args>
+      <args> aux_gb[231] hap[11][12] </args>
+      <args> aux_gb[232] hap[12][12] </args>
+      <args> aux_gb[233] hap[13][12] </args>
+      <args> aux_gb[234] hap[0][13] </args>
+      <args> aux_gb[235] hap[1][13] </args>
+      <args> aux_gb[236] hap[2][13] </args>
+      <args> aux_gb[237] hap[3][13] </args>
+      <args> aux_gb[238] hap[4][13] </args>
+      <args> aux_gb[239] hap[5][13] </args>
+      <args> aux_gb[240] hap[6][13] </args>
+      <args> aux_gb[241] hap[7][13] </args>
+      <args> aux_gb[242] hap[8][13] </args>
+      <args> aux_gb[243] hap[9][13] </args>
+      <args> aux_gb[244] hap[10][13] </args>
+      <args> aux_gb[245] hap[11][13] </args>
+      <args> aux_gb[246] hap[12][13] </args>
+      <args> aux_gb[247] hap[13][13] </args>
+      <args> aux_gb[248] hap[0][14] </args>
+      <args> aux_gb[249] hap[1][14] </args>
+      <args> aux_gb[250] hap[2][14] </args>
+      <args> aux_gb[251] hap[3][14] </args>
+      <args> aux_gb[252] hap[4][14] </args>
+      <args> aux_gb[253] hap[5][14] </args>
+      <args> aux_gb[254] hap[6][14] </args>
+      <args> aux_gb[255] hap[7][14] </args>
+      <args> aux_gb[256] hap[8][14] </args>
+      <args> aux_gb[257] hap[9][14] </args>
+      <args> aux_gb[258] hap[10][14] </args>
+      <args> aux_gb[259] hap[11][14] </args>
+      <args> aux_gb[260] hap[12][14] </args>
+      <args> aux_gb[261] hap[13][14] </args>
+      <args> aux_gb[262] hap[0][15] </args>
+      <args> aux_gb[263] hap[1][15] </args>
+      <args> aux_gb[264] hap[2][15] </args>
+      <args> aux_gb[265] hap[3][15] </args>
+      <args> aux_gb[266] hap[4][15] </args>
+      <args> aux_gb[267] hap[5][15] </args>
+      <args> aux_gb[268] hap[6][15] </args>
+      <args> aux_gb[269] hap[7][15] </args>
+      <args> aux_gb[270] hap[8][15] </args>
+      <args> aux_gb[271] hap[9][15] </args>
+      <args> aux_gb[272] hap[10][15] </args>
+      <args> aux_gb[273] hap[11][15] </args>
+      <args> aux_gb[274] hap[12][15] </args>
+      <args> aux_gb[275] hap[13][15] </args>
+      <args> aux_gb[276] hap[0][16] </args>
+      <args> aux_gb[277] hap[1][16] </args>
+      <args> aux_gb[278] hap[2][16] </args>
+      <args> aux_gb[279] hap[3][16] </args>
+      <args> aux_gb[280] hap[4][16] </args>
+      <args> aux_gb[281] hap[5][16] </args>
+      <args> aux_gb[282] hap[6][16] </args>
+      <args> aux_gb[283] hap[7][16] </args>
+      <args> aux_gb[284] hap[8][16] </args>
+      <args> aux_gb[285] hap[9][16] </args>
+      <args> aux_gb[286] hap[10][16] </args>
+      <args> aux_gb[287] hap[11][16] </args>
+      <args> aux_gb[288] hap[12][16] </args>
+      <args> aux_gb[289] hap[13][16] </args>
+      <args> aux_gb[290] hap[0][17] </args>
+      <args> aux_gb[291] hap[1][17] </args>
+      <args> aux_gb[292] hap[2][17] </args>
+      <args> aux_gb[293] hap[3][17] </args>
+      <args> aux_gb[294] hap[4][17] </args>
+      <args> aux_gb[295] hap[5][17] </args>
+      <args> aux_gb[296] hap[6][17] </args>
+      <args> aux_gb[297] hap[7][17] </args>
+      <args> aux_gb[298] hap[8][17] </args>
+      <args> aux_gb[299] hap[9][17] </args>
+      <args> aux_gb[300] hap[10][17] </args>
+      <args> aux_gb[301] hap[11][17] </args>
+      <args> aux_gb[302] hap[12][17] </args>
+      <args> aux_gb[303] hap[13][17] </args>
+      <args> aux_gb[304] hap[0][18] </args>
+      <args> aux_gb[305] hap[1][18] </args>
+      <args> aux_gb[306] hap[2][18] </args>
+      <args> aux_gb[307] hap[3][18] </args>
+      <args> aux_gb[308] hap[4][18] </args>
+      <args> aux_gb[309] hap[5][18] </args>
+      <args> aux_gb[310] hap[6][18] </args>
+      <args> aux_gb[311] hap[7][18] </args>
+      <args> aux_gb[312] hap[8][18] </args>
+      <args> aux_gb[313] hap[9][18] </args>
+      <args> aux_gb[314] hap[10][18] </args>
+      <args> aux_gb[315] hap[11][18] </args>
+      <args> aux_gb[316] hap[12][18] </args>
+      <args> aux_gb[317] hap[13][18] </args>
+      <args> aux_gb[318] hap[0][19] </args>
+      <args> aux_gb[319] hap[1][19] </args>
+      <args> aux_gb[320] hap[2][19] </args>
+      <args> aux_gb[321] hap[3][19] </args>
+      <args> aux_gb[322] hap[4][19] </args>
+      <args> aux_gb[323] hap[5][19] </args>
+      <args> aux_gb[324] hap[6][19] </args>
+      <args> aux_gb[325] hap[7][19] </args>
+      <args> aux_gb[326] hap[8][19] </args>
+      <args> aux_gb[327] hap[9][19] </args>
+      <args> aux_gb[328] hap[10][19] </args>
+      <args> aux_gb[329] hap[11][19] </args>
+      <args> aux_gb[330] hap[12][19] </args>
+      <args> aux_gb[331] hap[13][19] </args>
+    </group>
+    <group note="AVR rule (1) (8)">
+      <allDifferent> %... </allDifferent>
+      <args> add(mul(3,contestant[0][0]),hap[0][0]) add(mul(3,contestant[0][1]),hap[0][1]) add(mul(3,contestant[0][2]),hap[0][2]) add(mul(3,contestant[0][3]),hap[0][3]) add(mul(3,contestant[0][4]),hap[0][4]) add(mul(3,contestant[0][5]),hap[0][5]) add(mul(3,contestant[0][6]),hap[0][6]) add(mul(3,contestant[0][7]),hap[0][7]) add(mul(3,contestant[0][8]),hap[0][8]) add(mul(3,contestant[0][9]),hap[0][9]) add(mul(3,contestant[0][10]),hap[0][10]) add(mul(3,contestant[0][11]),hap[0][11]) add(mul(3,contestant[0][12]),hap[0][12]) add(mul(3,contestant[0][13]),hap[0][13]) add(mul(3,contestant[0][14]),hap[0][14]) add(mul(3,contestant[0][15]),hap[0][15]) add(mul(3,contestant[0][16]),hap[0][16]) add(mul(3,contestant[0][17]),hap[0][17]) add(mul(3,contestant[0][18]),hap[0][18]) add(mul(3,contestant[0][19]),hap[0][19]) </args>
+      <args> add(mul(3,contestant[1][0]),hap[1][0]) add(mul(3,contestant[1][1]),hap[1][1]) add(mul(3,contestant[1][2]),hap[1][2]) add(mul(3,contestant[1][3]),hap[1][3]) add(mul(3,contestant[1][4]),hap[1][4]) add(mul(3,contestant[1][5]),hap[1][5]) add(mul(3,contestant[1][6]),hap[1][6]) add(mul(3,contestant[1][7]),hap[1][7]) add(mul(3,contestant[1][8]),hap[1][8]) add(mul(3,contestant[1][9]),hap[1][9]) add(mul(3,contestant[1][10]),hap[1][10]) add(mul(3,contestant[1][11]),hap[1][11]) add(mul(3,contestant[1][12]),hap[1][12]) add(mul(3,contestant[1][13]),hap[1][13]) add(mul(3,contestant[1][14]),hap[1][14]) add(mul(3,contestant[1][15]),hap[1][15]) add(mul(3,contestant[1][16]),hap[1][16]) add(mul(3,contestant[1][17]),hap[1][17]) add(mul(3,contestant[1][18]),hap[1][18]) add(mul(3,contestant[1][19]),hap[1][19]) </args>
+      <args> add(mul(3,contestant[2][0]),hap[2][0]) add(mul(3,contestant[2][1]),hap[2][1]) add(mul(3,contestant[2][2]),hap[2][2]) add(mul(3,contestant[2][3]),hap[2][3]) add(mul(3,contestant[2][4]),hap[2][4]) add(mul(3,contestant[2][5]),hap[2][5]) add(mul(3,contestant[2][6]),hap[2][6]) add(mul(3,contestant[2][7]),hap[2][7]) add(mul(3,contestant[2][8]),hap[2][8]) add(mul(3,contestant[2][9]),hap[2][9]) add(mul(3,contestant[2][10]),hap[2][10]) add(mul(3,contestant[2][11]),hap[2][11]) add(mul(3,contestant[2][12]),hap[2][12]) add(mul(3,contestant[2][13]),hap[2][13]) add(mul(3,contestant[2][14]),hap[2][14]) add(mul(3,contestant[2][15]),hap[2][15]) add(mul(3,contestant[2][16]),hap[2][16]) add(mul(3,contestant[2][17]),hap[2][17]) add(mul(3,contestant[2][18]),hap[2][18]) add(mul(3,contestant[2][19]),hap[2][19]) </args>
+      <args> add(mul(3,contestant[3][0]),hap[3][0]) add(mul(3,contestant[3][1]),hap[3][1]) add(mul(3,contestant[3][2]),hap[3][2]) add(mul(3,contestant[3][3]),hap[3][3]) add(mul(3,contestant[3][4]),hap[3][4]) add(mul(3,contestant[3][5]),hap[3][5]) add(mul(3,contestant[3][6]),hap[3][6]) add(mul(3,contestant[3][7]),hap[3][7]) add(mul(3,contestant[3][8]),hap[3][8]) add(mul(3,contestant[3][9]),hap[3][9]) add(mul(3,contestant[3][10]),hap[3][10]) add(mul(3,contestant[3][11]),hap[3][11]) add(mul(3,contestant[3][12]),hap[3][12]) add(mul(3,contestant[3][13]),hap[3][13]) add(mul(3,contestant[3][14]),hap[3][14]) add(mul(3,contestant[3][15]),hap[3][15]) add(mul(3,contestant[3][16]),hap[3][16]) add(mul(3,contestant[3][17]),hap[3][17]) add(mul(3,contestant[3][18]),hap[3][18]) add(mul(3,contestant[3][19]),hap[3][19]) </args>
+      <args> add(mul(3,contestant[4][0]),hap[4][0]) add(mul(3,contestant[4][1]),hap[4][1]) add(mul(3,contestant[4][2]),hap[4][2]) add(mul(3,contestant[4][3]),hap[4][3]) add(mul(3,contestant[4][4]),hap[4][4]) add(mul(3,contestant[4][5]),hap[4][5]) add(mul(3,contestant[4][6]),hap[4][6]) add(mul(3,contestant[4][7]),hap[4][7]) add(mul(3,contestant[4][8]),hap[4][8]) add(mul(3,contestant[4][9]),hap[4][9]) add(mul(3,contestant[4][10]),hap[4][10]) add(mul(3,contestant[4][11]),hap[4][11]) add(mul(3,contestant[4][12]),hap[4][12]) add(mul(3,contestant[4][13]),hap[4][13]) add(mul(3,contestant[4][14]),hap[4][14]) add(mul(3,contestant[4][15]),hap[4][15]) add(mul(3,contestant[4][16]),hap[4][16]) add(mul(3,contestant[4][17]),hap[4][17]) add(mul(3,contestant[4][18]),hap[4][18]) add(mul(3,contestant[4][19]),hap[4][19]) </args>
+      <args> add(mul(3,contestant[5][0]),hap[5][0]) add(mul(3,contestant[5][1]),hap[5][1]) add(mul(3,contestant[5][2]),hap[5][2]) add(mul(3,contestant[5][3]),hap[5][3]) add(mul(3,contestant[5][4]),hap[5][4]) add(mul(3,contestant[5][5]),hap[5][5]) add(mul(3,contestant[5][6]),hap[5][6]) add(mul(3,contestant[5][7]),hap[5][7]) add(mul(3,contestant[5][8]),hap[5][8]) add(mul(3,contestant[5][9]),hap[5][9]) add(mul(3,contestant[5][10]),hap[5][10]) add(mul(3,contestant[5][11]),hap[5][11]) add(mul(3,contestant[5][12]),hap[5][12]) add(mul(3,contestant[5][13]),hap[5][13]) add(mul(3,contestant[5][14]),hap[5][14]) add(mul(3,contestant[5][15]),hap[5][15]) add(mul(3,contestant[5][16]),hap[5][16]) add(mul(3,contestant[5][17]),hap[5][17]) add(mul(3,contestant[5][18]),hap[5][18]) add(mul(3,contestant[5][19]),hap[5][19]) </args>
+      <args> add(mul(3,contestant[6][0]),hap[6][0]) add(mul(3,contestant[6][1]),hap[6][1]) add(mul(3,contestant[6][2]),hap[6][2]) add(mul(3,contestant[6][3]),hap[6][3]) add(mul(3,contestant[6][4]),hap[6][4]) add(mul(3,contestant[6][5]),hap[6][5]) add(mul(3,contestant[6][6]),hap[6][6]) add(mul(3,contestant[6][7]),hap[6][7]) add(mul(3,contestant[6][8]),hap[6][8]) add(mul(3,contestant[6][9]),hap[6][9]) add(mul(3,contestant[6][10]),hap[6][10]) add(mul(3,contestant[6][11]),hap[6][11]) add(mul(3,contestant[6][12]),hap[6][12]) add(mul(3,contestant[6][13]),hap[6][13]) add(mul(3,contestant[6][14]),hap[6][14]) add(mul(3,contestant[6][15]),hap[6][15]) add(mul(3,contestant[6][16]),hap[6][16]) add(mul(3,contestant[6][17]),hap[6][17]) add(mul(3,contestant[6][18]),hap[6][18]) add(mul(3,contestant[6][19]),hap[6][19]) </args>
+      <args> add(mul(3,contestant[7][0]),hap[7][0]) add(mul(3,contestant[7][1]),hap[7][1]) add(mul(3,contestant[7][2]),hap[7][2]) add(mul(3,contestant[7][3]),hap[7][3]) add(mul(3,contestant[7][4]),hap[7][4]) add(mul(3,contestant[7][5]),hap[7][5]) add(mul(3,contestant[7][6]),hap[7][6]) add(mul(3,contestant[7][7]),hap[7][7]) add(mul(3,contestant[7][8]),hap[7][8]) add(mul(3,contestant[7][9]),hap[7][9]) add(mul(3,contestant[7][10]),hap[7][10]) add(mul(3,contestant[7][11]),hap[7][11]) add(mul(3,contestant[7][12]),hap[7][12]) add(mul(3,contestant[7][13]),hap[7][13]) add(mul(3,contestant[7][14]),hap[7][14]) add(mul(3,contestant[7][15]),hap[7][15]) add(mul(3,contestant[7][16]),hap[7][16]) add(mul(3,contestant[7][17]),hap[7][17]) add(mul(3,contestant[7][18]),hap[7][18]) add(mul(3,contestant[7][19]),hap[7][19]) </args>
+      <args> add(mul(3,contestant[8][0]),hap[8][0]) add(mul(3,contestant[8][1]),hap[8][1]) add(mul(3,contestant[8][2]),hap[8][2]) add(mul(3,contestant[8][3]),hap[8][3]) add(mul(3,contestant[8][4]),hap[8][4]) add(mul(3,contestant[8][5]),hap[8][5]) add(mul(3,contestant[8][6]),hap[8][6]) add(mul(3,contestant[8][7]),hap[8][7]) add(mul(3,contestant[8][8]),hap[8][8]) add(mul(3,contestant[8][9]),hap[8][9]) add(mul(3,contestant[8][10]),hap[8][10]) add(mul(3,contestant[8][11]),hap[8][11]) add(mul(3,contestant[8][12]),hap[8][12]) add(mul(3,contestant[8][13]),hap[8][13]) add(mul(3,contestant[8][14]),hap[8][14]) add(mul(3,contestant[8][15]),hap[8][15]) add(mul(3,contestant[8][16]),hap[8][16]) add(mul(3,contestant[8][17]),hap[8][17]) add(mul(3,contestant[8][18]),hap[8][18]) add(mul(3,contestant[8][19]),hap[8][19]) </args>
+      <args> add(mul(3,contestant[9][0]),hap[9][0]) add(mul(3,contestant[9][1]),hap[9][1]) add(mul(3,contestant[9][2]),hap[9][2]) add(mul(3,contestant[9][3]),hap[9][3]) add(mul(3,contestant[9][4]),hap[9][4]) add(mul(3,contestant[9][5]),hap[9][5]) add(mul(3,contestant[9][6]),hap[9][6]) add(mul(3,contestant[9][7]),hap[9][7]) add(mul(3,contestant[9][8]),hap[9][8]) add(mul(3,contestant[9][9]),hap[9][9]) add(mul(3,contestant[9][10]),hap[9][10]) add(mul(3,contestant[9][11]),hap[9][11]) add(mul(3,contestant[9][12]),hap[9][12]) add(mul(3,contestant[9][13]),hap[9][13]) add(mul(3,contestant[9][14]),hap[9][14]) add(mul(3,contestant[9][15]),hap[9][15]) add(mul(3,contestant[9][16]),hap[9][16]) add(mul(3,contestant[9][17]),hap[9][17]) add(mul(3,contestant[9][18]),hap[9][18]) add(mul(3,contestant[9][19]),hap[9][19]) </args>
+      <args> add(mul(3,contestant[10][0]),hap[10][0]) add(mul(3,contestant[10][1]),hap[10][1]) add(mul(3,contestant[10][2]),hap[10][2]) add(mul(3,contestant[10][3]),hap[10][3]) add(mul(3,contestant[10][4]),hap[10][4]) add(mul(3,contestant[10][5]),hap[10][5]) add(mul(3,contestant[10][6]),hap[10][6]) add(mul(3,contestant[10][7]),hap[10][7]) add(mul(3,contestant[10][8]),hap[10][8]) add(mul(3,contestant[10][9]),hap[10][9]) add(mul(3,contestant[10][10]),hap[10][10]) add(mul(3,contestant[10][11]),hap[10][11]) add(mul(3,contestant[10][12]),hap[10][12]) add(mul(3,contestant[10][13]),hap[10][13]) add(mul(3,contestant[10][14]),hap[10][14]) add(mul(3,contestant[10][15]),hap[10][15]) add(mul(3,contestant[10][16]),hap[10][16]) add(mul(3,contestant[10][17]),hap[10][17]) add(mul(3,contestant[10][18]),hap[10][18]) add(mul(3,contestant[10][19]),hap[10][19]) </args>
+      <args> add(mul(3,contestant[11][0]),hap[11][0]) add(mul(3,contestant[11][1]),hap[11][1]) add(mul(3,contestant[11][2]),hap[11][2]) add(mul(3,contestant[11][3]),hap[11][3]) add(mul(3,contestant[11][4]),hap[11][4]) add(mul(3,contestant[11][5]),hap[11][5]) add(mul(3,contestant[11][6]),hap[11][6]) add(mul(3,contestant[11][7]),hap[11][7]) add(mul(3,contestant[11][8]),hap[11][8]) add(mul(3,contestant[11][9]),hap[11][9]) add(mul(3,contestant[11][10]),hap[11][10]) add(mul(3,contestant[11][11]),hap[11][11]) add(mul(3,contestant[11][12]),hap[11][12]) add(mul(3,contestant[11][13]),hap[11][13]) add(mul(3,contestant[11][14]),hap[11][14]) add(mul(3,contestant[11][15]),hap[11][15]) add(mul(3,contestant[11][16]),hap[11][16]) add(mul(3,contestant[11][17]),hap[11][17]) add(mul(3,contestant[11][18]),hap[11][18]) add(mul(3,contestant[11][19]),hap[11][19]) </args>
+      <args> add(mul(3,contestant[12][0]),hap[12][0]) add(mul(3,contestant[12][1]),hap[12][1]) add(mul(3,contestant[12][2]),hap[12][2]) add(mul(3,contestant[12][3]),hap[12][3]) add(mul(3,contestant[12][4]),hap[12][4]) add(mul(3,contestant[12][5]),hap[12][5]) add(mul(3,contestant[12][6]),hap[12][6]) add(mul(3,contestant[12][7]),hap[12][7]) add(mul(3,contestant[12][8]),hap[12][8]) add(mul(3,contestant[12][9]),hap[12][9]) add(mul(3,contestant[12][10]),hap[12][10]) add(mul(3,contestant[12][11]),hap[12][11]) add(mul(3,contestant[12][12]),hap[12][12]) add(mul(3,contestant[12][13]),hap[12][13]) add(mul(3,contestant[12][14]),hap[12][14]) add(mul(3,contestant[12][15]),hap[12][15]) add(mul(3,contestant[12][16]),hap[12][16]) add(mul(3,contestant[12][17]),hap[12][17]) add(mul(3,contestant[12][18]),hap[12][18]) add(mul(3,contestant[12][19]),hap[12][19]) </args>
+      <args> add(mul(3,contestant[13][0]),hap[13][0]) add(mul(3,contestant[13][1]),hap[13][1]) add(mul(3,contestant[13][2]),hap[13][2]) add(mul(3,contestant[13][3]),hap[13][3]) add(mul(3,contestant[13][4]),hap[13][4]) add(mul(3,contestant[13][5]),hap[13][5]) add(mul(3,contestant[13][6]),hap[13][6]) add(mul(3,contestant[13][7]),hap[13][7]) add(mul(3,contestant[13][8]),hap[13][8]) add(mul(3,contestant[13][9]),hap[13][9]) add(mul(3,contestant[13][10]),hap[13][10]) add(mul(3,contestant[13][11]),hap[13][11]) add(mul(3,contestant[13][12]),hap[13][12]) add(mul(3,contestant[13][13]),hap[13][13]) add(mul(3,contestant[13][14]),hap[13][14]) add(mul(3,contestant[13][15]),hap[13][15]) add(mul(3,contestant[13][16]),hap[13][16]) add(mul(3,contestant[13][17]),hap[13][17]) add(mul(3,contestant[13][18]),hap[13][18]) add(mul(3,contestant[13][19]),hap[13][19]) </args>
+    </group>
+    <group note="channel contestant &lt; ---&gt; hap(3)">
+      <intension> iff(eq(%0,%1),eq(%2,2)) </intension>
+      <args> contestant[0][0] 0 hap[0][0] </args>
+      <args> contestant[0][1] 0 hap[0][1] </args>
+      <args> contestant[0][2] 0 hap[0][2] </args>
+      <args> contestant[0][3] 0 hap[0][3] </args>
+      <args> contestant[0][4] 0 hap[0][4] </args>
+      <args> contestant[0][5] 0 hap[0][5] </args>
+      <args> contestant[0][6] 0 hap[0][6] </args>
+      <args> contestant[0][7] 0 hap[0][7] </args>
+      <args> contestant[0][8] 0 hap[0][8] </args>
+      <args> contestant[0][9] 0 hap[0][9] </args>
+      <args> contestant[0][10] 0 hap[0][10] </args>
+      <args> contestant[0][11] 0 hap[0][11] </args>
+      <args> contestant[0][12] 0 hap[0][12] </args>
+      <args> contestant[0][13] 0 hap[0][13] </args>
+      <args> contestant[0][14] 0 hap[0][14] </args>
+      <args> contestant[0][15] 0 hap[0][15] </args>
+      <args> contestant[0][16] 0 hap[0][16] </args>
+      <args> contestant[0][17] 0 hap[0][17] </args>
+      <args> contestant[0][18] 0 hap[0][18] </args>
+      <args> contestant[0][19] 0 hap[0][19] </args>
+      <args> contestant[1][0] 1 hap[1][0] </args>
+      <args> contestant[1][1] 1 hap[1][1] </args>
+      <args> contestant[1][2] 1 hap[1][2] </args>
+      <args> contestant[1][3] 1 hap[1][3] </args>
+      <args> contestant[1][4] 1 hap[1][4] </args>
+      <args> contestant[1][5] 1 hap[1][5] </args>
+      <args> contestant[1][6] 1 hap[1][6] </args>
+      <args> contestant[1][7] 1 hap[1][7] </args>
+      <args> contestant[1][8] 1 hap[1][8] </args>
+      <args> contestant[1][9] 1 hap[1][9] </args>
+      <args> contestant[1][10] 1 hap[1][10] </args>
+      <args> contestant[1][11] 1 hap[1][11] </args>
+      <args> contestant[1][12] 1 hap[1][12] </args>
+      <args> contestant[1][13] 1 hap[1][13] </args>
+      <args> contestant[1][14] 1 hap[1][14] </args>
+      <args> contestant[1][15] 1 hap[1][15] </args>
+      <args> contestant[1][16] 1 hap[1][16] </args>
+      <args> contestant[1][17] 1 hap[1][17] </args>
+      <args> contestant[1][18] 1 hap[1][18] </args>
+      <args> contestant[1][19] 1 hap[1][19] </args>
+      <args> contestant[2][0] 2 hap[2][0] </args>
+      <args> contestant[2][1] 2 hap[2][1] </args>
+      <args> contestant[2][2] 2 hap[2][2] </args>
+      <args> contestant[2][3] 2 hap[2][3] </args>
+      <args> contestant[2][4] 2 hap[2][4] </args>
+      <args> contestant[2][5] 2 hap[2][5] </args>
+      <args> contestant[2][6] 2 hap[2][6] </args>
+      <args> contestant[2][7] 2 hap[2][7] </args>
+      <args> contestant[2][8] 2 hap[2][8] </args>
+      <args> contestant[2][9] 2 hap[2][9] </args>
+      <args> contestant[2][10] 2 hap[2][10] </args>
+      <args> contestant[2][11] 2 hap[2][11] </args>
+      <args> contestant[2][12] 2 hap[2][12] </args>
+      <args> contestant[2][13] 2 hap[2][13] </args>
+      <args> contestant[2][14] 2 hap[2][14] </args>
+      <args> contestant[2][15] 2 hap[2][15] </args>
+      <args> contestant[2][16] 2 hap[2][16] </args>
+      <args> contestant[2][17] 2 hap[2][17] </args>
+      <args> contestant[2][18] 2 hap[2][18] </args>
+      <args> contestant[2][19] 2 hap[2][19] </args>
+      <args> contestant[3][0] 3 hap[3][0] </args>
+      <args> contestant[3][1] 3 hap[3][1] </args>
+      <args> contestant[3][2] 3 hap[3][2] </args>
+      <args> contestant[3][3] 3 hap[3][3] </args>
+      <args> contestant[3][4] 3 hap[3][4] </args>
+      <args> contestant[3][5] 3 hap[3][5] </args>
+      <args> contestant[3][6] 3 hap[3][6] </args>
+      <args> contestant[3][7] 3 hap[3][7] </args>
+      <args> contestant[3][8] 3 hap[3][8] </args>
+      <args> contestant[3][9] 3 hap[3][9] </args>
+      <args> contestant[3][10] 3 hap[3][10] </args>
+      <args> contestant[3][11] 3 hap[3][11] </args>
+      <args> contestant[3][12] 3 hap[3][12] </args>
+      <args> contestant[3][13] 3 hap[3][13] </args>
+      <args> contestant[3][14] 3 hap[3][14] </args>
+      <args> contestant[3][15] 3 hap[3][15] </args>
+      <args> contestant[3][16] 3 hap[3][16] </args>
+      <args> contestant[3][17] 3 hap[3][17] </args>
+      <args> contestant[3][18] 3 hap[3][18] </args>
+      <args> contestant[3][19] 3 hap[3][19] </args>
+      <args> contestant[4][0] 4 hap[4][0] </args>
+      <args> contestant[4][1] 4 hap[4][1] </args>
+      <args> contestant[4][2] 4 hap[4][2] </args>
+      <args> contestant[4][3] 4 hap[4][3] </args>
+      <args> contestant[4][4] 4 hap[4][4] </args>
+      <args> contestant[4][5] 4 hap[4][5] </args>
+      <args> contestant[4][6] 4 hap[4][6] </args>
+      <args> contestant[4][7] 4 hap[4][7] </args>
+      <args> contestant[4][8] 4 hap[4][8] </args>
+      <args> contestant[4][9] 4 hap[4][9] </args>
+      <args> contestant[4][10] 4 hap[4][10] </args>
+      <args> contestant[4][11] 4 hap[4][11] </args>
+      <args> contestant[4][12] 4 hap[4][12] </args>
+      <args> contestant[4][13] 4 hap[4][13] </args>
+      <args> contestant[4][14] 4 hap[4][14] </args>
+      <args> contestant[4][15] 4 hap[4][15] </args>
+      <args> contestant[4][16] 4 hap[4][16] </args>
+      <args> contestant[4][17] 4 hap[4][17] </args>
+      <args> contestant[4][18] 4 hap[4][18] </args>
+      <args> contestant[4][19] 4 hap[4][19] </args>
+      <args> contestant[5][0] 5 hap[5][0] </args>
+      <args> contestant[5][1] 5 hap[5][1] </args>
+      <args> contestant[5][2] 5 hap[5][2] </args>
+      <args> contestant[5][3] 5 hap[5][3] </args>
+      <args> contestant[5][4] 5 hap[5][4] </args>
+      <args> contestant[5][5] 5 hap[5][5] </args>
+      <args> contestant[5][6] 5 hap[5][6] </args>
+      <args> contestant[5][7] 5 hap[5][7] </args>
+      <args> contestant[5][8] 5 hap[5][8] </args>
+      <args> contestant[5][9] 5 hap[5][9] </args>
+      <args> contestant[5][10] 5 hap[5][10] </args>
+      <args> contestant[5][11] 5 hap[5][11] </args>
+      <args> contestant[5][12] 5 hap[5][12] </args>
+      <args> contestant[5][13] 5 hap[5][13] </args>
+      <args> contestant[5][14] 5 hap[5][14] </args>
+      <args> contestant[5][15] 5 hap[5][15] </args>
+      <args> contestant[5][16] 5 hap[5][16] </args>
+      <args> contestant[5][17] 5 hap[5][17] </args>
+      <args> contestant[5][18] 5 hap[5][18] </args>
+      <args> contestant[5][19] 5 hap[5][19] </args>
+      <args> contestant[6][0] 6 hap[6][0] </args>
+      <args> contestant[6][1] 6 hap[6][1] </args>
+      <args> contestant[6][2] 6 hap[6][2] </args>
+      <args> contestant[6][3] 6 hap[6][3] </args>
+      <args> contestant[6][4] 6 hap[6][4] </args>
+      <args> contestant[6][5] 6 hap[6][5] </args>
+      <args> contestant[6][6] 6 hap[6][6] </args>
+      <args> contestant[6][7] 6 hap[6][7] </args>
+      <args> contestant[6][8] 6 hap[6][8] </args>
+      <args> contestant[6][9] 6 hap[6][9] </args>
+      <args> contestant[6][10] 6 hap[6][10] </args>
+      <args> contestant[6][11] 6 hap[6][11] </args>
+      <args> contestant[6][12] 6 hap[6][12] </args>
+      <args> contestant[6][13] 6 hap[6][13] </args>
+      <args> contestant[6][14] 6 hap[6][14] </args>
+      <args> contestant[6][15] 6 hap[6][15] </args>
+      <args> contestant[6][16] 6 hap[6][16] </args>
+      <args> contestant[6][17] 6 hap[6][17] </args>
+      <args> contestant[6][18] 6 hap[6][18] </args>
+      <args> contestant[6][19] 6 hap[6][19] </args>
+      <args> contestant[7][0] 7 hap[7][0] </args>
+      <args> contestant[7][1] 7 hap[7][1] </args>
+      <args> contestant[7][2] 7 hap[7][2] </args>
+      <args> contestant[7][3] 7 hap[7][3] </args>
+      <args> contestant[7][4] 7 hap[7][4] </args>
+      <args> contestant[7][5] 7 hap[7][5] </args>
+      <args> contestant[7][6] 7 hap[7][6] </args>
+      <args> contestant[7][7] 7 hap[7][7] </args>
+      <args> contestant[7][8] 7 hap[7][8] </args>
+      <args> contestant[7][9] 7 hap[7][9] </args>
+      <args> contestant[7][10] 7 hap[7][10] </args>
+      <args> contestant[7][11] 7 hap[7][11] </args>
+      <args> contestant[7][12] 7 hap[7][12] </args>
+      <args> contestant[7][13] 7 hap[7][13] </args>
+      <args> contestant[7][14] 7 hap[7][14] </args>
+      <args> contestant[7][15] 7 hap[7][15] </args>
+      <args> contestant[7][16] 7 hap[7][16] </args>
+      <args> contestant[7][17] 7 hap[7][17] </args>
+      <args> contestant[7][18] 7 hap[7][18] </args>
+      <args> contestant[7][19] 7 hap[7][19] </args>
+      <args> contestant[8][0] 8 hap[8][0] </args>
+      <args> contestant[8][1] 8 hap[8][1] </args>
+      <args> contestant[8][2] 8 hap[8][2] </args>
+      <args> contestant[8][3] 8 hap[8][3] </args>
+      <args> contestant[8][4] 8 hap[8][4] </args>
+      <args> contestant[8][5] 8 hap[8][5] </args>
+      <args> contestant[8][6] 8 hap[8][6] </args>
+      <args> contestant[8][7] 8 hap[8][7] </args>
+      <args> contestant[8][8] 8 hap[8][8] </args>
+      <args> contestant[8][9] 8 hap[8][9] </args>
+      <args> contestant[8][10] 8 hap[8][10] </args>
+      <args> contestant[8][11] 8 hap[8][11] </args>
+      <args> contestant[8][12] 8 hap[8][12] </args>
+      <args> contestant[8][13] 8 hap[8][13] </args>
+      <args> contestant[8][14] 8 hap[8][14] </args>
+      <args> contestant[8][15] 8 hap[8][15] </args>
+      <args> contestant[8][16] 8 hap[8][16] </args>
+      <args> contestant[8][17] 8 hap[8][17] </args>
+      <args> contestant[8][18] 8 hap[8][18] </args>
+      <args> contestant[8][19] 8 hap[8][19] </args>
+      <args> contestant[9][0] 9 hap[9][0] </args>
+      <args> contestant[9][1] 9 hap[9][1] </args>
+      <args> contestant[9][2] 9 hap[9][2] </args>
+      <args> contestant[9][3] 9 hap[9][3] </args>
+      <args> contestant[9][4] 9 hap[9][4] </args>
+      <args> contestant[9][5] 9 hap[9][5] </args>
+      <args> contestant[9][6] 9 hap[9][6] </args>
+      <args> contestant[9][7] 9 hap[9][7] </args>
+      <args> contestant[9][8] 9 hap[9][8] </args>
+      <args> contestant[9][9] 9 hap[9][9] </args>
+      <args> contestant[9][10] 9 hap[9][10] </args>
+      <args> contestant[9][11] 9 hap[9][11] </args>
+      <args> contestant[9][12] 9 hap[9][12] </args>
+      <args> contestant[9][13] 9 hap[9][13] </args>
+      <args> contestant[9][14] 9 hap[9][14] </args>
+      <args> contestant[9][15] 9 hap[9][15] </args>
+      <args> contestant[9][16] 9 hap[9][16] </args>
+      <args> contestant[9][17] 9 hap[9][17] </args>
+      <args> contestant[9][18] 9 hap[9][18] </args>
+      <args> contestant[9][19] 9 hap[9][19] </args>
+      <args> contestant[10][0] 10 hap[10][0] </args>
+      <args> contestant[10][1] 10 hap[10][1] </args>
+      <args> contestant[10][2] 10 hap[10][2] </args>
+      <args> contestant[10][3] 10 hap[10][3] </args>
+      <args> contestant[10][4] 10 hap[10][4] </args>
+      <args> contestant[10][5] 10 hap[10][5] </args>
+      <args> contestant[10][6] 10 hap[10][6] </args>
+      <args> contestant[10][7] 10 hap[10][7] </args>
+      <args> contestant[10][8] 10 hap[10][8] </args>
+      <args> contestant[10][9] 10 hap[10][9] </args>
+      <args> contestant[10][10] 10 hap[10][10] </args>
+      <args> contestant[10][11] 10 hap[10][11] </args>
+      <args> contestant[10][12] 10 hap[10][12] </args>
+      <args> contestant[10][13] 10 hap[10][13] </args>
+      <args> contestant[10][14] 10 hap[10][14] </args>
+      <args> contestant[10][15] 10 hap[10][15] </args>
+      <args> contestant[10][16] 10 hap[10][16] </args>
+      <args> contestant[10][17] 10 hap[10][17] </args>
+      <args> contestant[10][18] 10 hap[10][18] </args>
+      <args> contestant[10][19] 10 hap[10][19] </args>
+      <args> contestant[11][0] 11 hap[11][0] </args>
+      <args> contestant[11][1] 11 hap[11][1] </args>
+      <args> contestant[11][2] 11 hap[11][2] </args>
+      <args> contestant[11][3] 11 hap[11][3] </args>
+      <args> contestant[11][4] 11 hap[11][4] </args>
+      <args> contestant[11][5] 11 hap[11][5] </args>
+      <args> contestant[11][6] 11 hap[11][6] </args>
+      <args> contestant[11][7] 11 hap[11][7] </args>
+      <args> contestant[11][8] 11 hap[11][8] </args>
+      <args> contestant[11][9] 11 hap[11][9] </args>
+      <args> contestant[11][10] 11 hap[11][10] </args>
+      <args> contestant[11][11] 11 hap[11][11] </args>
+      <args> contestant[11][12] 11 hap[11][12] </args>
+      <args> contestant[11][13] 11 hap[11][13] </args>
+      <args> contestant[11][14] 11 hap[11][14] </args>
+      <args> contestant[11][15] 11 hap[11][15] </args>
+      <args> contestant[11][16] 11 hap[11][16] </args>
+      <args> contestant[11][17] 11 hap[11][17] </args>
+      <args> contestant[11][18] 11 hap[11][18] </args>
+      <args> contestant[11][19] 11 hap[11][19] </args>
+      <args> contestant[12][0] 12 hap[12][0] </args>
+      <args> contestant[12][1] 12 hap[12][1] </args>
+      <args> contestant[12][2] 12 hap[12][2] </args>
+      <args> contestant[12][3] 12 hap[12][3] </args>
+      <args> contestant[12][4] 12 hap[12][4] </args>
+      <args> contestant[12][5] 12 hap[12][5] </args>
+      <args> contestant[12][6] 12 hap[12][6] </args>
+      <args> contestant[12][7] 12 hap[12][7] </args>
+      <args> contestant[12][8] 12 hap[12][8] </args>
+      <args> contestant[12][9] 12 hap[12][9] </args>
+      <args> contestant[12][10] 12 hap[12][10] </args>
+      <args> contestant[12][11] 12 hap[12][11] </args>
+      <args> contestant[12][12] 12 hap[12][12] </args>
+      <args> contestant[12][13] 12 hap[12][13] </args>
+      <args> contestant[12][14] 12 hap[12][14] </args>
+      <args> contestant[12][15] 12 hap[12][15] </args>
+      <args> contestant[12][16] 12 hap[12][16] </args>
+      <args> contestant[12][17] 12 hap[12][17] </args>
+      <args> contestant[12][18] 12 hap[12][18] </args>
+      <args> contestant[12][19] 12 hap[12][19] </args>
+      <args> contestant[13][0] 13 hap[13][0] </args>
+      <args> contestant[13][1] 13 hap[13][1] </args>
+      <args> contestant[13][2] 13 hap[13][2] </args>
+      <args> contestant[13][3] 13 hap[13][3] </args>
+      <args> contestant[13][4] 13 hap[13][4] </args>
+      <args> contestant[13][5] 13 hap[13][5] </args>
+      <args> contestant[13][6] 13 hap[13][6] </args>
+      <args> contestant[13][7] 13 hap[13][7] </args>
+      <args> contestant[13][8] 13 hap[13][8] </args>
+      <args> contestant[13][9] 13 hap[13][9] </args>
+      <args> contestant[13][10] 13 hap[13][10] </args>
+      <args> contestant[13][11] 13 hap[13][11] </args>
+      <args> contestant[13][12] 13 hap[13][12] </args>
+      <args> contestant[13][13] 13 hap[13][13] </args>
+      <args> contestant[13][14] 13 hap[13][14] </args>
+      <args> contestant[13][15] 13 hap[13][15] </args>
+      <args> contestant[13][16] 13 hap[13][16] </args>
+      <args> contestant[13][17] 13 hap[13][17] </args>
+      <args> contestant[13][18] 13 hap[13][18] </args>
+      <args> contestant[13][19] 13 hap[13][19] </args>
+    </group>
+    <sum note="exactly six aligned breaks per division (10)">
+      <list> gt(breakk[0],0) gt(breakk[1],0) gt(breakk[2],0) gt(breakk[3],0) gt(breakk[4],0) gt(breakk[5],0) gt(breakk[6],0) </list>
+      <condition> (eq,6) </condition>
+    </sum>
+    <sum>
+      <list> gt(breakk[7],0) gt(breakk[8],0) gt(breakk[9],0) gt(breakk[10],0) gt(breakk[11],0) gt(breakk[12],0) gt(breakk[13],0) </list>
+      <condition> (eq,6) </condition>
+    </sum>
+    <cardinality note="exactly two occurrences of every break period (12)">
+      <list> breakk[] </list>
+      <values> 0 9 11 13 15 17 19 </values>
+      <occurs> 2 2 2 2 2 2 2 </occurs>
+    </cardinality>
+    <instantiation note="SYMMETRY: fix bye period (15)">
+      <list> hap[0][0] hap[1][1] hap[2][2] hap[3][3] hap[4][4] hap[5][5] hap[6][6] </list>
+      <values> 2x7 </values>
+    </instantiation>
+    <instantiation>
+      <list> hap[7][0] hap[8][1] hap[9][2] hap[10][3] hap[11][4] hap[12][5] hap[13][6] </list>
+      <values> 2x7 </values>
+    </instantiation>
+    <group>
+      <intension> eq(%0,and(eq(%1,%2),eq(%3,0))) </intension>
+      <args> cij[0] breakk[0] breakk[1] aux_gb[332] </args>
+      <args> cij[1] breakk[1] breakk[2] aux_gb[333] </args>
+      <args> cij[2] breakk[2] breakk[3] aux_gb[334] </args>
+      <args> cij[3] breakk[3] breakk[4] aux_gb[335] </args>
+      <args> cij[4] breakk[4] breakk[5] aux_gb[336] </args>
+      <args> cij[5] breakk[5] breakk[6] aux_gb[337] </args>
+      <args> cij[7] breakk[7] breakk[8] aux_gb[338] </args>
+      <args> cij[8] breakk[8] breakk[9] aux_gb[339] </args>
+      <args> cij[9] breakk[9] breakk[10] aux_gb[340] </args>
+      <args> cij[10] breakk[10] breakk[11] aux_gb[341] </args>
+      <args> cij[11] breakk[11] breakk[12] aux_gb[342] </args>
+      <args> cij[12] breakk[12] breakk[13] aux_gb[343] </args>
+    </group>
+    <group note="#">
+      <intension> or(%0,%1) </intension>
+      <args> cij[0] cij[1] </args>
+      <args> cij[2] cij[3] </args>
+      <args> cij[4] cij[5] </args>
+      <args> cij[7] cij[8] </args>
+      <args> cij[9] cij[10] </args>
+      <args> cij[11] cij[12] </args>
+    </group>
+    <group note="teams 2, 4, 6, 9, 11, 13 must be complementary with adjacent team (17)">
+      <intension> gt(%0,0) </intension>
+      <args> breakk[1] </args>
+      <args> breakk[3] </args>
+      <args> breakk[5] </args>
+      <args> breakk[8] </args>
+      <args> breakk[10] </args>
+      <args> breakk[12] </args>
+    </group>
+    <group note="1st row and 1st column complementary for each division (18)">
+      <intension> eq(add(%0,%1),4) </intension>
+      <args> hap[0][0] hap[0][0] </args>
+      <args> hap[1][0] hap[0][1] </args>
+      <args> hap[2][0] hap[0][2] </args>
+      <args> hap[3][0] hap[0][3] </args>
+      <args> hap[4][0] hap[0][4] </args>
+      <args> hap[5][0] hap[0][5] </args>
+      <args> hap[6][0] hap[0][6] </args>
+    </group>
+    <group>
+      <intension> eq(add(%0,%1),4) </intension>
+      <args> hap[7][0] hap[7][0] </args>
+      <args> hap[8][0] hap[7][1] </args>
+      <args> hap[9][0] hap[7][2] </args>
+      <args> hap[10][0] hap[7][3] </args>
+      <args> hap[11][0] hap[7][4] </args>
+      <args> hap[12][0] hap[7][5] </args>
+      <args> hap[13][0] hap[7][6] </args>
+    </group>
+    <group>
+      <element>
+        <list> contestant[][3] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> row[7] aux_gb[0] </args>
+      <args> row[10] aux_gb[1] </args>
+      <args> row[13] aux_gb[2] </args>
+    </group>
+    <group>
+      <element>
+        <list> contestant[][8] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> row[0] aux_gb[3] </args>
+      <args> row[1] aux_gb[4] </args>
+      <args> row[3] aux_gb[5] </args>
+    </group>
+    <group>
+      <element>
+        <list> contestant[][17] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> row[2] aux_gb[6] </args>
+      <args> row[8] aux_gb[7] </args>
+      <args> row[9] aux_gb[8] </args>
+      <args> row[11] aux_gb[9] </args>
+    </group>
+    <group>
+      <element>
+        <list> breakk[] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> row[13] aux_gb[10] </args>
+      <args> row[4] aux_gb[11] </args>
+    </group>
+    <group>
+      <element>
+        <list> %... </list>
+        <index> row[13] </index>
+        <value> %0 </value>
+      </element>
+      <args> aux_gb[12] hap[][0] </args>
+      <args> aux_gb[13] hap[][1] </args>
+      <args> aux_gb[14] hap[][2] </args>
+      <args> aux_gb[15] hap[][3] </args>
+      <args> aux_gb[16] hap[][4] </args>
+      <args> aux_gb[17] hap[][5] </args>
+      <args> aux_gb[18] hap[][6] </args>
+      <args> aux_gb[19] hap[][7] </args>
+      <args> aux_gb[20] hap[][8] </args>
+      <args> aux_gb[21] hap[][9] </args>
+      <args> aux_gb[22] hap[][10] </args>
+      <args> aux_gb[23] hap[][11] </args>
+      <args> aux_gb[24] hap[][12] </args>
+      <args> aux_gb[25] hap[][13] </args>
+      <args> aux_gb[26] hap[][14] </args>
+      <args> aux_gb[27] hap[][15] </args>
+      <args> aux_gb[28] hap[][16] </args>
+      <args> aux_gb[29] hap[][17] </args>
+      <args> aux_gb[30] hap[][18] </args>
+      <args> aux_gb[31] hap[][19] </args>
+    </group>
+    <group>
+      <element>
+        <list> %... </list>
+        <index> row[4] </index>
+        <value> %0 </value>
+      </element>
+      <args> aux_gb[32] hap[][0] </args>
+      <args> aux_gb[33] hap[][1] </args>
+      <args> aux_gb[34] hap[][2] </args>
+      <args> aux_gb[35] hap[][3] </args>
+      <args> aux_gb[36] hap[][4] </args>
+      <args> aux_gb[37] hap[][5] </args>
+      <args> aux_gb[38] hap[][6] </args>
+      <args> aux_gb[39] hap[][7] </args>
+      <args> aux_gb[40] hap[][8] </args>
+      <args> aux_gb[41] hap[][9] </args>
+      <args> aux_gb[42] hap[][10] </args>
+      <args> aux_gb[43] hap[][11] </args>
+      <args> aux_gb[44] hap[][12] </args>
+      <args> aux_gb[45] hap[][13] </args>
+      <args> aux_gb[46] hap[][14] </args>
+      <args> aux_gb[47] hap[][15] </args>
+      <args> aux_gb[48] hap[][16] </args>
+      <args> aux_gb[49] hap[][17] </args>
+      <args> aux_gb[50] hap[][18] </args>
+      <args> aux_gb[51] hap[][19] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][0] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][0] aux_gb[52] </args>
+      <args> contestant[1][0] aux_gb[53] </args>
+      <args> contestant[2][0] aux_gb[54] </args>
+      <args> contestant[3][0] aux_gb[55] </args>
+      <args> contestant[4][0] aux_gb[56] </args>
+      <args> contestant[5][0] aux_gb[57] </args>
+      <args> contestant[6][0] aux_gb[58] </args>
+      <args> contestant[7][0] aux_gb[59] </args>
+      <args> contestant[8][0] aux_gb[60] </args>
+      <args> contestant[9][0] aux_gb[61] </args>
+      <args> contestant[10][0] aux_gb[62] </args>
+      <args> contestant[11][0] aux_gb[63] </args>
+      <args> contestant[12][0] aux_gb[64] </args>
+      <args> contestant[13][0] aux_gb[65] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][1] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][1] aux_gb[66] </args>
+      <args> contestant[1][1] aux_gb[67] </args>
+      <args> contestant[2][1] aux_gb[68] </args>
+      <args> contestant[3][1] aux_gb[69] </args>
+      <args> contestant[4][1] aux_gb[70] </args>
+      <args> contestant[5][1] aux_gb[71] </args>
+      <args> contestant[6][1] aux_gb[72] </args>
+      <args> contestant[7][1] aux_gb[73] </args>
+      <args> contestant[8][1] aux_gb[74] </args>
+      <args> contestant[9][1] aux_gb[75] </args>
+      <args> contestant[10][1] aux_gb[76] </args>
+      <args> contestant[11][1] aux_gb[77] </args>
+      <args> contestant[12][1] aux_gb[78] </args>
+      <args> contestant[13][1] aux_gb[79] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][2] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][2] aux_gb[80] </args>
+      <args> contestant[1][2] aux_gb[81] </args>
+      <args> contestant[2][2] aux_gb[82] </args>
+      <args> contestant[3][2] aux_gb[83] </args>
+      <args> contestant[4][2] aux_gb[84] </args>
+      <args> contestant[5][2] aux_gb[85] </args>
+      <args> contestant[6][2] aux_gb[86] </args>
+      <args> contestant[7][2] aux_gb[87] </args>
+      <args> contestant[8][2] aux_gb[88] </args>
+      <args> contestant[9][2] aux_gb[89] </args>
+      <args> contestant[10][2] aux_gb[90] </args>
+      <args> contestant[11][2] aux_gb[91] </args>
+      <args> contestant[12][2] aux_gb[92] </args>
+      <args> contestant[13][2] aux_gb[93] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][3] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][3] aux_gb[94] </args>
+      <args> contestant[1][3] aux_gb[95] </args>
+      <args> contestant[2][3] aux_gb[96] </args>
+      <args> contestant[3][3] aux_gb[97] </args>
+      <args> contestant[4][3] aux_gb[98] </args>
+      <args> contestant[5][3] aux_gb[99] </args>
+      <args> contestant[6][3] aux_gb[100] </args>
+      <args> contestant[7][3] aux_gb[101] </args>
+      <args> contestant[8][3] aux_gb[102] </args>
+      <args> contestant[9][3] aux_gb[103] </args>
+      <args> contestant[10][3] aux_gb[104] </args>
+      <args> contestant[11][3] aux_gb[105] </args>
+      <args> contestant[12][3] aux_gb[106] </args>
+      <args> contestant[13][3] aux_gb[107] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][4] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][4] aux_gb[108] </args>
+      <args> contestant[1][4] aux_gb[109] </args>
+      <args> contestant[2][4] aux_gb[110] </args>
+      <args> contestant[3][4] aux_gb[111] </args>
+      <args> contestant[4][4] aux_gb[112] </args>
+      <args> contestant[5][4] aux_gb[113] </args>
+      <args> contestant[6][4] aux_gb[114] </args>
+      <args> contestant[7][4] aux_gb[115] </args>
+      <args> contestant[8][4] aux_gb[116] </args>
+      <args> contestant[9][4] aux_gb[117] </args>
+      <args> contestant[10][4] aux_gb[118] </args>
+      <args> contestant[11][4] aux_gb[119] </args>
+      <args> contestant[12][4] aux_gb[120] </args>
+      <args> contestant[13][4] aux_gb[121] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][5] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][5] aux_gb[122] </args>
+      <args> contestant[1][5] aux_gb[123] </args>
+      <args> contestant[2][5] aux_gb[124] </args>
+      <args> contestant[3][5] aux_gb[125] </args>
+      <args> contestant[4][5] aux_gb[126] </args>
+      <args> contestant[5][5] aux_gb[127] </args>
+      <args> contestant[6][5] aux_gb[128] </args>
+      <args> contestant[7][5] aux_gb[129] </args>
+      <args> contestant[8][5] aux_gb[130] </args>
+      <args> contestant[9][5] aux_gb[131] </args>
+      <args> contestant[10][5] aux_gb[132] </args>
+      <args> contestant[11][5] aux_gb[133] </args>
+      <args> contestant[12][5] aux_gb[134] </args>
+      <args> contestant[13][5] aux_gb[135] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][6] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][6] aux_gb[136] </args>
+      <args> contestant[1][6] aux_gb[137] </args>
+      <args> contestant[2][6] aux_gb[138] </args>
+      <args> contestant[3][6] aux_gb[139] </args>
+      <args> contestant[4][6] aux_gb[140] </args>
+      <args> contestant[5][6] aux_gb[141] </args>
+      <args> contestant[6][6] aux_gb[142] </args>
+      <args> contestant[7][6] aux_gb[143] </args>
+      <args> contestant[8][6] aux_gb[144] </args>
+      <args> contestant[9][6] aux_gb[145] </args>
+      <args> contestant[10][6] aux_gb[146] </args>
+      <args> contestant[11][6] aux_gb[147] </args>
+      <args> contestant[12][6] aux_gb[148] </args>
+      <args> contestant[13][6] aux_gb[149] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][7] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][7] aux_gb[150] </args>
+      <args> contestant[1][7] aux_gb[151] </args>
+      <args> contestant[2][7] aux_gb[152] </args>
+      <args> contestant[3][7] aux_gb[153] </args>
+      <args> contestant[4][7] aux_gb[154] </args>
+      <args> contestant[5][7] aux_gb[155] </args>
+      <args> contestant[6][7] aux_gb[156] </args>
+      <args> contestant[7][7] aux_gb[157] </args>
+      <args> contestant[8][7] aux_gb[158] </args>
+      <args> contestant[9][7] aux_gb[159] </args>
+      <args> contestant[10][7] aux_gb[160] </args>
+      <args> contestant[11][7] aux_gb[161] </args>
+      <args> contestant[12][7] aux_gb[162] </args>
+      <args> contestant[13][7] aux_gb[163] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][8] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][8] aux_gb[164] </args>
+      <args> contestant[1][8] aux_gb[165] </args>
+      <args> contestant[2][8] aux_gb[166] </args>
+      <args> contestant[3][8] aux_gb[167] </args>
+      <args> contestant[4][8] aux_gb[168] </args>
+      <args> contestant[5][8] aux_gb[169] </args>
+      <args> contestant[6][8] aux_gb[170] </args>
+      <args> contestant[7][8] aux_gb[171] </args>
+      <args> contestant[8][8] aux_gb[172] </args>
+      <args> contestant[9][8] aux_gb[173] </args>
+      <args> contestant[10][8] aux_gb[174] </args>
+      <args> contestant[11][8] aux_gb[175] </args>
+      <args> contestant[12][8] aux_gb[176] </args>
+      <args> contestant[13][8] aux_gb[177] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][9] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][9] aux_gb[178] </args>
+      <args> contestant[1][9] aux_gb[179] </args>
+      <args> contestant[2][9] aux_gb[180] </args>
+      <args> contestant[3][9] aux_gb[181] </args>
+      <args> contestant[4][9] aux_gb[182] </args>
+      <args> contestant[5][9] aux_gb[183] </args>
+      <args> contestant[6][9] aux_gb[184] </args>
+      <args> contestant[7][9] aux_gb[185] </args>
+      <args> contestant[8][9] aux_gb[186] </args>
+      <args> contestant[9][9] aux_gb[187] </args>
+      <args> contestant[10][9] aux_gb[188] </args>
+      <args> contestant[11][9] aux_gb[189] </args>
+      <args> contestant[12][9] aux_gb[190] </args>
+      <args> contestant[13][9] aux_gb[191] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][10] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][10] aux_gb[192] </args>
+      <args> contestant[1][10] aux_gb[193] </args>
+      <args> contestant[2][10] aux_gb[194] </args>
+      <args> contestant[3][10] aux_gb[195] </args>
+      <args> contestant[4][10] aux_gb[196] </args>
+      <args> contestant[5][10] aux_gb[197] </args>
+      <args> contestant[6][10] aux_gb[198] </args>
+      <args> contestant[7][10] aux_gb[199] </args>
+      <args> contestant[8][10] aux_gb[200] </args>
+      <args> contestant[9][10] aux_gb[201] </args>
+      <args> contestant[10][10] aux_gb[202] </args>
+      <args> contestant[11][10] aux_gb[203] </args>
+      <args> contestant[12][10] aux_gb[204] </args>
+      <args> contestant[13][10] aux_gb[205] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][11] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][11] aux_gb[206] </args>
+      <args> contestant[1][11] aux_gb[207] </args>
+      <args> contestant[2][11] aux_gb[208] </args>
+      <args> contestant[3][11] aux_gb[209] </args>
+      <args> contestant[4][11] aux_gb[210] </args>
+      <args> contestant[5][11] aux_gb[211] </args>
+      <args> contestant[6][11] aux_gb[212] </args>
+      <args> contestant[7][11] aux_gb[213] </args>
+      <args> contestant[8][11] aux_gb[214] </args>
+      <args> contestant[9][11] aux_gb[215] </args>
+      <args> contestant[10][11] aux_gb[216] </args>
+      <args> contestant[11][11] aux_gb[217] </args>
+      <args> contestant[12][11] aux_gb[218] </args>
+      <args> contestant[13][11] aux_gb[219] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][12] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][12] aux_gb[220] </args>
+      <args> contestant[1][12] aux_gb[221] </args>
+      <args> contestant[2][12] aux_gb[222] </args>
+      <args> contestant[3][12] aux_gb[223] </args>
+      <args> contestant[4][12] aux_gb[224] </args>
+      <args> contestant[5][12] aux_gb[225] </args>
+      <args> contestant[6][12] aux_gb[226] </args>
+      <args> contestant[7][12] aux_gb[227] </args>
+      <args> contestant[8][12] aux_gb[228] </args>
+      <args> contestant[9][12] aux_gb[229] </args>
+      <args> contestant[10][12] aux_gb[230] </args>
+      <args> contestant[11][12] aux_gb[231] </args>
+      <args> contestant[12][12] aux_gb[232] </args>
+      <args> contestant[13][12] aux_gb[233] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][13] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][13] aux_gb[234] </args>
+      <args> contestant[1][13] aux_gb[235] </args>
+      <args> contestant[2][13] aux_gb[236] </args>
+      <args> contestant[3][13] aux_gb[237] </args>
+      <args> contestant[4][13] aux_gb[238] </args>
+      <args> contestant[5][13] aux_gb[239] </args>
+      <args> contestant[6][13] aux_gb[240] </args>
+      <args> contestant[7][13] aux_gb[241] </args>
+      <args> contestant[8][13] aux_gb[242] </args>
+      <args> contestant[9][13] aux_gb[243] </args>
+      <args> contestant[10][13] aux_gb[244] </args>
+      <args> contestant[11][13] aux_gb[245] </args>
+      <args> contestant[12][13] aux_gb[246] </args>
+      <args> contestant[13][13] aux_gb[247] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][14] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][14] aux_gb[248] </args>
+      <args> contestant[1][14] aux_gb[249] </args>
+      <args> contestant[2][14] aux_gb[250] </args>
+      <args> contestant[3][14] aux_gb[251] </args>
+      <args> contestant[4][14] aux_gb[252] </args>
+      <args> contestant[5][14] aux_gb[253] </args>
+      <args> contestant[6][14] aux_gb[254] </args>
+      <args> contestant[7][14] aux_gb[255] </args>
+      <args> contestant[8][14] aux_gb[256] </args>
+      <args> contestant[9][14] aux_gb[257] </args>
+      <args> contestant[10][14] aux_gb[258] </args>
+      <args> contestant[11][14] aux_gb[259] </args>
+      <args> contestant[12][14] aux_gb[260] </args>
+      <args> contestant[13][14] aux_gb[261] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][15] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][15] aux_gb[262] </args>
+      <args> contestant[1][15] aux_gb[263] </args>
+      <args> contestant[2][15] aux_gb[264] </args>
+      <args> contestant[3][15] aux_gb[265] </args>
+      <args> contestant[4][15] aux_gb[266] </args>
+      <args> contestant[5][15] aux_gb[267] </args>
+      <args> contestant[6][15] aux_gb[268] </args>
+      <args> contestant[7][15] aux_gb[269] </args>
+      <args> contestant[8][15] aux_gb[270] </args>
+      <args> contestant[9][15] aux_gb[271] </args>
+      <args> contestant[10][15] aux_gb[272] </args>
+      <args> contestant[11][15] aux_gb[273] </args>
+      <args> contestant[12][15] aux_gb[274] </args>
+      <args> contestant[13][15] aux_gb[275] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][16] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][16] aux_gb[276] </args>
+      <args> contestant[1][16] aux_gb[277] </args>
+      <args> contestant[2][16] aux_gb[278] </args>
+      <args> contestant[3][16] aux_gb[279] </args>
+      <args> contestant[4][16] aux_gb[280] </args>
+      <args> contestant[5][16] aux_gb[281] </args>
+      <args> contestant[6][16] aux_gb[282] </args>
+      <args> contestant[7][16] aux_gb[283] </args>
+      <args> contestant[8][16] aux_gb[284] </args>
+      <args> contestant[9][16] aux_gb[285] </args>
+      <args> contestant[10][16] aux_gb[286] </args>
+      <args> contestant[11][16] aux_gb[287] </args>
+      <args> contestant[12][16] aux_gb[288] </args>
+      <args> contestant[13][16] aux_gb[289] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][17] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][17] aux_gb[290] </args>
+      <args> contestant[1][17] aux_gb[291] </args>
+      <args> contestant[2][17] aux_gb[292] </args>
+      <args> contestant[3][17] aux_gb[293] </args>
+      <args> contestant[4][17] aux_gb[294] </args>
+      <args> contestant[5][17] aux_gb[295] </args>
+      <args> contestant[6][17] aux_gb[296] </args>
+      <args> contestant[7][17] aux_gb[297] </args>
+      <args> contestant[8][17] aux_gb[298] </args>
+      <args> contestant[9][17] aux_gb[299] </args>
+      <args> contestant[10][17] aux_gb[300] </args>
+      <args> contestant[11][17] aux_gb[301] </args>
+      <args> contestant[12][17] aux_gb[302] </args>
+      <args> contestant[13][17] aux_gb[303] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][18] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][18] aux_gb[304] </args>
+      <args> contestant[1][18] aux_gb[305] </args>
+      <args> contestant[2][18] aux_gb[306] </args>
+      <args> contestant[3][18] aux_gb[307] </args>
+      <args> contestant[4][18] aux_gb[308] </args>
+      <args> contestant[5][18] aux_gb[309] </args>
+      <args> contestant[6][18] aux_gb[310] </args>
+      <args> contestant[7][18] aux_gb[311] </args>
+      <args> contestant[8][18] aux_gb[312] </args>
+      <args> contestant[9][18] aux_gb[313] </args>
+      <args> contestant[10][18] aux_gb[314] </args>
+      <args> contestant[11][18] aux_gb[315] </args>
+      <args> contestant[12][18] aux_gb[316] </args>
+      <args> contestant[13][18] aux_gb[317] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][19] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> contestant[0][19] aux_gb[318] </args>
+      <args> contestant[1][19] aux_gb[319] </args>
+      <args> contestant[2][19] aux_gb[320] </args>
+      <args> contestant[3][19] aux_gb[321] </args>
+      <args> contestant[4][19] aux_gb[322] </args>
+      <args> contestant[5][19] aux_gb[323] </args>
+      <args> contestant[6][19] aux_gb[324] </args>
+      <args> contestant[7][19] aux_gb[325] </args>
+      <args> contestant[8][19] aux_gb[326] </args>
+      <args> contestant[9][19] aux_gb[327] </args>
+      <args> contestant[10][19] aux_gb[328] </args>
+      <args> contestant[11][19] aux_gb[329] </args>
+      <args> contestant[12][19] aux_gb[330] </args>
+      <args> contestant[13][19] aux_gb[331] </args>
+    </group>
+    <group>
+      <count>
+        <list> %... </list>
+        <values> 1 </values>
+        <condition> (eq,%0) </condition>
+      </count>
+      <args> aux_gb[332] eq(hap[0][0],hap[1][0]) eq(hap[0][1],hap[1][1]) eq(hap[0][2],hap[1][2]) eq(hap[0][3],hap[1][3]) eq(hap[0][4],hap[1][4]) eq(hap[0][5],hap[1][5]) eq(hap[0][6],hap[1][6]) eq(hap[0][7],hap[1][7]) eq(hap[0][8],hap[1][8]) eq(hap[0][9],hap[1][9]) eq(hap[0][10],hap[1][10]) eq(hap[0][11],hap[1][11]) eq(hap[0][12],hap[1][12]) eq(hap[0][13],hap[1][13]) eq(hap[0][14],hap[1][14]) eq(hap[0][15],hap[1][15]) eq(hap[0][16],hap[1][16]) eq(hap[0][17],hap[1][17]) eq(hap[0][18],hap[1][18]) eq(hap[0][19],hap[1][19]) </args>
+      <args> aux_gb[333] eq(hap[1][0],hap[2][0]) eq(hap[1][1],hap[2][1]) eq(hap[1][2],hap[2][2]) eq(hap[1][3],hap[2][3]) eq(hap[1][4],hap[2][4]) eq(hap[1][5],hap[2][5]) eq(hap[1][6],hap[2][6]) eq(hap[1][7],hap[2][7]) eq(hap[1][8],hap[2][8]) eq(hap[1][9],hap[2][9]) eq(hap[1][10],hap[2][10]) eq(hap[1][11],hap[2][11]) eq(hap[1][12],hap[2][12]) eq(hap[1][13],hap[2][13]) eq(hap[1][14],hap[2][14]) eq(hap[1][15],hap[2][15]) eq(hap[1][16],hap[2][16]) eq(hap[1][17],hap[2][17]) eq(hap[1][18],hap[2][18]) eq(hap[1][19],hap[2][19]) </args>
+      <args> aux_gb[334] eq(hap[2][0],hap[3][0]) eq(hap[2][1],hap[3][1]) eq(hap[2][2],hap[3][2]) eq(hap[2][3],hap[3][3]) eq(hap[2][4],hap[3][4]) eq(hap[2][5],hap[3][5]) eq(hap[2][6],hap[3][6]) eq(hap[2][7],hap[3][7]) eq(hap[2][8],hap[3][8]) eq(hap[2][9],hap[3][9]) eq(hap[2][10],hap[3][10]) eq(hap[2][11],hap[3][11]) eq(hap[2][12],hap[3][12]) eq(hap[2][13],hap[3][13]) eq(hap[2][14],hap[3][14]) eq(hap[2][15],hap[3][15]) eq(hap[2][16],hap[3][16]) eq(hap[2][17],hap[3][17]) eq(hap[2][18],hap[3][18]) eq(hap[2][19],hap[3][19]) </args>
+      <args> aux_gb[335] eq(hap[3][0],hap[4][0]) eq(hap[3][1],hap[4][1]) eq(hap[3][2],hap[4][2]) eq(hap[3][3],hap[4][3]) eq(hap[3][4],hap[4][4]) eq(hap[3][5],hap[4][5]) eq(hap[3][6],hap[4][6]) eq(hap[3][7],hap[4][7]) eq(hap[3][8],hap[4][8]) eq(hap[3][9],hap[4][9]) eq(hap[3][10],hap[4][10]) eq(hap[3][11],hap[4][11]) eq(hap[3][12],hap[4][12]) eq(hap[3][13],hap[4][13]) eq(hap[3][14],hap[4][14]) eq(hap[3][15],hap[4][15]) eq(hap[3][16],hap[4][16]) eq(hap[3][17],hap[4][17]) eq(hap[3][18],hap[4][18]) eq(hap[3][19],hap[4][19]) </args>
+      <args> aux_gb[336] eq(hap[4][0],hap[5][0]) eq(hap[4][1],hap[5][1]) eq(hap[4][2],hap[5][2]) eq(hap[4][3],hap[5][3]) eq(hap[4][4],hap[5][4]) eq(hap[4][5],hap[5][5]) eq(hap[4][6],hap[5][6]) eq(hap[4][7],hap[5][7]) eq(hap[4][8],hap[5][8]) eq(hap[4][9],hap[5][9]) eq(hap[4][10],hap[5][10]) eq(hap[4][11],hap[5][11]) eq(hap[4][12],hap[5][12]) eq(hap[4][13],hap[5][13]) eq(hap[4][14],hap[5][14]) eq(hap[4][15],hap[5][15]) eq(hap[4][16],hap[5][16]) eq(hap[4][17],hap[5][17]) eq(hap[4][18],hap[5][18]) eq(hap[4][19],hap[5][19]) </args>
+      <args> aux_gb[337] eq(hap[5][0],hap[6][0]) eq(hap[5][1],hap[6][1]) eq(hap[5][2],hap[6][2]) eq(hap[5][3],hap[6][3]) eq(hap[5][4],hap[6][4]) eq(hap[5][5],hap[6][5]) eq(hap[5][6],hap[6][6]) eq(hap[5][7],hap[6][7]) eq(hap[5][8],hap[6][8]) eq(hap[5][9],hap[6][9]) eq(hap[5][10],hap[6][10]) eq(hap[5][11],hap[6][11]) eq(hap[5][12],hap[6][12]) eq(hap[5][13],hap[6][13]) eq(hap[5][14],hap[6][14]) eq(hap[5][15],hap[6][15]) eq(hap[5][16],hap[6][16]) eq(hap[5][17],hap[6][17]) eq(hap[5][18],hap[6][18]) eq(hap[5][19],hap[6][19]) </args>
+      <args> aux_gb[338] eq(hap[7][0],hap[8][0]) eq(hap[7][1],hap[8][1]) eq(hap[7][2],hap[8][2]) eq(hap[7][3],hap[8][3]) eq(hap[7][4],hap[8][4]) eq(hap[7][5],hap[8][5]) eq(hap[7][6],hap[8][6]) eq(hap[7][7],hap[8][7]) eq(hap[7][8],hap[8][8]) eq(hap[7][9],hap[8][9]) eq(hap[7][10],hap[8][10]) eq(hap[7][11],hap[8][11]) eq(hap[7][12],hap[8][12]) eq(hap[7][13],hap[8][13]) eq(hap[7][14],hap[8][14]) eq(hap[7][15],hap[8][15]) eq(hap[7][16],hap[8][16]) eq(hap[7][17],hap[8][17]) eq(hap[7][18],hap[8][18]) eq(hap[7][19],hap[8][19]) </args>
+      <args> aux_gb[339] eq(hap[8][0],hap[9][0]) eq(hap[8][1],hap[9][1]) eq(hap[8][2],hap[9][2]) eq(hap[8][3],hap[9][3]) eq(hap[8][4],hap[9][4]) eq(hap[8][5],hap[9][5]) eq(hap[8][6],hap[9][6]) eq(hap[8][7],hap[9][7]) eq(hap[8][8],hap[9][8]) eq(hap[8][9],hap[9][9]) eq(hap[8][10],hap[9][10]) eq(hap[8][11],hap[9][11]) eq(hap[8][12],hap[9][12]) eq(hap[8][13],hap[9][13]) eq(hap[8][14],hap[9][14]) eq(hap[8][15],hap[9][15]) eq(hap[8][16],hap[9][16]) eq(hap[8][17],hap[9][17]) eq(hap[8][18],hap[9][18]) eq(hap[8][19],hap[9][19]) </args>
+      <args> aux_gb[340] eq(hap[9][0],hap[10][0]) eq(hap[9][1],hap[10][1]) eq(hap[9][2],hap[10][2]) eq(hap[9][3],hap[10][3]) eq(hap[9][4],hap[10][4]) eq(hap[9][5],hap[10][5]) eq(hap[9][6],hap[10][6]) eq(hap[9][7],hap[10][7]) eq(hap[9][8],hap[10][8]) eq(hap[9][9],hap[10][9]) eq(hap[9][10],hap[10][10]) eq(hap[9][11],hap[10][11]) eq(hap[9][12],hap[10][12]) eq(hap[9][13],hap[10][13]) eq(hap[9][14],hap[10][14]) eq(hap[9][15],hap[10][15]) eq(hap[9][16],hap[10][16]) eq(hap[9][17],hap[10][17]) eq(hap[9][18],hap[10][18]) eq(hap[9][19],hap[10][19]) </args>
+      <args> aux_gb[341] eq(hap[10][0],hap[11][0]) eq(hap[10][1],hap[11][1]) eq(hap[10][2],hap[11][2]) eq(hap[10][3],hap[11][3]) eq(hap[10][4],hap[11][4]) eq(hap[10][5],hap[11][5]) eq(hap[10][6],hap[11][6]) eq(hap[10][7],hap[11][7]) eq(hap[10][8],hap[11][8]) eq(hap[10][9],hap[11][9]) eq(hap[10][10],hap[11][10]) eq(hap[10][11],hap[11][11]) eq(hap[10][12],hap[11][12]) eq(hap[10][13],hap[11][13]) eq(hap[10][14],hap[11][14]) eq(hap[10][15],hap[11][15]) eq(hap[10][16],hap[11][16]) eq(hap[10][17],hap[11][17]) eq(hap[10][18],hap[11][18]) eq(hap[10][19],hap[11][19]) </args>
+      <args> aux_gb[342] eq(hap[11][0],hap[12][0]) eq(hap[11][1],hap[12][1]) eq(hap[11][2],hap[12][2]) eq(hap[11][3],hap[12][3]) eq(hap[11][4],hap[12][4]) eq(hap[11][5],hap[12][5]) eq(hap[11][6],hap[12][6]) eq(hap[11][7],hap[12][7]) eq(hap[11][8],hap[12][8]) eq(hap[11][9],hap[12][9]) eq(hap[11][10],hap[12][10]) eq(hap[11][11],hap[12][11]) eq(hap[11][12],hap[12][12]) eq(hap[11][13],hap[12][13]) eq(hap[11][14],hap[12][14]) eq(hap[11][15],hap[12][15]) eq(hap[11][16],hap[12][16]) eq(hap[11][17],hap[12][17]) eq(hap[11][18],hap[12][18]) eq(hap[11][19],hap[12][19]) </args>
+      <args> aux_gb[343] eq(hap[12][0],hap[13][0]) eq(hap[12][1],hap[13][1]) eq(hap[12][2],hap[13][2]) eq(hap[12][3],hap[13][3]) eq(hap[12][4],hap[13][4]) eq(hap[12][5],hap[13][5]) eq(hap[12][6],hap[13][6]) eq(hap[12][7],hap[13][7]) eq(hap[12][8],hap[13][8]) eq(hap[12][9],hap[13][9]) eq(hap[12][10],hap[13][10]) eq(hap[12][11],hap[13][11]) eq(hap[12][12],hap[13][12]) eq(hap[12][13],hap[13][13]) eq(hap[12][14],hap[13][14]) eq(hap[12][15],hap[13][15]) eq(hap[12][16],hap[13][16]) eq(hap[12][17],hap[13][17]) eq(hap[12][18],hap[13][18]) eq(hap[12][19],hap[13][19]) </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][18] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> row[0] aux_gb[344] </args>
+      <args> row[3] aux_gb[347] </args>
+      <args> row[7] aux_gb[358] </args>
+      <args> row[9] aux_gb[360] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][13] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> row[1] aux_gb[345] </args>
+      <args> row[8] aux_gb[349] </args>
+    </group>
+    <group>
+      <element>
+        <list> hap[][7] </list>
+        <index> %0 </index>
+        <value> %1 </value>
+      </element>
+      <args> row[3] aux_gb[346] </args>
+      <args> row[11] aux_gb[354] </args>
+    </group>
+    <element>
+      <list> hap[][14] </list>
+      <index> row[7] </index>
+      <value> aux_gb[348] </value>
+    </element>
+    <group>
+      <element>
+        <list> %... </list>
+        <index> row[9] </index>
+        <value> %0 </value>
+      </element>
+      <args> aux_gb[350] hap[][3] </args>
+      <args> aux_gb[351] hap[][5] </args>
+      <args> aux_gb[352] hap[][6] </args>
+      <args> aux_gb[361] hap[][15] </args>
+    </group>
+    <group>
+      <element>
+        <list> %... </list>
+        <index> row[11] </index>
+        <value> %0 </value>
+      </element>
+      <args> aux_gb[353] hap[][5] </args>
+      <args> aux_gb[362] hap[][16] </args>
+    </group>
+    <group>
+      <element>
+        <list> %... </list>
+        <index> row[13] </index>
+        <value> %0 </value>
+      </element>
+      <args> aux_gb[355] hap[][11] </args>
+      <args> aux_gb[356] hap[][19] </args>
+      <args> aux_gb[363] hap[][19] </args>
+    </group>
+    <element>
+      <list> hap[][8] </list>
+      <index> row[2] </index>
+      <value> aux_gb[357] </value>
+    </element>
+    <element>
+      <list> hap[][10] </list>
+      <index> row[8] </index>
+      <value> aux_gb[359] </value>
+    </element>
+  </constraints>
+  <objectives>
+    <minimize type="sum"> eq(aux_gb[344],3) eq(aux_gb[345],3) eq(aux_gb[346],3) eq(aux_gb[347],3) eq(aux_gb[348],3) eq(aux_gb[349],3) eq(aux_gb[350],3) eq(aux_gb[351],3) eq(aux_gb[352],3) eq(aux_gb[353],3) eq(aux_gb[354],3) eq(aux_gb[355],3) eq(aux_gb[356],3) eq(aux_gb[357],1) eq(aux_gb[358],1) eq(aux_gb[359],1) eq(aux_gb[360],1) eq(aux_gb[361],1) eq(aux_gb[362],1) eq(aux_gb[363],1) </minimize>
+  </objectives>
+</instance>

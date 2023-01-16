@@ -1,0 +1,46 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="t" note="t[i] is the team of the ith player" size="[30]"> 0..5 </array>
+    <array id="tr" note="tr[i] is the team rating of the ith team" size="[6]"> 0..11815 </array>
+    <var id="balance"> 0..11815 </var>
+    <var id="happiness"> 0 1 </var>
+    <array id="aux_gb" note="aux_gb[i] is the ith auxiliary variable having been automatically introduced" size="[2]"> 0..11815 </array>
+  </variables>
+  <constraints>
+    <binPacking>
+      <list> t[] </list>
+      <sizes> 2363 2353 2353 2299 2292 2283 2055 2046 2041 2040 2037 2028 1910 1908 1907 1902 1902 1896 1824 1812x3 1810 1802 1715 1714 1708 1704 1703 1696 </sizes>
+      <conditions> (eq,tr[0])(eq,tr[1])(eq,tr[2])(eq,tr[3])(eq,tr[4])(eq,tr[5]) </conditions>
+    </binPacking>
+    <intension> eq(balance,sub(aux_gb[0],aux_gb[1])) </intension>
+    <intension> eq(happiness,eq(t[22],t[1])) </intension>
+    <group>
+      <allDifferent> %... </allDifferent>
+      <args> t[0..5] </args>
+      <args> t[6..11] </args>
+      <args> t[12..17] </args>
+      <args> t[18..23] </args>
+      <args> t[24..29] </args>
+    </group>
+    <binPacking class="redundant-constraint">
+      <list> t[] </list>
+      <sizes> 1x30 </sizes>
+      <condition> (le,5) </condition>
+    </binPacking>
+    <instantiation class="symmetry-breaking">
+      <list> t[0..5] </list>
+      <values> 0 1 2 3 4 5 </values>
+    </instantiation>
+    <maximum>
+      <list> tr[] </list>
+      <condition> (eq,aux_gb[0]) </condition>
+    </maximum>
+    <minimum>
+      <list> tr[] </list>
+      <condition> (eq,aux_gb[1]) </condition>
+    </minimum>
+  </constraints>
+  <objectives>
+    <maximize> sub(mul(1000,happiness),balance) </maximize>
+  </objectives>
+</instance>
